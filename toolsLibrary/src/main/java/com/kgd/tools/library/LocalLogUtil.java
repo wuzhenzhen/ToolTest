@@ -15,16 +15,16 @@ import android.widget.Toast;
 //import com.tiamaes.sectionstationscreen4gj.application.SSSApplication;
 
 /**
- *  åªä¿å­˜ç•™æœ€è¿‘ä¸‰å¤©çš„log
+ *  Ö»±£´æÁô×î½üÈıÌìµÄlog
  *  
  * @author wuzhenzhen@tiamaes.com
  *
  */
 public class LocalLogUtil {
 	private final String TAG = "LocalLogUtil";
-	public static final String extAddr = "/mnt/extsd/JZPLog"; //log é»˜è®¤ä¿å­˜åˆ° å¤–ç½®SDCard
+	public static final String extAddr = "/mnt/extsd/JZPLog"; //log Ä¬ÈÏ±£´æµ½ ÍâÖÃSDCard
 	public static final String usbAddr = "mnt/usbhost1/JZPLog";
-	private final String sdcardLogAddr = "/mnt/sdcard/JZP_SDCardLog"; //å¦‚æœæ²¡æœ‰ å¤–ç½®SDCard, åˆ™ä¿å­˜åˆ°å†…éƒ¨sdcard
+	private final String sdcardLogAddr = "/mnt/sdcard/JZP_SDCardLog"; //Èç¹ûÃ»ÓĞ ÍâÖÃSDCard, Ôò±£´æµ½ÄÚ²¿sdcard
 	private static LocalLogUtil Instance;
 	private static String copyPath = "/mnt/extsd/JZPLog";
 	private LocalLogUtil(){}
@@ -50,7 +50,7 @@ public class LocalLogUtil {
 			switch(msg.what){
 				case COPY_LOG_FINISH:
 					if(mContext != null){
-						Toast.makeText(mContext, "æ—¥å¿—å¤„ç†å®Œæ¯•", Toast.LENGTH_LONG).show();
+						Toast.makeText(mContext, "ÈÕÖ¾´¦ÀíÍê±Ï", Toast.LENGTH_LONG).show();
 					}
 				break;
 			}
@@ -63,27 +63,27 @@ public class LocalLogUtil {
 		@Override
 		public void run() {
 //			Logcat.iii("--LocalLogUtil:HandleLog--", TAG);
-			//TODO  /mnt/sdcard/JZP_SDCardLog åªä¿ç•™æœ€è¿‘ä¸‰å¤©
+			//TODO  /mnt/sdcard/JZP_SDCardLog Ö»±£Áô×î½üÈıÌì
 			doReserve3DayLog(sdcardLogAddr);
 			doReserve3DayLog(sdcardLogAddr+"/crash");
 			doReserve3DayLog(sdcardLogAddr+"/screenshot");
 			
-			//å¤åˆ¶å†…éƒ¨å­˜å‚¨å™¨é‡Œçš„log åˆ°æœ¬åœ°
+			//¸´ÖÆÄÚ²¿´æ´¢Æ÷ÀïµÄlog µ½±¾µØ
 			FileUtil.copyFolder(sdcardLogAddr, copyPath); 
 			
-			//TODO  /mnt/extsd/JZPLog  åªä¿ç•™æœ€è¿‘ä¸‰å¤©log
+			//TODO  /mnt/extsd/JZPLog  Ö»±£Áô×î½üÈıÌìlog
 			doReserve3DayLog(copyPath);
 			doReserve3DayLog(copyPath+"/crash");
 			doReserve3DayLog(copyPath+"/screenshot");
 			
-			//åˆ é™¤æœªä¸Šä¼ æˆåŠŸçš„Log
+			//É¾³ıÎ´ÉÏ´«³É¹¦µÄLog
 			doDeleteZipLog();
 			//TODO 
 //			handler.sendEmptyMessage(COPY_LOG_FINISH);
 		}
 	};
 	
-    //TODO æš‚æ—¶åªä¿å­˜æœ€è¿‘ä¸‰å¤©çš„logï¼Œ ç”±äºSDå¡è¯†åˆ«æ…¢çš„åŸå› ï¼Œéƒ¨åˆ†logå¯èƒ½ å¯åœ¨åœ¨å†…éƒ¨ï¼Œéœ€è¦å®šæœŸå°†logä¿å­˜åˆ°å¤–ç½®SDcardä¸­
+    //TODO ÔİÊ±Ö»±£´æ×î½üÈıÌìµÄlog£¬ ÓÉÓÚSD¿¨Ê¶±ğÂıµÄÔ­Òò£¬²¿·Ölog¿ÉÄÜ ¿ÉÔÚÔÚÄÚ²¿£¬ĞèÒª¶¨ÆÚ½«log±£´æµ½ÍâÖÃSDcardÖĞ
     private void doReserve3DayLog(String addr){
 //    	Logcat.iii("--doReserve3DayLog--"+addr);
     	File Sfile = new File(addr);
@@ -100,7 +100,7 @@ public class LocalLogUtil {
 			}
 		});
     	if(fs.length <=3) return;
-		Arrays.sort(fs, new Comparator<File>() { //æ ¹æ®  ä¿®æ”¹æ—¶é—´æ’åº  ç”±æ–°åˆ°æ—§
+		Arrays.sort(fs, new Comparator<File>() { //¸ù¾İ  ĞŞ¸ÄÊ±¼äÅÅĞò  ÓÉĞÂµ½¾É
 			public int compare(File f1, File f2) {
 				long diff = f1.lastModified() - f2.lastModified();
 				if (diff > 0)
@@ -116,7 +116,7 @@ public class LocalLogUtil {
 			}
 
 		});
-		// åªä¿ç•™ä¸‰å¤©çš„log
+		// Ö»±£ÁôÈıÌìµÄlog
 		if(fs.length>3){
 			for (int i = fs.length - 1-3; i > -1; i--) {
 //				Logcat.iii("--delete--"+fs[i].getName()+"; lastModified="+new Date(fs[i].lastModified()), TAG);
@@ -125,7 +125,7 @@ public class LocalLogUtil {
 		}
     }
     
-    //åˆ é™¤ä¸Šä¼ å¤±è´¥çš„log zip(èŠ‚çœç©ºé—´)
+    //É¾³ıÉÏ´«Ê§°ÜµÄlog zip(½ÚÊ¡¿Õ¼ä)
     private void doDeleteZipLog(){
 //    	Logcat.iii("--doDeleteZipLog--");
     	File Sfile = new File("/sdcard");
@@ -141,7 +141,7 @@ public class LocalLogUtil {
 			}
 		});
     	if(fs.length <=1) return;
-		Arrays.sort(fs, new Comparator<File>() { //æ ¹æ®  ä¿®æ”¹æ—¶é—´æ’åº  ç”±æ–°åˆ°æ—§
+		Arrays.sort(fs, new Comparator<File>() { //¸ù¾İ  ĞŞ¸ÄÊ±¼äÅÅĞò  ÓÉĞÂµ½¾É
 			public int compare(File f1, File f2) {
 				long diff = f1.lastModified() - f2.lastModified();
 				if (diff > 0)
@@ -157,7 +157,7 @@ public class LocalLogUtil {
 			}
 
 		});
-		// åªä¿ç•™æœ€åä¸€æ¬¡çš„zip
+		// Ö»±£Áô×îºóÒ»´ÎµÄzip
 		if(fs.length>1){
 			for (int i = fs.length - 1-1; i > -1; i--) {
 //				Logcat.iii("--delete--"+fs[i].getName()+"; lastModified="+new Date(fs[i].lastModified()), TAG);

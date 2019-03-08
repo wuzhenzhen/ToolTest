@@ -22,11 +22,11 @@ public class ZipUtils {
 	private static final int BUFF_SIZE = 1024 * 1024; // 1M Byte
 	 
     /**
-     * æ‰¹é‡å‹ç¼©æ–‡ä»¶ï¼ˆå¤¹ï¼‰
+     * ÅúÁ¿Ñ¹ËõÎÄ¼ş£¨¼Ğ£©
      *
-     * @param resFileList è¦å‹ç¼©çš„æ–‡ä»¶ï¼ˆå¤¹ï¼‰åˆ—è¡¨
-     * @param zipFile ç”Ÿæˆçš„å‹ç¼©æ–‡ä»¶
-     * @throws IOException å½“å‹ç¼©è¿‡ç¨‹å‡ºé”™æ—¶æŠ›å‡º
+     * @param resFileList ÒªÑ¹ËõµÄÎÄ¼ş£¨¼Ğ£©ÁĞ±í
+     * @param zipFile Éú³ÉµÄÑ¹ËõÎÄ¼ş
+     * @throws IOException µ±Ñ¹Ëõ¹ı³Ì³ö´íÊ±Å×³ö
      */
     public static void zipFiles(Collection<File> resFileList, File zipFile) throws IOException {
         ZipOutputStream zipout = new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(
@@ -38,12 +38,12 @@ public class ZipUtils {
     }
  
     /**
-     * æ‰¹é‡å‹ç¼©æ–‡ä»¶ï¼ˆå¤¹ï¼‰
+     * ÅúÁ¿Ñ¹ËõÎÄ¼ş£¨¼Ğ£©
      *
-     * @param resFileList è¦å‹ç¼©çš„æ–‡ä»¶ï¼ˆå¤¹ï¼‰åˆ—è¡¨
-     * @param zipFile ç”Ÿæˆçš„å‹ç¼©æ–‡ä»¶
-     * @param comment å‹ç¼©æ–‡ä»¶çš„æ³¨é‡Š
-     * @throws IOException å½“å‹ç¼©è¿‡ç¨‹å‡ºé”™æ—¶æŠ›å‡º
+     * @param resFileList ÒªÑ¹ËõµÄÎÄ¼ş£¨¼Ğ£©ÁĞ±í
+     * @param zipFile Éú³ÉµÄÑ¹ËõÎÄ¼ş
+     * @param comment Ñ¹ËõÎÄ¼şµÄ×¢ÊÍ
+     * @throws IOException µ±Ñ¹Ëõ¹ı³Ì³ö´íÊ±Å×³ö
      */
     public static void zipFiles(Collection<File> resFileList, File zipFile, String comment)
             throws IOException {
@@ -57,11 +57,11 @@ public class ZipUtils {
     }
  
     /**
-     * è§£å‹ç¼©ä¸€ä¸ªæ–‡ä»¶
+     * ½âÑ¹ËõÒ»¸öÎÄ¼ş
      *
-     * @param zipFile å‹ç¼©æ–‡ä»¶
-     * @param folderPath è§£å‹ç¼©çš„ç›®æ ‡ç›®å½•
-     * @throws IOException å½“è§£å‹ç¼©è¿‡ç¨‹å‡ºé”™æ—¶æŠ›å‡º
+     * @param zipFile Ñ¹ËõÎÄ¼ş
+     * @param folderPath ½âÑ¹ËõµÄÄ¿±êÄ¿Â¼
+     * @throws IOException µ±½âÑ¹Ëõ¹ı³Ì³ö´íÊ±Å×³ö
      */
     public static void upZipFile(File zipFile, String folderPath) throws ZipException, IOException {
         File desDir = new File(folderPath);
@@ -94,13 +94,13 @@ public class ZipUtils {
     }
  
     /**
-     * è§£å‹æ–‡ä»¶ååŒ…å«ä¼ å…¥æ–‡å­—çš„æ–‡ä»¶
+     * ½âÑ¹ÎÄ¼şÃû°üº¬´«ÈëÎÄ×ÖµÄÎÄ¼ş
      *
-     * @param zipFile å‹ç¼©æ–‡ä»¶
-     * @param folderPath ç›®æ ‡æ–‡ä»¶å¤¹
-     * @param nameContains ä¼ å…¥çš„æ–‡ä»¶åŒ¹é…å
-     * @throws ZipException å‹ç¼©æ ¼å¼æœ‰è¯¯æ—¶æŠ›å‡º
-     * @throws IOException IOé”™è¯¯æ—¶æŠ›å‡º
+     * @param zipFile Ñ¹ËõÎÄ¼ş
+     * @param folderPath Ä¿±êÎÄ¼ş¼Ğ
+     * @param nameContains ´«ÈëµÄÎÄ¼şÆ¥ÅäÃû
+     * @throws ZipException Ñ¹Ëõ¸ñÊ½ÓĞÎóÊ±Å×³ö
+     * @throws IOException IO´íÎóÊ±Å×³ö
      */
     public static ArrayList<File> upZipSelectedFile(File zipFile, String folderPath,
             String nameContains) throws ZipException, IOException {
@@ -118,8 +118,8 @@ public class ZipUtils {
                 InputStream in = zf.getInputStream(entry);
                 String str = folderPath + File.separator + entry.getName();
                 str = new String(str.getBytes("8859_1"), "GB2312");
-                // str.getBytes("GB2312"),"8859_1" è¾“å‡º
-                // str.getBytes("8859_1"),"GB2312" è¾“å…¥
+                // str.getBytes("GB2312"),"8859_1" Êä³ö
+                // str.getBytes("8859_1"),"GB2312" ÊäÈë
                 File desFile = new File(str);
                 if (!desFile.exists()) {
                     File fileParentDir = desFile.getParentFile();
@@ -143,12 +143,12 @@ public class ZipUtils {
     }
  
     /**
-     * è·å¾—å‹ç¼©æ–‡ä»¶å†…æ–‡ä»¶åˆ—è¡¨
+     * »ñµÃÑ¹ËõÎÄ¼şÄÚÎÄ¼şÁĞ±í
      *
-     * @param zipFile å‹ç¼©æ–‡ä»¶
-     * @return å‹ç¼©æ–‡ä»¶å†…æ–‡ä»¶åç§°
-     * @throws ZipException å‹ç¼©æ–‡ä»¶æ ¼å¼æœ‰è¯¯æ—¶æŠ›å‡º
-     * @throws IOException å½“è§£å‹ç¼©è¿‡ç¨‹å‡ºé”™æ—¶æŠ›å‡º
+     * @param zipFile Ñ¹ËõÎÄ¼ş
+     * @return Ñ¹ËõÎÄ¼şÄÚÎÄ¼şÃû³Æ
+     * @throws ZipException Ñ¹ËõÎÄ¼ş¸ñÊ½ÓĞÎóÊ±Å×³ö
+     * @throws IOException µ±½âÑ¹Ëõ¹ı³Ì³ö´íÊ±Å×³ö
      */
     public static ArrayList<String> getEntriesNames(File zipFile) throws ZipException, IOException {
         ArrayList<String> entryNames = new ArrayList<String>();
@@ -161,12 +161,12 @@ public class ZipUtils {
     }
  
     /**
-     * è·å¾—å‹ç¼©æ–‡ä»¶å†…å‹ç¼©æ–‡ä»¶å¯¹è±¡ä»¥å–å¾—å…¶å±æ€§
+     * »ñµÃÑ¹ËõÎÄ¼şÄÚÑ¹ËõÎÄ¼ş¶ÔÏóÒÔÈ¡µÃÆäÊôĞÔ
      *
-     * @param zipFile å‹ç¼©æ–‡ä»¶
-     * @return è¿”å›ä¸€ä¸ªå‹ç¼©æ–‡ä»¶åˆ—è¡¨
-     * @throws ZipException å‹ç¼©æ–‡ä»¶æ ¼å¼æœ‰è¯¯æ—¶æŠ›å‡º
-     * @throws IOException IOæ“ä½œæœ‰è¯¯æ—¶æŠ›å‡º
+     * @param zipFile Ñ¹ËõÎÄ¼ş
+     * @return ·µ»ØÒ»¸öÑ¹ËõÎÄ¼şÁĞ±í
+     * @throws ZipException Ñ¹ËõÎÄ¼ş¸ñÊ½ÓĞÎóÊ±Å×³ö
+     * @throws IOException IO²Ù×÷ÓĞÎóÊ±Å×³ö
      */
     public static Enumeration<?> getEntriesEnumeration(File zipFile) throws ZipException,
             IOException {
@@ -176,10 +176,10 @@ public class ZipUtils {
     }
  
     /**
-     * å–å¾—å‹ç¼©æ–‡ä»¶å¯¹è±¡çš„æ³¨é‡Š
+     * È¡µÃÑ¹ËõÎÄ¼ş¶ÔÏóµÄ×¢ÊÍ
      *
-     * @param entry å‹ç¼©æ–‡ä»¶å¯¹è±¡
-     * @return å‹ç¼©æ–‡ä»¶å¯¹è±¡çš„æ³¨é‡Š
+     * @param entry Ñ¹ËõÎÄ¼ş¶ÔÏó
+     * @return Ñ¹ËõÎÄ¼ş¶ÔÏóµÄ×¢ÊÍ
      * @throws UnsupportedEncodingException
      */
     public static String getEntryComment(ZipEntry entry) throws UnsupportedEncodingException {
@@ -187,10 +187,10 @@ public class ZipUtils {
     }
  
     /**
-     * å–å¾—å‹ç¼©æ–‡ä»¶å¯¹è±¡çš„åç§°
+     * È¡µÃÑ¹ËõÎÄ¼ş¶ÔÏóµÄÃû³Æ
      *
-     * @param entry å‹ç¼©æ–‡ä»¶å¯¹è±¡
-     * @return å‹ç¼©æ–‡ä»¶å¯¹è±¡çš„åç§°
+     * @param entry Ñ¹ËõÎÄ¼ş¶ÔÏó
+     * @return Ñ¹ËõÎÄ¼ş¶ÔÏóµÄÃû³Æ
      * @throws UnsupportedEncodingException
      */
     public static String getEntryName(ZipEntry entry) throws UnsupportedEncodingException {
@@ -198,13 +198,13 @@ public class ZipUtils {
     }
  
     /**
-     * å‹ç¼©æ–‡ä»¶
+     * Ñ¹ËõÎÄ¼ş
      *
-     * @param resFile éœ€è¦å‹ç¼©çš„æ–‡ä»¶ï¼ˆå¤¹ï¼‰
-     * @param zipout å‹ç¼©çš„ç›®çš„æ–‡ä»¶
-     * @param rootpath å‹ç¼©çš„æ–‡ä»¶è·¯å¾„
-     * @throws FileNotFoundException æ‰¾ä¸åˆ°æ–‡ä»¶æ—¶æŠ›å‡º
-     * @throws IOException å½“å‹ç¼©è¿‡ç¨‹å‡ºé”™æ—¶æŠ›å‡º
+     * @param resFile ĞèÒªÑ¹ËõµÄÎÄ¼ş£¨¼Ğ£©
+     * @param zipout Ñ¹ËõµÄÄ¿µÄÎÄ¼ş
+     * @param rootpath Ñ¹ËõµÄÎÄ¼şÂ·¾¶
+     * @throws FileNotFoundException ÕÒ²»µ½ÎÄ¼şÊ±Å×³ö
+     * @throws IOException µ±Ñ¹Ëõ¹ı³Ì³ö´íÊ±Å×³ö
      */
     private static void zipFile(File resFile, ZipOutputStream zipout, String rootpath)
             throws FileNotFoundException, IOException {

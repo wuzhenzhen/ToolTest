@@ -15,22 +15,22 @@ import android.view.View;
 public class ScreenShot {  
   
     private static Bitmap takeScreenShot(Activity activity) {  
-        // Viewæ˜¯ä½ éœ€è¦æˆªå›¾çš„View  
+        // ViewÊÇÄãĞèÒª½ØÍ¼µÄView  
         View view = activity.getWindow().getDecorView();  
         view.setDrawingCacheEnabled(true);  
         view.buildDrawingCache();  
         Bitmap b1 = view.getDrawingCache();  
   
-        // è·å–çŠ¶æ€æ é«˜åº¦  
+        // »ñÈ¡×´Ì¬À¸¸ß¶È  
         Rect frame = new Rect();  
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);  
         int statusBarHeight = frame.top;  
   
-        // è·å–å±å¹•é•¿å’Œé«˜  
+        // »ñÈ¡ÆÁÄ»³¤ºÍ¸ß  
         int width = activity.getWindowManager().getDefaultDisplay().getWidth();  
         int height = activity.getWindowManager().getDefaultDisplay()  
                 .getHeight();  
-        // å»æ‰æ ‡é¢˜æ   
+        // È¥µô±êÌâÀ¸  
         Bitmap b = Bitmap.createBitmap(b1, 0, statusBarHeight, width, height  
                 - statusBarHeight);  
         view.destroyDrawingCache();  
@@ -46,9 +46,9 @@ public class ScreenShot {
                 fos.flush();  
                 fos.close();  
                 
-		         // å…ˆåˆ¤æ–­æ˜¯å¦å·²ç»å›æ”¶
+		         // ÏÈÅĞ¶ÏÊÇ·ñÒÑ¾­»ØÊÕ
 		         if(b != null && !b.isRecycled()){ 
-		             // å›æ”¶å¹¶ä¸”ç½®ä¸ºnull
+		             // »ØÊÕ²¢ÇÒÖÃÎªnull
 		             b.recycle(); 
 		             b = null; 
 		         } 

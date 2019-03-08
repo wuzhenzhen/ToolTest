@@ -42,23 +42,23 @@ import java.util.regex.Pattern;
  * Created by wzz on 2016/08/17.
  * wuzhenzhen@tiamaes.com
  *
- * è·ŸApp/apk ç›¸å…³çš„è¾…åŠ©ç±»
+ * ¸úApp/apk Ïà¹ØµÄ¸¨ÖúÀà
  *
- * getAppName  è·å–åº”ç”¨ç¨‹åºåç§°
- * getVersionName å½“å‰åº”ç”¨çš„ç‰ˆæœ¬åç§°
- * getVersionCode å½“å‰åº”ç”¨çš„ç‰ˆæœ¬å·
- * installApk   å®‰è£… Apk
- * uninstallApk å¸è½½ Apk
- * isServiceRunning  Serviceæ˜¯å¦æ­£åœ¨è¿è¡Œ
- * stopRunningService åœæ­¢service
- * getCPUNumCores  æŸ¥çœ‹CPUæ ¸å¿ƒæ•°
- * importDatabase  å¯¼å…¥æ•°æ®åº“
- * setImmersiveMode æ²‰æµ¸æ¨¡å¼
- * getStatusBarHeight çŠ¶æ€æ é«˜åº¦
- * closeSoftInput éšè—è½¯é”®ç›˜
+ * getAppName  »ñÈ¡Ó¦ÓÃ³ÌĞòÃû³Æ
+ * getVersionName µ±Ç°Ó¦ÓÃµÄ°æ±¾Ãû³Æ
+ * getVersionCode µ±Ç°Ó¦ÓÃµÄ°æ±¾ºÅ
+ * installApk   °²×° Apk
+ * uninstallApk Ğ¶ÔØ Apk
+ * isServiceRunning  ServiceÊÇ·ñÕıÔÚÔËĞĞ
+ * stopRunningService Í£Ö¹service
+ * getCPUNumCores  ²é¿´CPUºËĞÄÊı
+ * importDatabase  µ¼ÈëÊı¾İ¿â
+ * setImmersiveMode ³Á½şÄ£Ê½
+ * getStatusBarHeight ×´Ì¬À¸¸ß¶È
+ * closeSoftInput Òş²ØÈí¼üÅÌ
  *
- * getIMSI(Context context) æ‰‹æœºå¡çš„IMSI    å¦‚ï¼šIMSI=460031304158115
- * getIMEI(Context context) è·å–æ‰‹æœºçš„IMEI    å¦‚ï¼šIMEI=866946025546414
+ * getIMSI(Context context) ÊÖ»ú¿¨µÄIMSI    Èç£ºIMSI=460031304158115
+ * getIMEI(Context context) »ñÈ¡ÊÖ»úµÄIMEI    Èç£ºIMEI=866946025546414
  */
 public class AppUtils
 {
@@ -69,7 +69,7 @@ public class AppUtils
     }
 
     /**
-     * è·å–åº”ç”¨ç¨‹åºåç§°
+     * »ñÈ¡Ó¦ÓÃ³ÌĞòÃû³Æ
      */
     public static String getAppName(Context context){
         try
@@ -87,10 +87,10 @@ public class AppUtils
     }
 
     /**
-     * [è·å–åº”ç”¨ç¨‹åºç‰ˆæœ¬åç§°ä¿¡æ¯]
+     * [»ñÈ¡Ó¦ÓÃ³ÌĞò°æ±¾Ãû³ÆĞÅÏ¢]
      *
      * @param context
-     * @return å½“å‰åº”ç”¨çš„ç‰ˆæœ¬åç§°
+     * @return µ±Ç°Ó¦ÓÃµÄ°æ±¾Ãû³Æ
      */
     public static String getVersionName(Context context){
         try
@@ -108,7 +108,7 @@ public class AppUtils
     }
 
     /**
-     * [è·å–å½“å‰åº”ç”¨çš„ç‰ˆæœ¬å·]
+     * [»ñÈ¡µ±Ç°Ó¦ÓÃµÄ°æ±¾ºÅ]
      * @param context
      * @return
      */
@@ -128,10 +128,10 @@ public class AppUtils
     }
 
     /**
-     * æè¿°ï¼šå®‰è£…apk.
+     * ÃèÊö£º°²×°apk.
      *
      * @param context the context
-     * @param file apkæ–‡ä»¶è·¯å¾„
+     * @param file apkÎÄ¼şÂ·¾¶
      */
     public static void installApk(Context context, File file) {
         Intent intent = new Intent();
@@ -143,10 +143,10 @@ public class AppUtils
     }
 
     /**
-     * æè¿°ï¼šå¸è½½ç¨‹åº.
+     * ÃèÊö£ºĞ¶ÔØ³ÌĞò.
      *
      * @param context the context
-     * @param packageName åŒ…å
+     * @param packageName °üÃû
      */
     public static void uninstallApk(Context context,String packageName) {
         Intent intent = new Intent(Intent.ACTION_DELETE);
@@ -156,11 +156,11 @@ public class AppUtils
     }
 
     /**
-     *  Serviceæ˜¯å¦æ­£åœ¨è¿è¡Œ
+     *  ServiceÊÇ·ñÕıÔÚÔËĞĞ
      *
      * @param ctx
-     * @param className åˆ¤æ–­çš„æœåŠ¡åå­— "com.xxx.xx..XXXService"
-     * @return trueåœ¨è¿è¡Œ    falseä¸åœ¨è¿è¡Œ
+     * @param className ÅĞ¶ÏµÄ·şÎñÃû×Ö "com.xxx.xx..XXXService"
+     * @return trueÔÚÔËĞĞ    false²»ÔÚÔËĞĞ
      */
     public static boolean isServiceRunning(Context ctx, String className) {
         boolean isRunning = false;
@@ -177,7 +177,7 @@ public class AppUtils
     }
 
     /**
-     * åœæ­¢æœåŠ¡.
+     * Í£Ö¹·şÎñ.
      *
      * @param ctx the ctx
      * @param className the class name
@@ -199,7 +199,7 @@ public class AppUtils
 
 
     /**
-     * è·å–CPUæ ¸å¿ƒæ•°
+     * »ñÈ¡CPUºËĞÄÊı
      * Gets the number of cores available in this device, across all processors.
      * Requires: Ability to peruse the filesystem at "/sys/devices/system/cpu"
      * @return The number of cores, or 1 if failed to get result
@@ -229,7 +229,7 @@ public class AppUtils
     }
 
     /**
-     *  çŠ¶æ€æ é«˜åº¦
+     *  ×´Ì¬À¸¸ß¶È
      * @param activity
      * @return
      */
@@ -252,7 +252,7 @@ public class AppUtils
     }
 
     /**
-     * å…³é—­é”®ç›˜äº‹ä»¶.
+     * ¹Ø±Õ¼üÅÌÊÂ¼ş.
      * @param context
      */
     public static void closeSoftInput(Context context) {
@@ -263,7 +263,7 @@ public class AppUtils
 //                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 //        }
 
-        /**éšè—è½¯é”®ç›˜**/
+        /**Òş²ØÈí¼üÅÌ**/
         View view = ((Activity)context).getWindow().peekDecorView();
         if (view != null) {
             InputMethodManager inputmanger = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -273,15 +273,15 @@ public class AppUtils
 
 
     /**
-     * install slientã€‚<br>
-     * æœ€å¥½åœ¨æ–°å»ºçš„çº¿ç¨‹ä¸­è¿è¡Œå¹¶é€šè¿‡handlerå‘é€å®‰è£…ç»“æœç»™ä¸»çº¿ç¨‹ï¼Œå¦åˆ™å®‰è£…æ—¶é—´è¾ƒé•¿ä¼šå¯¼è‡´ANRã€‚<br>
-     * é™é»˜å®‰è£…æ¡ä»¶ï¼š<br>
-     * 1ã€éœ€è¦æŠŠå½“å‰æ–¹æ³•ï¼ˆä¹Ÿå³installSlientæ–¹æ³•ï¼‰æ‰€åœ¨çš„apkåšæˆç³»ç»Ÿåº”ç”¨ã€‚å°±æ˜¯ç³»ç»Ÿrootè¿‡åæŠŠæ–‡ä»¶æ”¾åˆ°/system/appç›®å½•ä¸‹ã€‚/
-     * system/appç›®å½•ä¸‹çš„apkéƒ½æ˜¯ç³»ç»Ÿåº”ç”¨ã€‚<br>
-     * 2ã€éœ€è¦åœ¨AndroidManifest.xmlæ–‡ä»¶ä¸­æ³¨å†Œ android.permission.INSTALL_PACKAGES æƒé™ã€‚
+     * install slient¡£<br>
+     * ×îºÃÔÚĞÂ½¨µÄÏß³ÌÖĞÔËĞĞ²¢Í¨¹ıhandler·¢ËÍ°²×°½á¹û¸øÖ÷Ïß³Ì£¬·ñÔò°²×°Ê±¼ä½Ï³¤»áµ¼ÖÂANR¡£<br>
+     * ¾²Ä¬°²×°Ìõ¼ş£º<br>
+     * 1¡¢ĞèÒª°Ñµ±Ç°·½·¨£¨Ò²¼´installSlient·½·¨£©ËùÔÚµÄapk×ö³ÉÏµÍ³Ó¦ÓÃ¡£¾ÍÊÇÏµÍ³root¹ıºó°ÑÎÄ¼ş·Åµ½/system/appÄ¿Â¼ÏÂ¡£/
+     * system/appÄ¿Â¼ÏÂµÄapk¶¼ÊÇÏµÍ³Ó¦ÓÃ¡£<br>
+     * 2¡¢ĞèÒªÔÚAndroidManifest.xmlÎÄ¼şÖĞ×¢²á android.permission.INSTALL_PACKAGES È¨ÏŞ¡£
      *
      * @param filePath
-     *            è¦å®‰è£…çš„apkçš„è·¯å¾„ã€‚
+     *            Òª°²×°µÄapkµÄÂ·¾¶¡£
      * @return 0 means normal, 1 means file not exist, 2 means other exception
      *         error
      */
@@ -354,7 +354,7 @@ public class AppUtils
     }
 
     /**
-     *  æ‰‹æœºå¡çš„IMSI    å¦‚ï¼šIMSI=460031304158115
+     *  ÊÖ»ú¿¨µÄIMSI    Èç£ºIMSI=460031304158115
      * @param context
      * @return
      */
@@ -364,7 +364,7 @@ public class AppUtils
     }
 
     /**
-     * è·å–æ‰‹æœºçš„IMEI    å¦‚ï¼šIMEI=866946025546414
+     * »ñÈ¡ÊÖ»úµÄIMEI    Èç£ºIMEI=866946025546414
      * @param context
      * @return
      */
@@ -374,9 +374,9 @@ public class AppUtils
     }
 
     /**
-     * æ£€æµ‹å½“çš„ç½‘ç»œï¼ˆWLANã€3G/2Gï¼‰çŠ¶æ€
+     * ¼ì²âµ±µÄÍøÂç£¨WLAN¡¢3G/2G£©×´Ì¬
      * @param context Context
-     * @return true è¡¨ç¤ºç½‘ç»œå¯ç”¨
+     * @return true ±íÊ¾ÍøÂç¿ÉÓÃ
      */
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivity = (ConnectivityManager) context
@@ -385,12 +385,12 @@ public class AppUtils
             NetworkInfo info = connectivity.getActiveNetworkInfo();
             if (info != null && info.isConnected())
             {
-                // å½“å‰ç½‘ç»œæ˜¯è¿æ¥çš„
+                // µ±Ç°ÍøÂçÊÇÁ¬½ÓµÄ
                 if (info.getState() == NetworkInfo.State.CONNECTED &&
                         info.isAvailable())
                 {
                     if(ping()){
-                        return true;    // å½“å‰æ‰€è¿æ¥çš„ç½‘ç»œå¯ç”¨
+                        return true;    // µ±Ç°ËùÁ¬½ÓµÄÍøÂç¿ÉÓÃ
                     }else{
                         return false;
                     }
@@ -401,15 +401,15 @@ public class AppUtils
     }
 
     /**
-     * åˆ¤æ–­æ˜¯å¦æœ‰å¤–ç½‘è¿æ¥ï¼ˆæ™®é€šæ–¹æ³•ä¸èƒ½åˆ¤æ–­å¤–ç½‘çš„ç½‘ç»œæ˜¯å¦è¿æ¥ï¼Œæ¯”å¦‚è¿æ¥ä¸Šå±€åŸŸç½‘ï¼‰
+     * ÅĞ¶ÏÊÇ·ñÓĞÍâÍøÁ¬½Ó£¨ÆÕÍ¨·½·¨²»ÄÜÅĞ¶ÏÍâÍøµÄÍøÂçÊÇ·ñÁ¬½Ó£¬±ÈÈçÁ¬½ÓÉÏ¾ÖÓòÍø£©
      * @return
      */
     public static final boolean ping() {
         String result = null;
         try {
-            String ip = "www.baidu.com";// ping çš„åœ°å€ï¼Œå¯ä»¥æ¢æˆä»»ä½•ä¸€ç§å¯é çš„å¤–ç½‘
-            Process p = Runtime.getRuntime().exec("ping -c 3 -w 100 " + ip);// pingç½‘å€3æ¬¡
-            // è¯»å–pingçš„å†…å®¹ï¼Œå¯ä»¥ä¸åŠ 
+            String ip = "www.baidu.com";// ping µÄµØÖ·£¬¿ÉÒÔ»»³ÉÈÎºÎÒ»ÖÖ¿É¿¿µÄÍâÍø
+            Process p = Runtime.getRuntime().exec("ping -c 3 -w 100 " + ip);// pingÍøÖ·3´Î
+            // ¶ÁÈ¡pingµÄÄÚÈİ£¬¿ÉÒÔ²»¼Ó
             InputStream input = p.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(input));
             StringBuffer stringBuffer = new StringBuffer();
@@ -418,7 +418,7 @@ public class AppUtils
                 stringBuffer.append(content);
             }
             Thread.sleep(200);
-            // pingçš„çŠ¶æ€
+            // pingµÄ×´Ì¬
             int status = p.waitFor();
 //            Logcat.iii("---ping---result="+status+" content : " + stringBuffer.toString());
             if (status == 0) {
@@ -439,7 +439,7 @@ public class AppUtils
     }
     
     /**
-     * è·å¾—ä»¥å¤ªç½‘çš„Macåœ°å€
+     * »ñµÃÒÔÌ«ÍøµÄMacµØÖ·
      * @return
      */
     public static String getEth0Mac(){
@@ -454,12 +454,12 @@ public class AppUtils
             for (; null != str;) {
                 str = input.readLine();
                 if (str != null) {
-                    macSerial = str.trim();// å»ç©ºæ ¼
+                    macSerial = str.trim();// È¥¿Õ¸ñ
                     break;
                 }
             }
         } catch (IOException ex) {
-                // èµ‹äºˆé»˜è®¤å€¼
+                // ¸³ÓèÄ¬ÈÏÖµ
                 ex.printStackTrace();
         }
         macSerial = macSerial.replace(":", "");
@@ -467,7 +467,7 @@ public class AppUtils
     }
     
     /**
-     * è·å¾—wifi macåœ°å€
+     * »ñµÃwifi macµØÖ·
      * @return
      */
     public static String getWifiMac() {
@@ -482,21 +482,21 @@ public class AppUtils
             for (; null != str;) {
                 str = input.readLine();
                 if (str != null) {
-                        macSerial = str.trim();// å»ç©ºæ ¼
+                        macSerial = str.trim();// È¥¿Õ¸ñ
                         break;
                 }
             }
         } catch (IOException ex) {
-                // èµ‹äºˆé»˜è®¤å€¼
+                // ¸³ÓèÄ¬ÈÏÖµ
                 ex.printStackTrace();
         }
         return macSerial;
     }
     
     /**
-     * è®¾ç½®æ‰‹æœºç§»åŠ¨æ•°æ®å¼€å…³  Androd 4.2 æ–°æµ‹å¯ä»¥
+     * ÉèÖÃÊÖ»úÒÆ¶¯Êı¾İ¿ª¹Ø  Androd 4.2 ĞÂ²â¿ÉÒÔ
      * @param pContext
-     * @param pBoolean  ture å¼€å¯ç§»åŠ¨æ•°æ®ï¼Œfalse å…³é—­ç§»åŠ¨æ•°æ®
+     * @param pBoolean  ture ¿ªÆôÒÆ¶¯Êı¾İ£¬false ¹Ø±ÕÒÆ¶¯Êı¾İ
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })  
 	public void setMobileData(Context pContext, boolean pBoolean)   
@@ -516,10 +516,10 @@ public class AppUtils
     }
 
     /**  
-     * è¿”å›æ‰‹æœºç§»åŠ¨æ•°æ®çš„çŠ¶æ€  
+     * ·µ»ØÊÖ»úÒÆ¶¯Êı¾İµÄ×´Ì¬  
      * @param pContext  
-     * @param arg é»˜è®¤å¡«null  
-     * @return true è¿æ¥ false æœªè¿æ¥  
+     * @param arg Ä¬ÈÏÌînull  
+     * @return true Á¬½Ó false Î´Á¬½Ó  
      */    
     @SuppressWarnings({ "rawtypes", "unchecked" })  
     public  boolean getMobileDataState(Context pContext, Object[] arg)   
@@ -542,10 +542,10 @@ public class AppUtils
     }
     
     /**
-     *	æ–°å¢ä¸€ä¸ªAPNæ¥å…¥ç‚¹ 
-     * APNï¼šumim2m.njm2mapnæˆ–è€…umim2m.gzm2mapn
-     * MCCï¼š460 
-     * MNCï¼š06 
+     *	ĞÂÔöÒ»¸öAPN½ÓÈëµã 
+     * APN£ºumim2m.njm2mapn»òÕßumim2m.gzm2mapn
+     * MCC£º460 
+     * MNC£º06 
      * @param context
      * @return
      */
@@ -563,8 +563,8 @@ public class AppUtils
 		ContentResolver resolver = context.getContentResolver();
 		ContentValues values = new ContentValues();
 
-		values.put("name", apnName); // apnä¸­æ–‡æè¿°
-		values.put("apn", apn); // apnåç§°
+		values.put("name", apnName); // apnÖĞÎÄÃèÊö
+		values.put("apn", apn); // apnÃû³Æ
 		values.put("type", "default,supl");
 		values.put("numeric", NUMERIC);
 		values.put("mcc", NUMERIC.substring(0, 3)); // 460/06
@@ -592,7 +592,7 @@ public class AppUtils
 	}
 
 	/**
-	 * ç½—åˆ—å‡ºæ‰€æœ‰çš„APNï¼ˆé»˜è®¤çš„æœ‰å¾ˆå¤šAPN,ä½¿ç”¨æ—¶æœ€å¥½æ ¹æ®apnè¿›è¡Œè¿‡æ»¤ï¼‰
+	 * ÂŞÁĞ³öËùÓĞµÄAPN£¨Ä¬ÈÏµÄÓĞºÜ¶àAPN,Ê¹ÓÃÊ±×îºÃ¸ù¾İapn½øĞĞ¹ıÂË£©
 	 * @param context
 	 * @return
 	 */
@@ -627,7 +627,7 @@ public class AppUtils
 	}
 
 	/**
-	 * è®¾ç½®é»˜è®¤çš„æ¥å…¥ç‚¹ 
+	 * ÉèÖÃÄ¬ÈÏµÄ½ÓÈëµã 
 	 * @param context
 	 * @param id
 	 */
@@ -643,7 +643,7 @@ public class AppUtils
 	}
 	
 	/**
-	 * æ£€æŸ¥æ˜¯å¦å­˜åœ¨SDå¡
+	 * ¼ì²éÊÇ·ñ´æÔÚSD¿¨
 	 * @return
 	 */
 	public static boolean ExistSDCard() {  
@@ -661,7 +661,7 @@ public class AppUtils
     	return "/sdcard/JZP_SDCardLog/screenshot/"+time+"_"+mac+".png";
     }
     
-    // Longæ—¶é—´æ ¼å¼åŒ–
+    // LongÊ±¼ä¸ñÊ½»¯
     public static String getYMDHMSFromLong(Long date) {
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         java.util.Date dt = new java.util.Date(date);
