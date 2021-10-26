@@ -2,12 +2,18 @@
 
 buildscript {
     repositories {
+        maven{ url'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven{ url'https://maven.aliyun.com/repository/google'}
+        maven{ url'https://maven.aliyun.com/repository/central'}
+        maven{ url'https://maven.aliyun.com/repository/gradle-plugin'}
         jcenter()
-        mavenCentral()
         google()
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.4.0'
         classpath 'com.novoda:bintray-release:0.8.1'
 //        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.0'
         // NOTE: Do not place your application dependencies here; they belong
@@ -18,8 +24,15 @@ buildscript {
 
 allprojects {
     repositories {
+        maven{ url'https://maven.aliyun.com/nexus/content/groups/public/' }
+        maven{ url'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        maven{ url'https://maven.aliyun.com/repository/google'}
+        maven{ url'https://maven.aliyun.com/repository/central'}
+        maven{ url'https://maven.aliyun.com/repository/gradle-plugin'}
         jcenter()
         google()
+        mavenCentral()
+        maven { url "https://www.jitpack.io" }
     }
 }
 
