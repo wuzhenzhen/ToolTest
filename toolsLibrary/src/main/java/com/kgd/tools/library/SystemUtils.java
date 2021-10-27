@@ -1,5 +1,7 @@
 package com.kgd.tools.library;
 
+import static android.content.Context.ALARM_SERVICE;
+
 import android.app.AlarmManager;
 import android.content.Context;
 import android.provider.Settings;
@@ -9,7 +11,7 @@ import java.util.TimeZone;
 
 /**
  * Created by wzz on 2018/06/26.
- * wuzhenzhen@tiamaes.com
+ * wzz
  */
 public class SystemUtils {
 
@@ -19,9 +21,9 @@ public class SystemUtils {
     }
 
 
-    //---------------------------------Ê±¼äÏà¹ØÉèÖÃ-------------------------------
+    //---------------------------------æ—¶é—´ç›¸å…³è®¾ç½®-------------------------------
     /**
-     *  ÅĞ¶ÏÏµÍ³µÄÊ±ÇøÊÇ·ñÊÇ×Ô¶¯»ñÈ¡µÄ
+     *  åˆ¤æ–­ç³»ç»Ÿçš„æ—¶åŒºæ˜¯å¦æ˜¯è‡ªåŠ¨è·å–çš„
      * @param context
      * @return
      */
@@ -36,9 +38,9 @@ public class SystemUtils {
     }
 
     /**
-     *  ÉèÖÃÏµÍ³Ê±ÇøÊÇ·ñ×Ô¶¯Í¬²½
+     *  è®¾ç½®ç³»ç»Ÿæ—¶åŒºæ˜¯å¦è‡ªåŠ¨åŒæ­¥
      * @param context
-     * @param checked  0 È¡Ïû×Ô¶¯Í¬²½£¬ 1×Ô¶¯Í¬²½
+     * @param checked  0 å–æ¶ˆè‡ªåŠ¨åŒæ­¥ï¼Œ 1è‡ªåŠ¨åŒæ­¥
      */
     public static void setAutoTimeZone(Context context, int checked){
         android.provider.Settings.Global.putInt(context.getContentResolver(),
@@ -46,7 +48,7 @@ public class SystemUtils {
     }
 
     /**
-     *  ÅĞ¶ÏÏµÍ³µÄÊ±¼äÊÇ·ñ×Ô¶¯»ñÈ¡µÄ
+     *  åˆ¤æ–­ç³»ç»Ÿçš„æ—¶é—´æ˜¯å¦è‡ªåŠ¨è·å–çš„
      * @param context
      * @return
      */
@@ -61,17 +63,17 @@ public class SystemUtils {
     }
 
     /**
-     *  ÉèÖÃÏµÍ³µÄÊ±¼äÊÇ·ñĞèÒª×Ô¶¯»ñÈ¡
+     *  è®¾ç½®ç³»ç»Ÿçš„æ—¶é—´æ˜¯å¦éœ€è¦è‡ªåŠ¨è·å–
      * @param context
-     * @param checked  0 È¡Ïû×Ô¶¯Í¬²½£¬ 1×Ô¶¯Í¬²½
+     * @param checked  0 å–æ¶ˆè‡ªåŠ¨åŒæ­¥ï¼Œ 1è‡ªåŠ¨åŒæ­¥
      */
-    public static void setAutoDateTime(Context context, int checked){
+    public static void setAutoDateTime(Context context,int checked){
         android.provider.Settings.Global.putInt(context.getContentResolver(),
                 android.provider.Settings.Global.AUTO_TIME, checked);
     }
 
     /**
-     * ÉèÖÃÏµÍ³ÈÕÆÚ
+     * è®¾ç½®ç³»ç»Ÿæ—¥æœŸ
      * @param context
      * @param cl
      */
@@ -86,7 +88,7 @@ public class SystemUtils {
     }
 
     /**
-     * ÉèÖÃÏµÍ³ÈÕÆÚ
+     * è®¾ç½®ç³»ç»Ÿæ—¥æœŸ
      * @param context
      * @param year
      * @param month
@@ -95,7 +97,7 @@ public class SystemUtils {
      * @param minute
      * @param second
      */
-    public static void setSysDate(Context context, int year, int month, int day, int hour, int minute, int second){
+    public static void setSysDate(Context context, int year,int month,int day, int hour, int minute, int second){
         Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
@@ -107,14 +109,14 @@ public class SystemUtils {
         long when = c.getTimeInMillis();
 
         if(when / 1000 < Integer.MAX_VALUE){
-            ((AlarmManager)context.getSystemService(Context.ALARM_SERVICE)).setTime(when);
+            ((AlarmManager)context.getSystemService(ALARM_SERVICE)).setTime(when);
         }
     }
 
     /**
-     * ÉèÖÃÏµÍ³Ê±Çø
+     * è®¾ç½®ç³»ç»Ÿæ—¶åŒº
      * @param timeZone
-     *   Èç£º setTimeZone("GMT+8:00");
+     *   å¦‚ï¼š setTimeZone("GMT+8:00");
      */
     public static void setTimeZone(String timeZone){
         final Calendar now = Calendar.getInstance();
@@ -123,7 +125,19 @@ public class SystemUtils {
     }
 
     /**
-     * »ñÈ¡ÏµÍ³µ±Ç°µÄÊ±Çø
+     *  è®¾ç½®ç³»ç»Ÿæ—¶åŒº
+     * @param context
+     * @param timeZone
+     *   å¦‚ "Asia/Shanghai" == ä¸­å›½æ ‡å‡†æ—¶é—´
+     *      "Europe/London" == æ ¼æ—å°¼æ²»æ ‡å‡†æ—¶é—´ (ä¼¦æ•¦)
+     */
+    public static void setTimeZone(Context context, String timeZone){
+        AlarmManager alarmManager= (AlarmManager)context.getSystemService(ALARM_SERVICE);
+        alarmManager.setTimeZone(timeZone);
+    }
+
+    /**
+     * è·å–ç³»ç»Ÿå½“å‰çš„æ—¶åŒº
      * @return
      */
     public static String getDefaultTimeZone(){
@@ -133,7 +147,7 @@ public class SystemUtils {
     }
 
     /**
-     *  ÉèÖÃ24Ğ¡Ê±Ê±¼äÖÆ
+     *  è®¾ç½®24å°æ—¶æ—¶é—´åˆ¶
      * @param context
      */
     public static void set24H(Context context){
@@ -142,7 +156,7 @@ public class SystemUtils {
     }
 
     /**
-     * ÉèÖÃ12Ğ¡Ê±Ê±¼äÖÆ
+     * è®¾ç½®12å°æ—¶æ—¶é—´åˆ¶
      * @param context
      */
     public static void set12H(Context context){
@@ -150,7 +164,52 @@ public class SystemUtils {
                 android.provider.Settings.System.TIME_12_24, "12");
     }
 
-    //---------------------------------Ê±¼äÏà¹ØÉèÖÃ------END-------------------------
+    //---------------------------------æ—¶é—´ç›¸å…³è®¾ç½®------END-------------------------
 
+    /**
+     * è·å–ç³»ç»Ÿäº®åº¦
+     * @param context
+     * @return   The screen backlight brightness between 0 and 255.
+     */
+    public static int getScreenBrightness(Context context){
+        try {
+            return Settings.System.getInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    /**
+     *  è®¾ç½®ç³»ç»Ÿäº®åº¦
+     * @param context
+     * @param brightness
+     */
+    public static void setScreenBrightness(Context context, int brightness){
+        Settings.System.putInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS,brightness);
+    }
+
+    /**
+     * è·å–ç³»ç»Ÿäº®åº¦æ¨¡å¼
+     * @param context
+     * @return
+     */
+    public static int getScreenBrightnessMode(Context context){
+        try {
+            return Settings.System.getInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    /**
+     * è®¾ç½®ç³»ç»Ÿäº®åº¦æ¨¡å¼
+     * @param context
+     * @param mode
+     */
+    public static void setScreenBrightnessMode(Context context, int mode){
+        Settings.System.putInt(context.getContentResolver(), Settings.System.SCREEN_BRIGHTNESS_MODE, mode);
+    }
 
 }

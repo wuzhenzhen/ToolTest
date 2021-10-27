@@ -26,8 +26,8 @@ public class FileUtil {
 	public static final int UNZIP_PROGRESS  = 10001;
 	public static final int COPY_FOLDER = 10002;
 	/**
-    * ½âÑ¹Ëõ¹¦ÄÜ.
-    * ½«zipFileÎÄ¼ş½âÑ¹µ½folderPathÄ¿Â¼ÏÂ.
+    * è§£å‹ç¼©åŠŸèƒ½.
+    * å°†zipFileæ–‡ä»¶è§£å‹åˆ°folderPathç›®å½•ä¸‹.
     * @throws Exception
 	*/
     public static int upZipFile(File zipFile, String folderPath)throws ZipException,IOException {
@@ -62,10 +62,10 @@ public class FileUtil {
     }
 
     /**
-    * ¸ø¶¨¸ùÄ¿Â¼£¬·µ»ØÒ»¸öÏà¶ÔÂ·¾¶Ëù¶ÔÓ¦µÄÊµ¼ÊÎÄ¼şÃû.
-    * @param baseDir Ö¸¶¨¸ùÄ¿Â¼
-    * @param absFileName Ïà¶ÔÂ·¾¶Ãû£¬À´×ÔÓÚZipEntryÖĞµÄname
-    * @return java.io.File Êµ¼ÊµÄÎÄ¼ş
+    * ç»™å®šæ ¹ç›®å½•ï¼Œè¿”å›ä¸€ä¸ªç›¸å¯¹è·¯å¾„æ‰€å¯¹åº”çš„å®é™…æ–‡ä»¶å.
+    * @param baseDir æŒ‡å®šæ ¹ç›®å½•
+    * @param absFileName ç›¸å¯¹è·¯å¾„åï¼Œæ¥è‡ªäºZipEntryä¸­çš„name
+    * @return java.io.File å®é™…çš„æ–‡ä»¶
     */
     public static File getRealFileName(String baseDir, String absFileName){
         String[] dirs=absFileName.split("/");
@@ -107,7 +107,7 @@ public class FileUtil {
     }
 
 	/**
-	 *  ¸´ÖÆµ±Ç°ÎÄ¼ş¼ĞÏÂµÄÄÚÈİ£¬ ²»´¦Àí×ÓÎÄ¼ş¼Ğ
+	 *  å¤åˆ¶å½“å‰æ–‡ä»¶å¤¹ä¸‹çš„å†…å®¹ï¼Œ ä¸å¤„ç†å­æ–‡ä»¶å¤¹
 	 * @param oldPath
 	 * @param newPath
 	 * @return
@@ -121,7 +121,7 @@ public class FileUtil {
 		int count = 0;
 		Log.i("","copyFolder old path is " + oldPath + " new path is " + newPath);
 		try {
-			(new File(newPath)).mkdirs(); // Èç¹ûÎÄ¼ş¼Ğ²»´æÔÚ Ôò½¨Á¢ĞÂÎÄ¼ş¼Ğ
+			(new File(newPath)).mkdirs(); // å¦‚æœæ–‡ä»¶å¤¹ä¸å­˜åœ¨ åˆ™å»ºç«‹æ–°æ–‡ä»¶å¤¹
 			File a = new File(oldPath);
 			String[] file = a.list();
 			File temp = null;
@@ -169,72 +169,82 @@ public class FileUtil {
 			handler.sendMessage(msg);
 			return true;
 		} catch (Exception e) {
-			System.out.println("¸´ÖÆÕû¸öÎÄ¼ş¼ĞÄÚÈİ²Ù×÷³ö´í");
+			System.out.println("å¤åˆ¶æ•´ä¸ªæ–‡ä»¶å¤¹å†…å®¹æ“ä½œå‡ºé”™");
 			Log.i("copyFolder","copy file Exception : " + e.getMessage());
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-    /**  
-	  * ¸´ÖÆÕû¸öÎÄ¼ş¼ĞÄÚÈİ  
-	  * @param oldPath String Ô­ÎÄ¼şÂ·¾¶ Èç£ºc:/folder  
-	  * @param newPath String ¸´ÖÆºóÂ·¾¶ Èç£ºf:/folder  
-	  * @return boolean  
-	  */   
+	/**
+	 * å¤åˆ¶æ•´ä¸ªæ–‡ä»¶å¤¹å†…å®¹
+	 * 
+	 * @param oldPath
+	 *            String åŸæ–‡ä»¶è·¯å¾„ å¦‚ï¼šc:/folder
+	 * @param newPath
+	 *            String å¤åˆ¶åè·¯å¾„ å¦‚ï¼šf:/folder
+	 * @return boolean
+	 */
 	public static boolean copyFolder(String oldPath, String newPath) {
+		FileInputStream input = null;
+		String outPath = null;
+		FileOutputStream output = null;
+//		ZLog.iii("copyFolder old path is " + oldPath + " new path is " + newPath);
 		try {
-	        (new File(newPath)).mkdirs(); //Èç¹ûÎÄ¼ş¼Ğ²»´æÔÚ Ôò½¨Á¢ĞÂÎÄ¼ş¼Ğ
-	        File a=new File(oldPath);
-	        String[] file=a.list();
-	        File temp=null;
-	        for (int i = 0; i < file.length; i++) {   
-	            if(oldPath.endsWith(File.separator)){
-	                temp=new File(oldPath+file[i]);
-	            }   
-	            else{   
-	                temp=new File(oldPath+ File.separator+file[i]);
-	            }   
-	
-	            if(temp.isFile()){   
-	                FileInputStream input = new FileInputStream(temp);
-	                String outPath = newPath + "/" + temp.getName().toString();
-	                File outPutFile = new File(outPath);
-	                if(!outPutFile.exists()) {
-	             	   outPutFile.createNewFile();
-	                }
-	                FileOutputStream output = new FileOutputStream(outPath);
-	                byte[] b = new byte[1024 * 5];   
-	                int len;   
-	                while ( (len = input.read(b)) != -1) {   
-	                    output.write(b, 0, len);   
-	                }   
-	                output.flush();   
-	                output.close();   
-	                input.close();   
-	            }
-	            
-	            if(temp.isDirectory()){//Èç¹ûÊÇ×ÓÎÄ¼ş¼Ğ   
-	                copyFolder(oldPath+"/"+file[i],newPath+"/"+file[i]);   
-	            }
-	        }
-	        return true;
-	    } catch (Exception e) {
-	        System.out.println("¸´ÖÆÕû¸öÎÄ¼ş¼ĞÄÚÈİ²Ù×÷³ö´í");
-	        e.printStackTrace();
-	        return false;
-	    } 
+
+			(new File(newPath)).mkdirs(); // å¦‚æœæ–‡ä»¶å¤¹ä¸å­˜åœ¨ åˆ™å»ºç«‹æ–°æ–‡ä»¶å¤¹
+			File a = new File(oldPath);
+			String[] file = a.list();
+			File temp = null;
+			for (int i = 0; i < file.length; i++) {
+				Log.e("copy file", "success " + i);
+				if (oldPath.endsWith(File.separator)) {
+					temp = new File(oldPath + file[i]);
+				} else {
+					temp = new File(oldPath + File.separator + file[i]);
+				}
+
+				if (temp.isFile()) {
+					input = new FileInputStream(temp);
+					outPath = newPath + "/" + temp.getName().toString();
+					File outPutFile = new File(outPath);
+					if (!outPutFile.exists()) {
+						outPutFile.createNewFile();
+					}
+					output = new FileOutputStream(outPath);
+					byte[] b = new byte[1024 * 5];
+					int len;
+					while ((len = input.read(b)) != -1) {
+						output.write(b, 0, len);
+					}
+					output.flush();
+					output.close();
+					input.close();
+				}
+
+				if (temp.isDirectory()) {// å¦‚æœæ˜¯å­æ–‡ä»¶å¤¹
+					copyFolder(oldPath + "/" + file[i], newPath + "/" + file[i]);
+				}
+			}
+			return true;
+		} catch (Exception e) {
+			System.out.println("å¤åˆ¶æ•´ä¸ªæ–‡ä»¶å¤¹å†…å®¹æ“ä½œå‡ºé”™");
+//			ZLog.eee("copy file Exception : " + e.getMessage());
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 	/**
-	 *  ¸´ÖÆµ¥¸öÎÄ¼şÄÚÈİ
-	 * @param oldPath  String Ô­ÎÄ¼şÂ·¾¶º¬ÎÄ¼şÃû Èç£ºc:/folder/1.xml
-	 * @param newPath  String ¸´ÖÆºóÂ·¾¶ Èç£ºf:/folder
+	 *  å¤åˆ¶å•ä¸ªæ–‡ä»¶å†…å®¹
+	 * @param oldPath  String åŸæ–‡ä»¶è·¯å¾„å«æ–‡ä»¶å å¦‚ï¼šc:/folder/1.xml
+	 * @param newPath  String å¤åˆ¶åè·¯å¾„ å¦‚ï¼šf:/folder
 	 * @return boolean
 	 */
 	public static boolean copyFile(String oldPath, String newPath){
 		try{
-			(new File(newPath)).mkdirs(); //Èç¹ûÎÄ¼ş¼Ğ²»´æÔÚ Ôò½¨Á¢ĞÂÎÄ¼ş¼Ğ
+			(new File(newPath)).mkdirs(); // å¦‚æœæ–‡ä»¶å¤¹ä¸å­˜åœ¨ åˆ™å»ºç«‹æ–°æ–‡ä»¶å¤¹
+
 			File oldFile = new File(oldPath);
 			if(oldFile.exists() && oldFile.isFile()){
 				FileInputStream input = new FileInputStream(oldFile);
@@ -255,140 +265,232 @@ public class FileUtil {
 			}
 			return true;
 		}catch (Exception e){
-			System.out.println("¸´ÖÆÎÄ¼şÄÚÈİ²Ù×÷³ö´í");
+			System.out.println("å¤åˆ¶æ–‡ä»¶å†…å®¹æ“ä½œå‡ºé”™");
 			e.printStackTrace();
 			return false;
 		}
 	}
 
-	 /** 
-	    * ¸´ÖÆµ¥¸öÎÄ¼ş 
-	    * @param oldPath String Ô­ÎÄ¼şÂ·¾¶ Èç£ºc:/file.txt 
-	    * @param newPath String ¸´ÖÆºóÂ·¾¶ Èç£ºf:/file.txt 
-	    * @return boolean 
-	    */
-	  public static boolean copyFileWithPrBar(String oldPath, String newPath, Handler handler) {
-	      boolean isok = true;
-	      int progress = 0, tempProgress = 0;
-	      Message msg = null;
-	      Bundle bun = null;
-	      try { 
-	          int bytesum = 0; 
-	          int byteread = 0; 
-	          File oldfile = new File(oldPath);
-	          if (oldfile.exists()) { //ÎÄ¼ş´æÔÚÊ± 
-	              InputStream inStream = new FileInputStream(oldPath); //¶ÁÈëÔ­ÎÄ¼ş
-	              // ¼ì²éÄ¿µÄµØÂ·¾¶ÊÇ·ñ´æÔÚ£¬²»´æÔÚÔò´´½¨
-	              File dirFile = new File(newPath.substring(0, newPath.lastIndexOf("/")));
-	              if(!dirFile.exists()) {
-	            	  dirFile.mkdirs();
-	              }
-	              File newPathFile = new File(newPath);
-	              if(!newPathFile.exists()) {
-	            	  newPathFile.createNewFile();
-	              }
-	              long length = oldfile.length();
-	              long count = 0;
-	              FileOutputStream fs = new FileOutputStream(newPath);
-	              byte[] buffer = new byte[1024]; 
-	              while ( (byteread = inStream.read(buffer)) != -1) { 
-	            	  bytesum += byteread;
-	                  fs.write(buffer, 0, byteread);
-	                  //·¢ËÍ¸´ÖÆ½ø¶È
-	                  if(handler != null){
-	                	  tempProgress = (int) (((float) bytesum / length) * 100);
-	                	  if(tempProgress > progress) {
-	                		  progress = tempProgress;
-	                		  msg = handler.obtainMessage();
-			                  msg.what = UNZIP_PROGRESS;
-			                  bun = new Bundle();
-			                  bun.putInt("UNZIP_PROGRESS", progress);
-			                  msg.setData(bun);
-			                  handler.sendMessage(msg);
-	                	  }
-	                  }
-	              } 
-	              fs.flush(); 
-	              fs.close(); 
-	              inStream.close(); 
-	          }
-	          else
-	          {
-	           isok = false;
-	          }
-	      } 
-	      catch (Exception e) {
-	    	  isok = false;
-	          System.out.println("¸´ÖÆµ¥¸öÎÄ¼ş²Ù×÷³ö´í");
-	          e.printStackTrace(); 
-	      } 
-	      return isok;
-	  }
+	/**
+	 *  å¤åˆ¶å•ä¸ªæ–‡ä»¶å†…å®¹
+	 * @param oldPath  String åŸæ–‡ä»¶è·¯å¾„å«æ–‡ä»¶å å¦‚ï¼šc:/folder/1.xml
+	 * @param newPath  String å¤åˆ¶åè·¯å¾„ å¦‚ï¼šf:/folder
+	 * @return boolean
+	 */
+	public static boolean copyFile(String oldPath, String newPath, Handler handler){
+		try{
+			(new File(newPath)).mkdirs(); // å¦‚æœæ–‡ä»¶å¤¹ä¸å­˜åœ¨ åˆ™å»ºç«‹æ–°æ–‡ä»¶å¤¹
 
-	  public static void delete(File file) {
-		  if(file.isFile()){
-			  file.delete();
-			  return;
-		  }
-		  if(file.isDirectory()){
-			  File[] childFiles = file.listFiles();
-			  if(childFiles == null || childFiles.length == 0) {
-				  file.delete();
-			  }
-			  for(int i = 0; i < childFiles.length; i++) {
-				  delete(childFiles[i]);
-			  }
-			  file.delete();
-		  }
-	  }
+			File oldFile = new File(oldPath);
+			if(oldFile.exists() && oldFile.isFile()){
+				FileInputStream input = new FileInputStream(oldFile);
+				String outPath = newPath + "/" + oldFile.getName().toString();
+				File outPutFile = new File(outPath);
+				if(!outPutFile.exists()) {
+					outPutFile.createNewFile();
+				}
+				FileOutputStream output = new FileOutputStream(outPath);
+				byte[] b = new byte[1024 * 5];
+				int len;
+				while ( (len = input.read(b)) != -1) {
+					output.write(b, 0, len);
+				}
+				output.flush();
+				output.close();
+				input.close();
+
+				Message msg = handler.obtainMessage();
+				msg.what = COPY_FILE;
+				Bundle bun = new Bundle();
+				bun.putString("oldPath", oldPath);
+				bun.putString("newPath", newPath);
+				msg.setData(bun);
+//				handler.sendMessage(msg);
+				handler.sendMessageDelayed(msg,15*1000L); //å»¶è¿Ÿ15sé€šçŸ¥å¤åˆ¶å®Œæˆ,é˜²æ­¢æ–‡ä»¶æ­£åœ¨å ç”¨
+			}
+			return true;
+		}catch (Exception e){
+			System.out.println("å¤åˆ¶æ–‡ä»¶å†…å®¹æ“ä½œå‡ºé”™");
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	/**
-	 * ¸ù¾İ  ĞŞ¸ÄÊ±¼äÅÅĞò  ÓÉĞÂµ½¾É
+	 * å¤åˆ¶å•ä¸ªæ–‡ä»¶
+	 * 
+	 * @param oldPath
+	 *            String åŸæ–‡ä»¶è·¯å¾„ å¦‚ï¼šc:/file.txt
+	 * @param newPath
+	 *            String å¤åˆ¶åè·¯å¾„ å¦‚ï¼šf:/file.txt
+	 * @return boolean
+	 */
+	public static boolean copyFileWithPrBar(String oldPath, String newPath,
+			Handler handler) {
+		boolean isok = true;
+		int progress = 0, tempProgress = 0;
+		Message msg = null;
+		Bundle bun = null;
+		try {
+			int bytesum = 0;
+			int byteread = 0;
+			File oldfile = new File(oldPath);
+			if (oldfile.exists()) { // æ–‡ä»¶å­˜åœ¨æ—¶
+				InputStream inStream = new FileInputStream(oldPath); // è¯»å…¥åŸæ–‡ä»¶
+				// æ£€æŸ¥ç›®çš„åœ°è·¯å¾„æ˜¯å¦å­˜åœ¨ï¼Œä¸å­˜åœ¨åˆ™åˆ›å»º
+				File dirFile = new File(newPath.substring(0,
+						newPath.lastIndexOf("/")));
+				if (!dirFile.exists()) {
+					dirFile.mkdirs();
+				}
+				File newPathFile = new File(newPath);
+				if (!newPathFile.exists()) {
+					newPathFile.createNewFile();
+				}
+				long length = oldfile.length();
+				long count = 0;
+				FileOutputStream fs = new FileOutputStream(newPath);
+				byte[] buffer = new byte[1024];
+				while ((byteread = inStream.read(buffer)) != -1) {
+					bytesum += byteread;
+					fs.write(buffer, 0, byteread);
+					// å‘é€å¤åˆ¶è¿›åº¦
+					if (handler != null) {
+						tempProgress = (int) (((float) bytesum / length) * 100);
+						if (tempProgress > progress) {
+							progress = tempProgress;
+							msg = handler.obtainMessage();
+							msg.what = UNZIP_PROGRESS;
+							bun = new Bundle();
+							bun.putInt("UNZIP_PROGRESS", progress);
+							msg.setData(bun);
+							handler.sendMessage(msg);
+						}
+					}
+				}
+				fs.flush();
+				fs.close();
+				inStream.close();
+			} else {
+				isok = false;
+			}
+		} catch (Exception e) {
+			isok = false;
+			System.out.println("å¤åˆ¶å•ä¸ªæ–‡ä»¶æ“ä½œå‡ºé”™");
+			e.printStackTrace();
+		}
+		return isok;
+	}
+
+	/**
+	 * åˆ é™¤æ–‡ä»¶æˆ–æ–‡ä»¶å¤¹ä¸‹æ‰€æœ‰æ–‡ä»¶
+	 */
+	public static void delete(String filePath){
+		File delFile = new File(filePath);
+		if(delFile.exists()){
+			delete(delFile);
+		}
+	}
+
+	/**
+	 * åˆ é™¤æ–‡ä»¶æˆ–æ–‡ä»¶å¤¹ä¸‹æ‰€æœ‰æ–‡ä»¶
+	 * 
+	 * @param file
+	 */
+	public static void delete(File file) {
+		if (file.isDirectory()) {
+			Log.e("delete", "delete " + file.getAbsolutePath());
+		}
+
+		if (!file.exists()) {
+			return;
+		}
+		if (file.isFile()) {
+			file.delete();
+			return;
+		}
+		if (file.isDirectory()) {
+			File[] childFiles = file.listFiles();
+			if (childFiles == null || childFiles.length == 0) {
+				file.delete();
+			}
+			for (int i = 0; i < childFiles.length; i++) {
+				delete(childFiles[i]);
+			}
+			file.delete();
+		}
+	}
+
+	/**
+	 * æ ¹æ® ä¿®æ”¹æ—¶é—´æ’åº ç”±æ–°åˆ°æ—§
+	 * 
 	 * @param addr
 	 * @return
 	 */
-	public static File[] getListFiles(String addr){
+	public static File[] getListFiles(String addr) {
 		File Sfile = new File(addr);
-		if(!Sfile.exists()) return null;
+		if (!Sfile.exists())
+			return null;
 		File[] fs = Sfile.listFiles();
 
-		Arrays.sort(fs, new Comparator<File>() { //¸ù¾İ  ĞŞ¸ÄÊ±¼äÅÅĞò  ÓÉĞÂµ½¾É
-			public int compare(File f1, File f2) {
-				long diff = f1.lastModified() - f2.lastModified();
-				if (diff > 0)
-					return 1;
-				else if (diff == 0)
-					return 0;
-				else
-					return -1;
-			}
+		Arrays.sort(fs, new Comparator<File>() { // æ ¹æ® ä¿®æ”¹æ—¶é—´æ’åº ç”±æ–°åˆ°æ—§
+					public int compare(File f1, File f2) {
+						long diff = f1.lastModified() - f2.lastModified();
+						if (diff > 0)
+							return 1;
+						else if (diff == 0)
+							return 0;
+						else
+							return -1;
+					}
 
-			public boolean equals(Object obj) {
-				return true;
-			}
-		});
+					public boolean equals(Object obj) {
+						return true;
+					}
+				});
 		return fs;
 	}
 
 	/**
-	 * µİ¹éÉ¾³ıÄ¿Â¼ÏÂµÄËùÓĞÎÄ¼ş¼°×ÓÄ¿Â¼ÏÂËùÓĞÎÄ¼ş
-	 * @param dir ½«ÒªÉ¾³ıµÄÎÄ¼şÄ¿Â¼
-	 * @return boolean Returns "true" if all deletions were successful.
-	 *                 If a deletion fails, the method stops attempting to
-	 *                 delete and returns "false".
+	 * é€’å½’åˆ é™¤ç›®å½•ä¸‹çš„æ‰€æœ‰æ–‡ä»¶åŠå­ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
+	 * 
+	 * @param dir
+	 *            å°†è¦åˆ é™¤çš„æ–‡ä»¶ç›®å½•
+	 * @return boolean Returns "true" if all deletions were successful. If a
+	 *         deletion fails, the method stops attempting to delete and returns
+	 *         "false".
 	 */
 	public static boolean deleteDir(File dir) {
 		if (dir.isDirectory()) {
 			String[] children = dir.list();
-//			µİ¹éÉ¾³ıÄ¿Â¼ÖĞµÄ×ÓÄ¿Â¼ÏÂ
-			for (int i=0; i<children.length; i++) {
+			// é€’å½’åˆ é™¤ç›®å½•ä¸­çš„å­ç›®å½•ä¸‹
+			for (int i = 0; i < children.length; i++) {
 				boolean success = deleteDir(new File(dir, children[i]));
 				if (!success) {
 					return false;
 				}
 			}
 		}
-		// Ä¿Â¼´ËÊ±Îª¿Õ£¬¿ÉÒÔÉ¾³ı
+		// ç›®å½•æ­¤æ—¶ä¸ºç©ºï¼Œå¯ä»¥åˆ é™¤
 		return dir.delete();
+	}
+
+	/**
+	 * åˆ¤æ–­æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨ï¼Œæ–‡ä»¶å¤¹æ˜¯å¦æœ‰æ–‡ä»¶
+	 * 
+	 * @param filePath
+	 * @return
+	 */
+	public static boolean isDirHaveFile(String filePath) {
+		File file = new File(filePath);
+		// æ²¡æœ‰æ–‡ä»¶å¤¹ç›´æ¥è¿”å›
+		if (!file.exists()) {
+			return false;
+		}
+		// æœ‰æ–‡ä»¶å¤¹æ— æ–‡ä»¶ç›´æ¥è¿”å›
+		if (file.listFiles().length <= 0) {
+			return false;
+		}
+		return true;
 	}
 }

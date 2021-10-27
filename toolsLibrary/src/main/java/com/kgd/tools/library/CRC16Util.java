@@ -2,8 +2,10 @@ package com.kgd.tools.library;
 
 /**
  * Created by wzz on 2017/03/03.
- * wuzhenzhen@tiamaes.com
- * CRC16 У��
+ * wzz
+ * CRC16 校验
+ *
+ * https://blog.csdn.net/wsp1041428717/article/details/105692047
  */
 
 public class CRC16Util {
@@ -56,44 +58,44 @@ public class CRC16Util {
     };
 
     /**
-     * ����CRC16У��
+     * 计算CRC16校验
      *
      * @param data
-     *            ��Ҫ���������
-     * @return CRC16У��ֵ
+     *            需要计算的数组
+     * @return CRC16校验值
      */
     public static int calcCrc16(byte[] data) {
         return calcCrc16(data, 0, data.length);
     }
 
     /**
-     * ����CRC16У��
+     * 计算CRC16校验
      *
      * @param data
-     *            ��Ҫ���������
+     *            需要计算的数组
      * @param offset
-     *            ��ʼλ��
+     *            起始位置
      * @param len
-     *            ����
-     * @return CRC16У��ֵ
+     *            长度
+     * @return CRC16校验值
      */
     public static int calcCrc16(byte[] data, int offset, int len) {
         return calcCrc16(data, offset, len, 0xffff);
     }
 
     /**
-     * ����CRC16У��
-     * CRC_H + CRC_L  ��λ��ǰ
+     * 计算CRC16校验
+     * CRC_H + CRC_L  高位在前
      *
      * @param data
-     *            ��Ҫ���������
+     *            需要计算的数组
      * @param offset
-     *            ��ʼλ��
+     *            起始位置
      * @param len
-     *            ����
+     *            长度
      * @param preval
-     *            ֮ǰ��У��ֵ
-     * @return CRC16У��ֵ
+     *            之前的校验值
+     * @return CRC16校验值
      */
     public static int calcCrc16(byte[] data, int offset, int len, int preval) {
         int ucCRCHi = (preval & 0xff00) >> 8;
@@ -108,10 +110,16 @@ public class CRC16Util {
     }
 
     /**
-     *  У�����ʽ��X^16 + X^15 + X^2 + 1
-     *
+     *  CRC算法名称：CRC-16/IBM
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：8005
+     *  初始值：0000
+     *  结果异或值：0000
+     *  输入反转：true
+     *  输出反转：true
      * @param bytes
-     * @return  ��λ��ǰ����λ�ں�
+     * @return  低位在前，高位在后
      */
     public static String calcCrc16LH(byte[] bytes){
         int crc = 0x0000;
@@ -120,11 +128,7 @@ public class CRC16Util {
             crc = (crc >>> 8) ^ table[(crc ^ b) & 0xff];
         }
 
-        if (crc == 0x0000) {
-            crc = 0xFFFF;
-        }
-
-        // תС�ˣ���λ��ǰ����λ�ں�
+        // 转小端，低位在前，高位在后
         short s = (short) crc;
         byte[] a = new byte[2];
         a[0] = (byte) (s & 0xff);
@@ -134,46 +138,149 @@ public class CRC16Util {
     }
 
     /**
-     *  У�����ʽ��X^16 + X^15 + X^2 + 1
-     *
-     * @param bytes
-     * @return  ��λ�ں󣬸�λ��ǰ
+     * CRC-16
+     * CRC16_IBM：多项式x16+x15+x2+1（0x8005），初始值0x0000，低位在前，高位在后，结果与0x0000异或
+     * 0xA001是0x8005按位颠倒后的结果
+     * @param buffer
+     * @return   低位在后，高位在前
      */
-    public static String calcCrc16HL(byte[] bytes){
+    public static int CRC16_IBM(byte[] buffer) {
+        int wCRCin = 0x0000;
+        int wCPoly = 0xa001;
+        for (byte b : buffer) {
+            wCRCin ^= ((int) b & 0x00ff);
+            for (int j = 0; j < 8; j++) {
+                if ((wCRCin & 0x0001) != 0) {
+                    wCRCin >>= 1;
+                    wCRCin ^= wCPoly;
+                } else {
+                    wCRCin >>= 1;
+                }
+            }
+        }
+        return wCRCin ^= 0x0000;
+    }
+
+    /**
+     *  CRC算法名称：CRC-16/MAXIM
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：8005
+     *  初始值：0000
+     *  结果异或值：FFFF
+     *  输入反转：true
+     *  输出反转：true
+     * @param bytes
+     * @return  低位在前，高位在后
+     */
+    public static String calcCrc16LH_MAXIM(byte[] bytes){
         int crc = 0x0000;
 
         for (byte b : bytes) {
             crc = (crc >>> 8) ^ table[(crc ^ b) & 0xff];
         }
-
         if (crc == 0x0000) {
             crc = 0xFFFF;
         }
-
-        // תС�ˣ���λ��ǰ����λ�ں�
-        short s = (short) crc;
-        byte[] a = new byte[2];
-        a[1] = (byte) (s & 0xff);
-        a[0] = (byte) (s >>> 8);
-
+        // 转小端，低位在前，高位在后
+        byte[] a = new byte[] { (byte) (0xff & crc), (byte) ((0xff00 & crc) >> 8) };
         return AscIITools.ByteArrToHex(a);
     }
+    /**
+     * CRC16_MAXIM：多项式x16+x15+x2+1（0x8005），初始值0x0000，低位在前，高位在后，结果与0xFFFF异或
+     * 0xA001是0x8005按位颠倒后的结果
+     * @param buffer
+     * @return
+     */
+    public static int CRC16_MAXIM(byte[] buffer) {
+        int wCRCin = 0x0000;
+        int wCPoly = 0xa001;
+        for (byte b : buffer) {
+            wCRCin ^= ((int) b & 0x00ff);
+            for (int j = 0; j < 8; j++) {
+                if ((wCRCin & 0x0001) != 0) {
+                    wCRCin >>= 1;
+                    wCRCin ^= wCPoly;
+                } else {
+                    wCRCin >>= 1;
+                }
+            }
+        }
+        return wCRCin ^= 0xffff;
+    }
+    /**
+     *  CRC算法名称：CRC-16/MODBUS
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：8005
+     *  初始值：FFFF
+     *  结果异或值：0000
+     *  输入反转：true
+     *  输出反转：true
+     * @param bytes
+     * @return  低位在前，高位在后
+     */
+    public static String calcCrc16LHModbus(byte[] bytes){
+        int CRC = 0x0000ffff;
+        int POLYNOMIAL = 0x0000a001;
 
-    // ����
-//    public static void main(String[] args) {
-//        // 0x02 05 00 03 FF 00 , crc16=7C 09
-//        int crc = CRC16Util.calcCrc16(AscIITools.HexToByteArr("ABCD"));
-//        System.out.println(String.format("0x%04x", crc));
-//
-//        String test2="5AA5095A170F01";//581D
-//        String test = "B66B0D04B23B5108C83C02";//1B61
-//        crc = CRC16Util.calcCrc16(AscIITools.HexToByteArr(test));
-//        System.out.println(String.valueOf(crc)+String.format("0x%04x", crc));
-//        System.out.print("calcCrc16LH="+calcCrc16LH(AscIITools.HexToByteArr(test2)));
-//
-//        String config = "5AA5095A1F0501"; // DF7F
-//        System.out.print("calcCrc16LH-config="+calcCrc16LH(AscIITools.HexToByteArr(config)));
-//        String daolu = "5AA52058011A409F868E8811448A89948A15458C460D8E9E8C1983074205"; //0674
-//        System.out.print("calcCrc16LH-daolu="+calcCrc16LH(AscIITools.HexToByteArr(daolu)));
-//    }
+        int i, j;
+        for (i = 0; i < bytes.length; i++) {
+            CRC ^= ((int) bytes[i] & 0x000000ff);
+            for (j = 0; j < 8; j++) {
+                if ((CRC & 0x00000001) != 0) {
+                    CRC >>= 1;
+                    CRC ^= POLYNOMIAL;
+                } else {
+                    CRC >>= 1;
+                }
+            }
+        }
+        //高低位转换，看情况使用（譬如本人这次对led彩屏的通讯开发就规定校验码高位在前低位在后，也就不需要转换高低位)
+        //CRC = ( (CRC & 0x0000FF00) >> 8) | ( (CRC & 0x000000FF ) << 8);
+        return Integer.toHexString(CRC);
+    }
+    public static String calcCrc16HLModbus(byte[] bytes){
+        int crc = 0x0000ffff;
+        int ucCRCHi = 0x00ff;
+        int ucCRCLo = 0x00ff;
+        int iIndex;
+        for (int i = 0; i < bytes.length; ++i) {
+            iIndex = (ucCRCLo ^ bytes[i]) & 0x00ff;
+            ucCRCLo = ucCRCHi ^ crc16_tab_h[iIndex];
+            ucCRCHi = crc16_tab_l[iIndex];
+        }
+
+        crc = ((ucCRCHi & 0x00ff) << 8) | (ucCRCLo & 0x00ff) & 0xffff;
+        //高低位互换，输出符合相关工具对Modbus CRC16的运算
+        crc = ( (crc & 0xFF00) >> 8) | ( (crc & 0x00FF ) << 8);
+        return String.format("%04X", crc);
+    }
+    // 测试
+    public static void main(String[] args) {
+        // 0x02 05 00 03 FF 00 , crc16=7C 09
+        int crc = CRC16Util.calcCrc16(AscIITools.HexToByteArr("ABCD"));
+        System.out.println(String.format("0x%04x", crc));
+
+        String test2="5AA5095A170F01";//581D
+        String test = "B66B0D04B23B5108C83C02";//1B61
+        crc = CRC16Util.calcCrc16(AscIITools.HexToByteArr(test));
+        System.out.println(String.valueOf(crc)+String.format("0x%04x", crc));
+        System.out.println("calcCrc16LH="+calcCrc16LH(AscIITools.HexToByteArr(test2)));
+
+        String config = "5AA5095A1F0501"; // DF7F
+        System.out.println("calcCrc16LH-config="+calcCrc16LH(AscIITools.HexToByteArr(config)));
+        String daolu = "5AA52058011A409F868E8811448A89948A15458C460D8E9E8C1983074205"; //0674
+        System.out.println("calcCrc16LH-daolu="+calcCrc16LH(AscIITools.HexToByteArr(daolu)));
+        System.out.println("calcCrc16LH-daolu2="+AscIITools.intToHexString(CRC16Util.CRC16_IBM(AscIITools.HexToByteArr(daolu)),4));
+
+        System.out.println("==calcCrc16LHModbus="+calcCrc16LHModbus(AscIITools.HexToByteArr("8204160000")));
+        System.out.println("==calcCrc16LHModbus2="+calcCrc16HLModbus(AscIITools.HexToByteArr("8204160000")));
+        String str = "B66B00210000000000000000000000000032303231373236FE00320001009F0000"; // CRC-16/IBM==0000， CRC-16/MAXIM==FFFF
+        String crcResult = CRC16Util.calcCrc16LH(AscIITools.HexToByteArr(str.substring(0,str.length()-4)));
+        String crcResult2 = CRC16Util.calcCrc16LH_MAXIM(AscIITools.HexToByteArr(str.substring(0,str.length()-4)));
+        String crcResult3 = AscIITools.intToHexString(CRC16Util.CRC16_IBM(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
+        String crcResult4 = AscIITools.intToHexString(CRC16Util.CRC16_MAXIM(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
+        System.out.println("--crcResult--"+crcResult+"--"+crcResult2+"--"+crcResult3+"--"+crcResult3);
+    }
 }

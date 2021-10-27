@@ -12,16 +12,16 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 /**
- *   Ê±¼äÏà¹Ø¹¤¾ßÀà
+ *   æ—¶é—´ç›¸å…³å·¥å…·ç±»
  *
- *   boolean getTwoHour(String st1, String st2)		¶ş¸öÊ±¼ä¼äµÄ²îÖµ,´óÓÚÊ®·ÖÖÓ·µ»Øtrue·ñÔò·µ»Øfalse£»
- *	long getCurrentTimeByHHmm(String hhmm)	ÓÉ hhmm »ñÈ¡ µ±Ç°µÄ long Ê±¼ä
- *   addAndReduceMinute(String str, int value)	Ôö¼Ó»ò¼õÉÙ¼¸·ÖÖÓ £¨Èç£ºstr=09:50  value=-10 ¾ÍÊÇ 09:40   value=10¾ÍÊÇ10:00£©
- *   isValidHHmm(String str)	¼ì²é  str ÊÇ·ñHH:mm¸ñÊ½
- *   isLessThenCurrenTime   ÊÇ·ñĞ¡ÓÚµ±Ç°Ê±¼ä
- *  getStringDateFromLong	LongÊ±¼ä¸ñÊ½»¯ÎªÖ¸¶¨String ¸ñÊ½ £¬  £¨Èç 1547693420668/HH:mm ×ª»»Îª10:50£©
- *	getYesterdayStartTime	·µ»Ø×òÌìµÄ¿ªÊ¼Ê±¼ä long £¨Èç 2019-04-24 00:00:00£©
- *	getYesterdayEndTime		·µ»Ø×òÌìµÄ½áÊøÊ±¼ä long £¨Èç 2019-04-24 23:59:59£©
+ *   boolean getTwoHour(String st1, String st2)		äºŒä¸ªæ—¶é—´é—´çš„å·®å€¼,å¤§äºååˆ†é’Ÿè¿”å›trueå¦åˆ™è¿”å›falseï¼›
+ *	long getCurrentTimeByHHmm(String hhmm)	ç”± hhmm è·å– å½“å‰çš„ long æ—¶é—´
+ *   addAndReduceMinute(String str, int value)	å¢åŠ æˆ–å‡å°‘å‡ åˆ†é’Ÿ ï¼ˆå¦‚ï¼šstr=09:50  value=-10 å°±æ˜¯ 09:40   value=10å°±æ˜¯10:00ï¼‰
+ *   isValidHHmm(String str)	æ£€æŸ¥  str æ˜¯å¦HH:mmæ ¼å¼
+ *   isLessThenCurrenTime   æ˜¯å¦å°äºå½“å‰æ—¶é—´
+ *  getStringDateFromLong	Longæ—¶é—´æ ¼å¼åŒ–ä¸ºæŒ‡å®šString æ ¼å¼ ï¼Œ  ï¼ˆå¦‚ 1547693420668/HH:mm è½¬æ¢ä¸º10:50ï¼‰
+ *	getYesterdayStartTime	è¿”å›æ˜¨å¤©çš„å¼€å§‹æ—¶é—´ long ï¼ˆå¦‚ 2019-04-24 00:00:00ï¼‰
+ *	getYesterdayEndTime		è¿”å›æ˜¨å¤©çš„ç»“æŸæ—¶é—´ long ï¼ˆå¦‚ 2019-04-24 23:59:59ï¼‰
  */
 public class DateUtils {
     private static String mYear;
@@ -29,51 +29,51 @@ public class DateUtils {
     private static String mDay;
     private static String mWay;
 
-	// 2017Äê4ÔÂ25ÈÕ	ĞÇÆÚ¶ş
+	// 2017å¹´4æœˆ25æ—¥	æ˜ŸæœŸäºŒ
 	public static String getDateAndWeek(){
 		final Calendar c = Calendar.getInstance();
 		c.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));
 
-		mYear = String.valueOf(c.get(Calendar.YEAR)); // »ñÈ¡µ±Ç°Äê·İ
-		mMonth = String.valueOf(c.get(Calendar.MONTH) + 1);// »ñÈ¡µ±Ç°ÔÂ·İ
-		mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));// »ñÈ¡µ±Ç°ÔÂ·İµÄÈÕÆÚºÅÂë
+		mYear = String.valueOf(c.get(Calendar.YEAR)); // è·å–å½“å‰å¹´ä»½
+		mMonth = String.valueOf(c.get(Calendar.MONTH) + 1);// è·å–å½“å‰æœˆä»½
+		mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));// è·å–å½“å‰æœˆä»½çš„æ—¥æœŸå·ç 
 		mWay = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
 		if("1".equals(mWay)){
-			mWay ="Ìì";
+			mWay ="å¤©";
 		}else if("2".equals(mWay)){
-			mWay ="Ò»";
+			mWay ="ä¸€";
 		}else if("3".equals(mWay)){
-			mWay ="¶ş";
+			mWay ="äºŒ";
 		}else if("4".equals(mWay)){
-			mWay ="Èı";
+			mWay ="ä¸‰";
 		}else if("5".equals(mWay)){
-			mWay ="ËÄ";
+			mWay ="å››";
 		}else if("6".equals(mWay)){
-			mWay ="Îå";
+			mWay ="äº”";
 		}else if("7".equals(mWay)){
-			mWay ="Áù";
+			mWay ="å…­";
 		}
-		Log.e("--DateUtils--", mYear + "Äê" + mMonth + "ÔÂ" + mDay+"ÈÕ"+"\tĞÇÆÚ"+mWay);
-		return mYear + "Äê" + mMonth + "ÔÂ" + mDay+"ÈÕ"+"\tĞÇÆÚ"+mWay;
+		Log.e("--DateUtils--", mYear + "å¹´" + mMonth + "æœˆ" + mDay+"æ—¥"+"\tæ˜ŸæœŸ"+mWay);
+		return mYear + "å¹´" + mMonth + "æœˆ" + mDay+"æ—¥"+"\tæ˜ŸæœŸ"+mWay;
 	}
 	
 	public static String getDate(){
 		final Calendar c = Calendar.getInstance();
 		c.setTimeZone(TimeZone.getTimeZone("GMT"));
-		mYear = String.valueOf(c.get(Calendar.YEAR)); // »ñÈ¡µ±Ç°Äê·İ
-		mMonth = String.valueOf(c.get(Calendar.MONTH) + 1);// »ñÈ¡µ±Ç°ÔÂ·İ
-		mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));// »ñÈ¡µ±Ç°ÔÂ·İµÄÈÕÆÚºÅÂë
+		mYear = String.valueOf(c.get(Calendar.YEAR)); // è·å–å½“å‰å¹´ä»½
+		mMonth = String.valueOf(c.get(Calendar.MONTH) + 1);// è·å–å½“å‰æœˆä»½
+		mDay = String.valueOf(c.get(Calendar.DAY_OF_MONTH));// è·å–å½“å‰æœˆä»½çš„æ—¥æœŸå·ç 
 		
 		return mYear + "-" + mMonth + "-" + mDay+"";
 	}
 	/**
-	 * ĞŞ¸ÄÏµÍ³Ê±¼ä
+	 * ä¿®æ”¹ç³»ç»Ÿæ—¶é—´
 	 * @param datetime
 	 */
 	public void setSysDateTime(String datetime){
 		try {
 			Process process = Runtime.getRuntime().exec("su");
-			//			String datetime="20131023.112800"; //²âÊÔµÄÉèÖÃµÄÊ±¼ä¡¾Ê±¼ä¸ñÊ½ yyyyMMdd.HHmmss¡¿
+			//			String datetime="20131023.112800"; //æµ‹è¯•çš„è®¾ç½®çš„æ—¶é—´ã€æ—¶é—´æ ¼å¼ yyyyMMdd.HHmmssã€‘
 			DataOutputStream os = new DataOutputStream(process.getOutputStream());
 			os.writeBytes("setprop persist.sys.timezone GMT\n");
 			os.writeBytes("/system/bin/date -s "+datetime+"\n");
@@ -88,7 +88,7 @@ public class DateUtils {
 	public static final String FORMAT_DATE_YYMMDD_HHMMSS = "yyyy-MM-dd HH:mm:ss";
 	/**
 	 *
-	 * long2String:°ÑÖ¸¶¨µÄÊ±¼ä×ª»»Îª¶ÔÓ¦µÄ¸ñÊ½»¯×Ö·û´®. <br/>
+	 * long2String:æŠŠæŒ‡å®šçš„æ—¶é—´è½¬æ¢ä¸ºå¯¹åº”çš„æ ¼å¼åŒ–å­—ç¬¦ä¸². <br/>
 	 *
 	 * @author maple
 	 * @param times
@@ -107,8 +107,8 @@ public class DateUtils {
 
 
 	/**
-	 *  ¶ş¸öÊ±¼ä¼äµÄ²îÖµ,´óÓÚÊ®·ÖÖÓ·µ»Øtrue·ñÔò·µ»Øfalse£»
-	 *   Èç£º st1 = 11:10  st2=11:15   ·µ»Øfalse
+	 *  äºŒä¸ªæ—¶é—´é—´çš„å·®å€¼,å¤§äºååˆ†é’Ÿè¿”å›trueå¦åˆ™è¿”å›falseï¼›
+	 *   å¦‚ï¼š st1 = 11:10  st2=11:15   è¿”å›false
 	 * @param st1
 	 * @param st2
 	 * @return
@@ -135,30 +135,30 @@ public class DateUtils {
 		}
 	}
 
-	// ÓÉ hhmm »ñÈ¡ µ±Ç°µÄ long Ê±¼ä
+	// ç”± hhmm è·å– å½“å‰çš„ long æ—¶é—´
 	public static long getCurrentTimeByHHmm(String hhmm){
-        try {
-            if(!isValidHHmm(hhmm)) return 0;
-            String split[] = hhmm.split(":");
-            if(split.length != 2) return 0;
-            String hh=split[0], mm=split[1];
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(new Date());
-            cal.set(Calendar.HOUR, Integer.valueOf(hh));
-            cal.set(Calendar.MINUTE, Integer.valueOf(mm));
-            Log.e("getCurrentTimeByHHmm", "getCurrentTimeByHHmm="+cal.getTimeInMillis());
-            return cal.getTimeInMillis();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return 0;
-        }
-    }
+		try {
+			if(!isValidHHmm(hhmm)) return 0;
+			String split[] = hhmm.split(":");
+			if(split.length != 2) return 0;
+			String hh=split[0], mm=split[1];
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());
+			cal.set(Calendar.HOUR_OF_DAY, Integer.valueOf(hh));
+			cal.set(Calendar.MINUTE, Integer.valueOf(mm));
+			Log.e("getCurrentTimeByHHmm", "getCurrentTimeByHHmm="+cal.getTimeInMillis());
+			return cal.getTimeInMillis();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return 0;
+		}
+	}
 	/**
-	 *  Ôö¼Ó»ò¼õÉÙ¼¸·ÖÖÓ
-	 * @param str   Èç£º09:50
-	 * @param value  Èç -10 ¾ÍÊÇ 09:40   10¾ÍÊÇ10:00
-	 * @return    Èç 00:03
+	 *  å¢åŠ æˆ–å‡å°‘å‡ åˆ†é’Ÿ
+	 * @param str   å¦‚ï¼š09:50
+	 * @param value  å¦‚ -10 å°±æ˜¯ 09:40   10å°±æ˜¯10:00
+	 * @return    å¦‚ 00:03
 	 */
 	public static String addAndReduceMinute(String str, int value){
 		try {
@@ -168,9 +168,9 @@ public class DateUtils {
 
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(date);
-			cal.add(Calendar.MINUTE, value);// 24Ğ¡Ê±ÖÆ   xÎªĞèÒªÔö¼Ó»ò¼õÉÙµÄÊ±¼ä
+			cal.add(Calendar.MINUTE, value);// 24å°æ—¶åˆ¶   xä¸ºéœ€è¦å¢åŠ æˆ–å‡å°‘çš„æ—¶é—´
 
-			int hour = cal.get(Calendar.HOUR_OF_DAY);	//24Ğ¡Ê±ÖÆ
+			int hour = cal.get(Calendar.HOUR_OF_DAY);	//24å°æ—¶åˆ¶
 			int min = cal.get(Calendar.MINUTE);
 			String strHour = hour<10 ? "0"+hour : ""+hour;
 			String strMin = min<10 ? "0"+min : ""+min;
@@ -183,38 +183,58 @@ public class DateUtils {
 	}
 
 	/**
-	 *  ¼ì²é  str ÊÇ·ñHH:mm¸ñÊ½
+	 *  å½“å‰æ—¥æœŸ å¢åŠ æˆ–å‡å°‘å‡ å¤©
+	 * @param offset  åç§»é‡
+	 * @return      yyyy-MM-dd
+	 */
+	public static String addAndReduceYMD(int offset){
+		try {
+			Calendar cal = Calendar.getInstance();
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH);
+			int day = cal.get(Calendar.DAY_OF_MONTH);
+			day += offset;
+			return ""+year+"-"+month+"-"+day;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	/**
+	 *  æ£€æŸ¥  str æ˜¯å¦HH:mmæ ¼å¼
 	 * @param str
 	 * @return
 	 */
 	public static boolean isValidHHmm(String str) {
 		boolean convertSuccess=true;
-		// Ö¸¶¨ÈÕÆÚ¸ñÊ½ÎªËÄÎ»Äê/Á½Î»ÔÂ·İ/Á½Î»ÈÕÆÚ£¬×¢Òâyyyy/MM/ddÇø·Ö´óĞ¡Ğ´£»
+		// æŒ‡å®šæ—¥æœŸæ ¼å¼ä¸ºå››ä½å¹´/ä¸¤ä½æœˆä»½/ä¸¤ä½æ—¥æœŸï¼Œæ³¨æ„yyyy/MM/ddåŒºåˆ†å¤§å°å†™ï¼›
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
 		try {
-			// ÉèÖÃlenientÎªfalse. ·ñÔòSimpleDateFormat»á±È½Ï¿íËÉµØÑéÖ¤ÈÕÆÚ£¬±ÈÈç2007/02/29»á±»½ÓÊÜ£¬²¢×ª»»³É2007/03/01
+			// è®¾ç½®lenientä¸ºfalse. å¦åˆ™SimpleDateFormatä¼šæ¯”è¾ƒå®½æ¾åœ°éªŒè¯æ—¥æœŸï¼Œæ¯”å¦‚2007/02/29ä¼šè¢«æ¥å—ï¼Œå¹¶è½¬æ¢æˆ2007/03/01
 			format.setLenient(false);
 			format.parse(str);
 		} catch (ParseException e) {
 			e.printStackTrace();
-// Èç¹ûthrow java.text.ParseException»òÕßNullPointerException£¬¾ÍËµÃ÷¸ñÊ½²»¶Ô
+// å¦‚æœthrow java.text.ParseExceptionæˆ–è€…NullPointerExceptionï¼Œå°±è¯´æ˜æ ¼å¼ä¸å¯¹
 			convertSuccess=false;
 		}
 		return convertSuccess;
 	}
 
 	/**
-	 *  ÊÇ·ñĞ¡ÓÚµ±Ç°Ê±¼ä
+	 *  æ˜¯å¦å°äºå½“å‰æ—¶é—´
 	 * @return
 	 */
 	public static boolean isLessThenCurrenTime(String time, boolean defaultResult){
 		boolean result = defaultResult;
 		try{
-			Calendar date= Calendar.getInstance();//»ñÈ¡µ±Ç°Ê±¼ä
+			Calendar date= Calendar.getInstance();//è·å–å½“å‰æ—¶é—´
 			Calendar startTime = (Calendar) date.clone();
 			String[]startTimes = time.split(":");
 			if(startTimes.length != 2) return false;
-			startTime.set(Calendar.HOUR_OF_DAY, Integer.valueOf(startTimes[0]));//½«Ò»¸öÊ±¼äÉèÎªµ±Ç°8:00
+			startTime.set(Calendar.HOUR_OF_DAY, Integer.valueOf(startTimes[0]));//å°†ä¸€ä¸ªæ—¶é—´è®¾ä¸ºå½“å‰8:00
 			startTime.set(Calendar.MINUTE, Integer.valueOf(startTimes[1]));
 			startTime.set(Calendar.SECOND, 0);
 			result = date.after(startTime);
@@ -225,10 +245,10 @@ public class DateUtils {
 	}
 
 	/**
-	 *	LongÊ±¼ä¸ñÊ½»¯ÎªÖ¸¶¨String
-	 * @param date			Èç1547693420668
-	 * @param format		ÈçHH:mm
-	 * @return				Èç×ªÎª 10:50
+	 *	Longæ—¶é—´æ ¼å¼åŒ–ä¸ºæŒ‡å®šString
+	 * @param date			å¦‚1547693420668
+	 * @param format		å¦‚HH:mm
+	 * @return				å¦‚è½¬ä¸º 10:50
 	 */
 	public static String getStringDateFromLong(Long date, String format) {
 		SimpleDateFormat df = new SimpleDateFormat(format);
@@ -239,7 +259,7 @@ public class DateUtils {
 
 	/**
 	 *
-	 * @return  ·µ»Ø×òÌìµÄ¿ªÊ¼Ê±¼ä long £¨Èç 2019-04-24 00:00:00£©
+	 * @return  è¿”å›æ˜¨å¤©çš„å¼€å§‹æ—¶é—´ long ï¼ˆå¦‚ 2019-04-24 00:00:00ï¼‰
 	 */
 	public static long getYesterdayStartTime(){
 		Calendar calendar = Calendar.getInstance();
@@ -248,13 +268,13 @@ public class DateUtils {
 		calendar.set(Calendar.MINUTE,0);
 		calendar.set(Calendar.SECOND,0);
 		calendar.set(Calendar.MILLISECOND,0);
-		System.out.println("¿ªÊ¼Ê±¼ä£º"+calendar.getTime());
+		System.out.println("å¼€å§‹æ—¶é—´ï¼š"+calendar.getTime());
 		return calendar.getTimeInMillis();
 	}
 
 	/**
 	 *
-	 * @return  ·µ»Ø×òÌìµÄ½áÊøÊ±¼ä long £¨Èç 2019-04-24 23:59:59£©
+	 * @return  è¿”å›æ˜¨å¤©çš„ç»“æŸæ—¶é—´ long ï¼ˆå¦‚ 2019-04-24 23:59:59ï¼‰
 	 */
 	public static long getYesterdayEndTime(){
 		Calendar calendar = Calendar.getInstance();
@@ -263,7 +283,7 @@ public class DateUtils {
 		calendar.set(Calendar.MINUTE,59);
 		calendar.set(Calendar.SECOND,59);
 		calendar.set(Calendar.MILLISECOND,999);
-		System.out.println("½áÊøÊ±¼ä£º"+calendar.getTime());
+		System.out.println("ç»“æŸæ—¶é—´ï¼š"+calendar.getTime());
 		return calendar.getTimeInMillis();
 	}
 

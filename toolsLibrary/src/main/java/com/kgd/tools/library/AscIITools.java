@@ -6,7 +6,7 @@ import java.io.ByteArrayOutputStream;
 
 /**
  * Created by wzz on 2017/03/01.
- * wuzhenzhen@tiamaes.com
+ * wzz
  * 串口相关工具类
  *
  *  String intToHexString(int algorism)  十进制转换为十六进制字符串
@@ -146,7 +146,7 @@ public class AscIITools {
     //----------Hex字符串转byte-----------------
     static public byte HexToByte(String inHex)
     {
-        return (byte) Integer.parseInt(inHex,16);
+        return (byte)Integer.parseInt(inHex,16);
     }
 
     //----------1字节转2个Hex字符----------------
@@ -165,7 +165,7 @@ public class AscIITools {
         return strBuilder.toString();
     }
     //-------------字节数组转转hex字符串，可选长度----------------------
-    static public String ByteArrToHex(byte[] inBytArr, int offset, int byteCount){
+    static public String ByteArrToHex(byte[] inBytArr,int offset,int byteCount){
         StringBuilder strBuilder=new StringBuilder();
         int j=byteCount;
         for (int i = offset; i < j; i++)
@@ -642,4 +642,27 @@ public class AscIITools {
         return result;
     }
 
+    /**
+     *  十六进制字符串转 Ascii码
+     * @param hexStr  如 F0B6 = 46304236
+     * @return
+     */
+    public static String HexStrToAscii(String hexStr){
+        return AscIITools.ByteArrToHex(hexStr.getBytes());
+    }
+
+    /**
+     *  ascii 码 转十六进制
+     * @param ascii 如 46304236 == F0B6
+     * @return
+     */
+    public static String AsciiStrToHex(String ascii){
+        String hex = "";
+        try{
+            hex = new String(AscIITools.HexToByteArr(ascii),"GBK");
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return hex ;
+    }
 }
