@@ -70,32 +70,30 @@ import java.util.regex.Pattern;
  * Created by wzz on 2016/08/17.
  * wzz
  *
- * ¸úApp/apk Ïà¹ØµÄ¸¨ÖúÀà
- *
- * getAppName  »ñÈ¡Ó¦ÓÃ³ÌĞòÃû³Æ
- * getVersionName µ±Ç°Ó¦ÓÃµÄ°æ±¾Ãû³Æ
- * getVersionCode µ±Ç°Ó¦ÓÃµÄ°æ±¾ºÅ
- * isInstallSoftware ¼ì²â packageName ÊÇ·ñÒÑ¾­°²×°
+ * getAppName  è·å–åº”ç”¨ç¨‹åºåç§°
+ * getVersionName å½“å‰åº”ç”¨çš„ç‰ˆæœ¬åç§°
+ * getVersionCode å½“å‰åº”ç”¨çš„ç‰ˆæœ¬å·
+ * isInstallSoftware æ£€æµ‹ packageName æ˜¯å¦å·²ç»å®‰è£…
  * installSlient
  * unInstallSlient
- * installApk   °²×° Apk
- * uninstallApk Ğ¶ÔØ Apk
- * isServiceRunning  ServiceÊÇ·ñÕıÔÚÔËĞĞ
- * stopRunningService Í£Ö¹service
- * getCPUNumCores  ²é¿´CPUºËĞÄÊı
- * importDatabase  µ¼ÈëÊı¾İ¿â
- * setImmersiveMode ³Á½şÄ£Ê½
- * getStatusBarHeight ×´Ì¬À¸¸ß¶È
- * closeSoftInput Òş²ØÈí¼üÅÌ
- * getEth0Mac   »ñÈ¡ eth0  macµØÖ·
- * getWifiMac   »ñÈ¡ wlan  macµØÖ·
+ * installApk   å®‰è£… Apk
+ * uninstallApk å¸è½½ Apk
+ * isServiceRunning  Serviceæ˜¯å¦æ­£åœ¨è¿è¡Œ
+ * stopRunningService åœæ­¢service
+ * getCPUNumCores  æŸ¥çœ‹CPUæ ¸å¿ƒæ•°
+ * importDatabase  å¯¼å…¥æ•°æ®åº“
+ * setImmersiveMode æ²‰æµ¸æ¨¡å¼
+ * getStatusBarHeight çŠ¶æ€æ é«˜åº¦
+ * closeSoftInput éšè—è½¯é”®ç›˜
+ * getEth0Mac   è·å– eth0  macåœ°å€
+ * getWifiMac   è·å– wlan  macåœ°å€
  * <p>
- * getIMSI(Context context) ÊÖ»ú¿¨µÄIMSI    Èç£ºIMSI=460031304158115
- * getIMEI(Context context) »ñÈ¡ÊÖ»úµÄIMEI    Èç£ºIMEI=866946025546414
- * isOutOfDate(String operaTime)    ÓÃÀ´±È½ÏÔËÓªÊ±¼ä£¬ÅĞ¶Ïµ±Ç°Ê±¼äÊÇ·ñ³¬³ö operatiome(06:00-21:00)·¶Î§
- * readPictureDegree(String path)   ¶ÁÈ¡Í¼Æ¬ÊôĞÔ£ºĞı×ªµÄ½Ç¶È
- * rotateBitmap(Bitmap bitmap, int degrees)  Ğı×ªÍ¼Æ¬
- * boolean hasChinese(String str)   ÅĞ¶Ï×Ö·û´®ÊÇº¬ÓĞÖĞÎÄ£¬²»ÊÇ·µ»Øfalse
+ * getIMSI(Context context) æ‰‹æœºå¡çš„IMSI    å¦‚ï¼šIMSI=460031304158115
+ * getIMEI(Context context) è·å–æ‰‹æœºçš„IMEI    å¦‚ï¼šIMEI=866946025546414
+ * isOutOfDate(String operaTime)    ç”¨æ¥æ¯”è¾ƒè¿è¥æ—¶é—´ï¼Œåˆ¤æ–­å½“å‰æ—¶é—´æ˜¯å¦è¶…å‡º operatiome(06:00-21:00)èŒƒå›´
+ * readPictureDegree(String path)   è¯»å–å›¾ç‰‡å±æ€§ï¼šæ—‹è½¬çš„è§’åº¦
+ * rotateBitmap(Bitmap bitmap, int degrees)  æ—‹è½¬å›¾ç‰‡
+ * boolean hasChinese(String str)   åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å«æœ‰ä¸­æ–‡ï¼Œä¸æ˜¯è¿”å›false
  */
 public class AppUtils
 {
@@ -106,7 +104,7 @@ public class AppUtils
     }
 
     /**
-     * »ñÈ¡Ó¦ÓÃ³ÌĞòÃû³Æ
+     * è·å–åº”ç”¨ç¨‹åºåç§°
      */
     public static String getAppName(Context context){
         try
@@ -124,10 +122,10 @@ public class AppUtils
     }
 
     /**
-     * [»ñÈ¡Ó¦ÓÃ³ÌĞò°æ±¾Ãû³ÆĞÅÏ¢]
+     * [è·å–åº”ç”¨ç¨‹åºç‰ˆæœ¬åç§°ä¿¡æ¯]
      *
      * @param context
-     * @return µ±Ç°Ó¦ÓÃµÄ°æ±¾Ãû³Æ
+     * @return å½“å‰åº”ç”¨çš„ç‰ˆæœ¬åç§°
      */
     public static String getVersionName(Context context){
         try
@@ -145,7 +143,7 @@ public class AppUtils
     }
 
     /**
-     * [»ñÈ¡µ±Ç°Ó¦ÓÃµÄ°æ±¾ºÅ]
+     * [è·å–å½“å‰åº”ç”¨çš„ç‰ˆæœ¬å·]
      * @param context
      * @return
      */
@@ -165,7 +163,7 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²â packageName ÊÇ·ñÒÑ¾­°²×°
+     * æ£€æµ‹ packageName æ˜¯å¦å·²ç»å®‰è£…
      *
      * @param context
      * @param packageName
@@ -190,14 +188,14 @@ public class AppUtils
 
 
     /**
-     * install slient¡£<br>
-     * ×îºÃÔÚĞÂ½¨µÄÏß³ÌÖĞÔËĞĞ²¢Í¨¹ıhandler·¢ËÍ°²×°½á¹û¸øÖ÷Ïß³Ì£¬·ñÔò°²×°Ê±¼ä½Ï³¤»áµ¼ÖÂANR¡£<br>
-     * ¾²Ä¬°²×°Ìõ¼ş£º<br>
-     * 1¡¢ĞèÒª°Ñµ±Ç°·½·¨£¨Ò²¼´installSlient·½·¨£©ËùÔÚµÄapk×ö³ÉÏµÍ³Ó¦ÓÃ¡£¾ÍÊÇÏµÍ³root¹ıºó°ÑÎÄ¼ş·Åµ½/system/appÄ¿Â¼ÏÂ¡£/
-     * system/appÄ¿Â¼ÏÂµÄapk¶¼ÊÇÏµÍ³Ó¦ÓÃ¡£<br>
-     * 2¡¢ĞèÒªÔÚAndroidManifest.xmlÎÄ¼şÖĞ×¢²á android.permission.INSTALL_PACKAGES È¨ÏŞ¡£
+     * install slientã€‚<br>
+     * æœ€å¥½åœ¨æ–°å»ºçš„çº¿ç¨‹ä¸­è¿è¡Œå¹¶é€šè¿‡handlerå‘é€å®‰è£…ç»“æœç»™ä¸»çº¿ç¨‹ï¼Œå¦åˆ™å®‰è£…æ—¶é—´è¾ƒé•¿ä¼šå¯¼è‡´ANRã€‚<br>
+     * é™é»˜å®‰è£…æ¡ä»¶ï¼š<br>
+     * 1ã€éœ€è¦æŠŠå½“å‰æ–¹æ³•ï¼ˆä¹Ÿå³installSlientæ–¹æ³•ï¼‰æ‰€åœ¨çš„apkåšæˆç³»ç»Ÿåº”ç”¨ã€‚å°±æ˜¯ç³»ç»Ÿrootè¿‡åæŠŠæ–‡ä»¶æ”¾åˆ°/system/appç›®å½•ä¸‹ã€‚/
+     * system/appç›®å½•ä¸‹çš„apkéƒ½æ˜¯ç³»ç»Ÿåº”ç”¨ã€‚<br>
+     * 2ã€éœ€è¦åœ¨AndroidManifest.xmlæ–‡ä»¶ä¸­æ³¨å†Œ android.permission.INSTALL_PACKAGES æƒé™ã€‚
      *
-     * @param filePath Òª°²×°µÄapkµÄÂ·¾¶¡£
+     * @param filePath è¦å®‰è£…çš„apkçš„è·¯å¾„ã€‚
      * @return 0 means normal, 1 means file not exist, 2 means other exception
      * error
      */
@@ -216,7 +214,7 @@ public class AppUtils
     }
 
     /**
-     *  Ç¿ÖÆ ½×¼¶°²×°
+     *  å¼ºåˆ¶ é˜¶çº§å®‰è£…
      *   pm install -r -d
      * @param filePath
      * @return
@@ -230,7 +228,7 @@ public class AppUtils
             ShellUtils.CommandResult result = null;
             if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower
                 result = ShellUtils.execCommand("pm install -r -d " + filePath, false);
-            } else if (Build.VERSION.SDK_INT >= 19) {  //Android 4.4 Ö®ºó
+            } else if (Build.VERSION.SDK_INT >= 19) {  //Android 4.4 ä¹‹å
                 result = ShellUtils.execCommand("pm install -r -d " + filePath, true);
             }
 //            ZLog.iii("--forceInstallSlient--" + filePath + "--result=" + result.successMsg + "--" + result.errorMsg);
@@ -242,14 +240,14 @@ public class AppUtils
     }
 
     /**
-     * uninstall slient¡£<br>
-     * ×îºÃÔÚĞÂ½¨µÄÏß³ÌÖĞÔËĞĞ²¢Í¨¹ıhandler·¢ËÍ°²×°½á¹û¸øÖ÷Ïß³Ì£¬·ñÔò°²×°Ê±¼ä½Ï³¤»áµ¼ÖÂANR¡£<br>
-     * ¾²Ä¬Ğ¶ÔØÌõ¼ş£º<br>
-     * 1¡¢ĞèÒªÏµÍ³Ó¦ÓÃ¡£¾ÍÊÇÏµÍ³root¹ıºó°ÑÎÄ¼ş·Åµ½/system/appÄ¿Â¼ÏÂ¡£/
-     * system/appÄ¿Â¼ÏÂµÄapk¶¼ÊÇÏµÍ³Ó¦ÓÃ¡£<br>
-     * 2¡¢ĞèÒªÔÚAndroidManifest.xmlÎÄ¼şÖĞ×¢²á android.permission.INSTALL_PACKAGES È¨ÏŞ¡£
+     * uninstall slientã€‚<br>
+     * æœ€å¥½åœ¨æ–°å»ºçš„çº¿ç¨‹ä¸­è¿è¡Œå¹¶é€šè¿‡handlerå‘é€å®‰è£…ç»“æœç»™ä¸»çº¿ç¨‹ï¼Œå¦åˆ™å®‰è£…æ—¶é—´è¾ƒé•¿ä¼šå¯¼è‡´ANRã€‚<br>
+     * é™é»˜å¸è½½æ¡ä»¶ï¼š<br>
+     * 1ã€éœ€è¦ç³»ç»Ÿåº”ç”¨ã€‚å°±æ˜¯ç³»ç»Ÿrootè¿‡åæŠŠæ–‡ä»¶æ”¾åˆ°/system/appç›®å½•ä¸‹ã€‚/
+     * system/appç›®å½•ä¸‹çš„apkéƒ½æ˜¯ç³»ç»Ÿåº”ç”¨ã€‚<br>
+     * 2ã€éœ€è¦åœ¨AndroidManifest.xmlæ–‡ä»¶ä¸­æ³¨å†Œ android.permission.INSTALL_PACKAGES æƒé™ã€‚
      *
-     * @param packageName Ğ¶ÔØµÄ°üÃû
+     * @param packageName å¸è½½çš„åŒ…å
      * @return 0 means normal, 1 means file not exist, 2 means other exceptionerror
      */
     public static int unInstallSlient(String packageName) {
@@ -259,10 +257,10 @@ public class AppUtils
     }
 
     /**
-     * ÃèÊö£º°²×°apk.
+     * æè¿°ï¼šå®‰è£…apk.
      *
      * @param context the context
-     * @param file apkÎÄ¼şÂ·¾¶
+     * @param file apkæ–‡ä»¶è·¯å¾„
      */
     public static void installApk(Context context, File file) {
         Intent intent = new Intent();
@@ -274,10 +272,10 @@ public class AppUtils
     }
 
     /**
-     * ÃèÊö£ºĞ¶ÔØ³ÌĞò.
+     * æè¿°ï¼šå¸è½½ç¨‹åº.
      *
      * @param context the context
-     * @param packageName °üÃû
+     * @param packageName åŒ…å
      */
     public static void uninstallApk(Context context,String packageName) {
         Intent intent = new Intent(Intent.ACTION_DELETE);
@@ -287,13 +285,13 @@ public class AppUtils
     }
 
     /**
-     *  ¼ì²âapkÎÄ¼ş²¢°²×°
-     *  1. ¼ì²âÎÄ¼şÍêÕûĞÔ
-     *  2. ¼ì²â°üÃûÊÇ·ñÒ»ÖÂ
-     *  3. ¼ì²â°æ±¾ºÅÊÇ±ÈÕıÔÚÔËĞĞµÄ´ó
-     * @param apkPath   ÎÄ¼şÂ·¾¶
+     *  æ£€æµ‹apkæ–‡ä»¶å¹¶å®‰è£…
+     *  1. æ£€æµ‹æ–‡ä»¶å®Œæ•´æ€§
+     *  2. æ£€æµ‹åŒ…åæ˜¯å¦ä¸€è‡´
+     *  3. æ£€æµ‹ç‰ˆæœ¬å·æ˜¯æ¯”æ­£åœ¨è¿è¡Œçš„å¤§
+     * @param apkPath   æ–‡ä»¶è·¯å¾„
      * @param context
-     * @param isForce   ÊÇ·ñÇ¿ÖÆ°²×° ¼´Ê¹µ±Ç°ÎÄ¼ş°æ±¾ºÅĞ¡ÓÚ ÕıÔÚÔËĞĞµÄ°æ±¾ºÅ
+     * @param isForce   æ˜¯å¦å¼ºåˆ¶å®‰è£… å³ä½¿å½“å‰æ–‡ä»¶ç‰ˆæœ¬å·å°äº æ­£åœ¨è¿è¡Œçš„ç‰ˆæœ¬å·
      */
     public static void checkAndInstallApk(String apkPath, Context context, boolean isForce){
         if(TextUtils.isEmpty(apkPath) || context == null){
@@ -329,11 +327,11 @@ public class AppUtils
     }
 
     /**
-     * ServiceÊÇ·ñÕıÔÚÔËĞĞ
+     * Serviceæ˜¯å¦æ­£åœ¨è¿è¡Œ
      *
      * @param ctx
-     * @param className ÅĞ¶ÏµÄ·şÎñÃû×Ö "com.xxx.xx..XXXService"
-     * @return trueÔÚÔËĞĞ    false²»ÔÚÔËĞĞ
+     * @param className åˆ¤æ–­çš„æœåŠ¡åå­— "com.xxx.xx..XXXService"
+     * @return trueåœ¨è¿è¡Œ    falseä¸åœ¨è¿è¡Œ
      */
     public static boolean isServiceRunning(Context ctx, String className) {
         boolean isRunning = false;
@@ -350,7 +348,7 @@ public class AppUtils
     }
 
     /**
-     * Í£Ö¹·şÎñ.
+     * åœæ­¢æœåŠ¡.
      *
      * @param ctx the ctx
      * @param className the class name
@@ -372,7 +370,7 @@ public class AppUtils
 
 
     /**
-     * »ñÈ¡CPUºËĞÄÊı
+     * è·å–CPUæ ¸å¿ƒæ•°
      * Gets the number of cores available in this device, across all processors.
      * Requires: Ability to peruse the filesystem at "/sys/devices/system/cpu"
      *
@@ -403,7 +401,7 @@ public class AppUtils
     }
 
     /**
-     * ×´Ì¬À¸¸ß¶È
+     * çŠ¶æ€æ é«˜åº¦
      *
      * @param activity
      * @return
@@ -427,7 +425,7 @@ public class AppUtils
     }
 
     /**
-     * ¹Ø±Õ¼üÅÌÊÂ¼ş.
+     * å…³é—­é”®ç›˜äº‹ä»¶.
      *
      * @param context
      */
@@ -439,7 +437,7 @@ public class AppUtils
 //                    .getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 //        }
 
-        /**Òş²ØÈí¼üÅÌ**/
+        /**éšè—è½¯é”®ç›˜**/
         View view = ((Activity) context).getWindow().peekDecorView();
         if (view != null) {
             InputMethodManager inputmanger = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -449,14 +447,14 @@ public class AppUtils
 
 
     /**
-     * install slient¡£<br>
-     * ×îºÃÔÚĞÂ½¨µÄÏß³ÌÖĞÔËĞĞ²¢Í¨¹ıhandler·¢ËÍ°²×°½á¹û¸øÖ÷Ïß³Ì£¬·ñÔò°²×°Ê±¼ä½Ï³¤»áµ¼ÖÂANR¡£<br>
-     * ¾²Ä¬°²×°Ìõ¼ş£º<br>
-     * 1¡¢ĞèÒª°Ñµ±Ç°·½·¨£¨Ò²¼´installSlient·½·¨£©ËùÔÚµÄapk×ö³ÉÏµÍ³Ó¦ÓÃ¡£¾ÍÊÇÏµÍ³root¹ıºó°ÑÎÄ¼ş·Åµ½/system/appÄ¿Â¼ÏÂ¡£/
-     * system/appÄ¿Â¼ÏÂµÄapk¶¼ÊÇÏµÍ³Ó¦ÓÃ¡£<br>
-     * 2¡¢ĞèÒªÔÚAndroidManifest.xmlÎÄ¼şÖĞ×¢²á android.permission.INSTALL_PACKAGES È¨ÏŞ¡£
+     * install slientã€‚<br>
+     * æœ€å¥½åœ¨æ–°å»ºçš„çº¿ç¨‹ä¸­è¿è¡Œå¹¶é€šè¿‡handlerå‘é€å®‰è£…ç»“æœç»™ä¸»çº¿ç¨‹ï¼Œå¦åˆ™å®‰è£…æ—¶é—´è¾ƒé•¿ä¼šå¯¼è‡´ANRã€‚<br>
+     * é™é»˜å®‰è£…æ¡ä»¶ï¼š<br>
+     * 1ã€éœ€è¦æŠŠå½“å‰æ–¹æ³•ï¼ˆä¹Ÿå³installSlientæ–¹æ³•ï¼‰æ‰€åœ¨çš„apkåšæˆç³»ç»Ÿåº”ç”¨ã€‚å°±æ˜¯ç³»ç»Ÿrootè¿‡åæŠŠæ–‡ä»¶æ”¾åˆ°/system/appç›®å½•ä¸‹ã€‚/
+     * system/appç›®å½•ä¸‹çš„apkéƒ½æ˜¯ç³»ç»Ÿåº”ç”¨ã€‚<br>
+     * 2ã€éœ€è¦åœ¨AndroidManifest.xmlæ–‡ä»¶ä¸­æ³¨å†Œ android.permission.INSTALL_PACKAGES æƒé™ã€‚
      *
-     * @param filePath Òª°²×°µÄapkµÄÂ·¾¶¡£
+     * @param filePath è¦å®‰è£…çš„apkçš„è·¯å¾„ã€‚
      * @return 0 means normal, 1 means file not exist, 2 means other exception
      * error
      */
@@ -529,7 +527,7 @@ public class AppUtils
     }
 
     /**
-     * ÊÖ»ú¿¨µÄIMSI    Èç£ºIMSI=460031304158115
+     * æ‰‹æœºå¡çš„IMSI    å¦‚ï¼šIMSI=460031304158115
      *
      * @param context
      * @return
@@ -540,7 +538,7 @@ public class AppUtils
     }
 
     /**
-     * »ñÈ¡ÊÖ»úµÄIMEI    Èç£ºIMEI=866946025546414
+     * è·å–æ‰‹æœºçš„IMEI    å¦‚ï¼šIMEI=866946025546414
      *
      * @param context
      * @return
@@ -551,10 +549,10 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²âµ±µÄÍøÂç£¨WLAN¡¢3G/2G£©×´Ì¬
+     * æ£€æµ‹å½“çš„ç½‘ç»œï¼ˆWLANã€3G/2Gï¼‰çŠ¶æ€
      *
      * @param context Context
-     * @return true ±íÊ¾ÍøÂç¿ÉÓÃ
+     * @return true è¡¨ç¤ºç½‘ç»œå¯ç”¨
      */
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager connectivity = (ConnectivityManager) context
@@ -562,11 +560,11 @@ public class AppUtils
         if (connectivity != null) {
             NetworkInfo info = connectivity.getActiveNetworkInfo();
             if (info != null && info.isConnected()) {
-                // µ±Ç°ÍøÂçÊÇÁ¬½ÓµÄ
+                // å½“å‰ç½‘ç»œæ˜¯è¿æ¥çš„
                 if (info.getState() == NetworkInfo.State.CONNECTED &&
                         info.isAvailable()) {
                     if (ping()) {
-                        return true;    // µ±Ç°ËùÁ¬½ÓµÄÍøÂç¿ÉÓÃ
+                        return true;    // å½“å‰æ‰€è¿æ¥çš„ç½‘ç»œå¯ç”¨
                     }else{
                         return false;
                     }
@@ -577,16 +575,16 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶ÏÊÇ·ñÓĞÍâÍøÁ¬½Ó£¨ÆÕÍ¨·½·¨²»ÄÜÅĞ¶ÏÍâÍøµÄÍøÂçÊÇ·ñÁ¬½Ó£¬±ÈÈçÁ¬½ÓÉÏ¾ÖÓòÍø£©
+     * åˆ¤æ–­æ˜¯å¦æœ‰å¤–ç½‘è¿æ¥ï¼ˆæ™®é€šæ–¹æ³•ä¸èƒ½åˆ¤æ–­å¤–ç½‘çš„ç½‘ç»œæ˜¯å¦è¿æ¥ï¼Œæ¯”å¦‚è¿æ¥ä¸Šå±€åŸŸç½‘ï¼‰
      *
-     * @return ±ØĞë·ÅÔÚÏß³ÌÀïÖ´ĞĞ£¬·ñÔò»áÓöµ½anr
+     * @return å¿…é¡»æ”¾åœ¨çº¿ç¨‹é‡Œæ‰§è¡Œï¼Œå¦åˆ™ä¼šé‡åˆ°anr
      */
     public static final boolean ping() {
         String result = null;
         try {
-            String ip = "www.baidu.com";// ping µÄµØÖ·£¬¿ÉÒÔ»»³ÉÈÎºÎÒ»ÖÖ¿É¿¿µÄÍâÍø
-            Process p = Runtime.getRuntime().exec("ping -c 3 -w 100 " + ip);// pingÍøÖ·3´Î
-            // ¶ÁÈ¡pingµÄÄÚÈİ£¬¿ÉÒÔ²»¼Ó
+            String ip = "www.baidu.com";// ping çš„åœ°å€ï¼Œå¯ä»¥æ¢æˆä»»ä½•ä¸€ç§å¯é çš„å¤–ç½‘
+            Process p = Runtime.getRuntime().exec("ping -c 3 -w 100 " + ip);// pingç½‘å€3æ¬¡
+            // è¯»å–pingçš„å†…å®¹ï¼Œå¯ä»¥ä¸åŠ 
             InputStream input = p.getInputStream();
             BufferedReader in = new BufferedReader(new InputStreamReader(input));
             StringBuffer stringBuffer = new StringBuffer();
@@ -595,7 +593,7 @@ public class AppUtils
                 stringBuffer.append(content);
             }
             Thread.sleep(200);
-            // pingµÄ×´Ì¬
+            // pingçš„çŠ¶æ€
             int status = p.waitFor();
 //            Logcat.iii("---ping---result="+status+" content : " + stringBuffer.toString());
             if (status == 0) {
@@ -614,9 +612,9 @@ public class AppUtils
 //        Logcat.iii("---ping---result false");
         return false;
     }
-    
+
     /**
-     * »ñµÃÒÔÌ«ÍøµÄMacµØÖ·
+     * è·å¾—ä»¥å¤ªç½‘çš„Macåœ°å€
      *
      * @return
      */
@@ -632,12 +630,12 @@ public class AppUtils
             for (; null != str; ) {
                 str = input.readLine();
                 if (str != null) {
-                    macSerial = str.trim();// È¥¿Õ¸ñ
+                    macSerial = str.trim();// å»ç©ºæ ¼
                     break;
                 }
             }
         } catch (IOException ex) {
-            // ¸³ÓèÄ¬ÈÏÖµ
+            // èµ‹äºˆé»˜è®¤å€¼
             ex.printStackTrace();
         }
         macSerial = macSerial.replace(":", "");
@@ -645,7 +643,7 @@ public class AppUtils
     }
 
     /**
-     * »ñµÃwifi macµØÖ·
+     * è·å¾—wifi macåœ°å€
      *
      * @return
      */
@@ -661,22 +659,22 @@ public class AppUtils
             for (; null != str; ) {
                 str = input.readLine();
                 if (str != null) {
-                    macSerial = str.trim();// È¥¿Õ¸ñ
+                    macSerial = str.trim();// å»ç©ºæ ¼
                     break;
                 }
             }
         } catch (IOException ex) {
-            // ¸³ÓèÄ¬ÈÏÖµ
+            // èµ‹äºˆé»˜è®¤å€¼
             ex.printStackTrace();
         }
         return macSerial;
     }
 
     /**
-     * ÉèÖÃÊÖ»úÒÆ¶¯Êı¾İ¿ª¹Ø  Androd 4.2 ĞÂ²â¿ÉÒÔ
+     * è®¾ç½®æ‰‹æœºç§»åŠ¨æ•°æ®å¼€å…³  Androd 4.2 æ–°æµ‹å¯ä»¥
      *
      * @param pContext
-     * @param pBoolean ture ¿ªÆôÒÆ¶¯Êı¾İ£¬false ¹Ø±ÕÒÆ¶¯Êı¾İ
+     * @param pBoolean ture å¼€å¯ç§»åŠ¨æ•°æ®ï¼Œfalse å…³é—­ç§»åŠ¨æ•°æ®
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
     public void setMobileData(Context pContext, boolean pBoolean) {
@@ -694,11 +692,11 @@ public class AppUtils
     }
 
     /**
-     * ·µ»ØÊÖ»úÒÆ¶¯Êı¾İµÄ×´Ì¬
+     * è¿”å›æ‰‹æœºç§»åŠ¨æ•°æ®çš„çŠ¶æ€
      *
      * @param pContext
-     * @param arg      Ä¬ÈÏÌînull
-     * @return true Á¬½Ó false Î´Á¬½Ó
+     * @param arg      é»˜è®¤å¡«null
+     * @return true è¿æ¥ false æœªè¿æ¥
      */
     @SuppressWarnings({"rawtypes", "unchecked"})
     public boolean getMobileDataState(Context pContext, Object[] arg) {
@@ -719,10 +717,10 @@ public class AppUtils
     }
 
     /**
-     * ĞÂÔöÒ»¸öAPN½ÓÈëµã
-     * APN£ºumim2m.njm2mapn»òÕßumim2m.gzm2mapn
-     * MCC£º460
-     * MNC£º06
+     * æ–°å¢ä¸€ä¸ªAPNæ¥å…¥ç‚¹
+     * APNï¼šumim2m.njm2mapnæˆ–è€…umim2m.gzm2mapn
+     * MCCï¼š460
+     * MNCï¼š06
      *
      * @param context
      * @return
@@ -741,8 +739,8 @@ public class AppUtils
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
 
-        values.put("name", apnName); // apnÖĞÎÄÃèÊö
-        values.put("apn", apn); // apnÃû³Æ
+        values.put("name", apnName); // apnä¸­æ–‡æè¿°
+        values.put("apn", apn); // apnåç§°
         values.put("type", "default,supl");
         values.put("numeric", NUMERIC);
         values.put("mcc", NUMERIC.substring(0, 3)); // 460/06
@@ -770,7 +768,7 @@ public class AppUtils
     }
 
     /**
-     * ÂŞÁĞ³öËùÓĞµÄAPN£¨Ä¬ÈÏµÄÓĞºÜ¶àAPN,Ê¹ÓÃÊ±×îºÃ¸ù¾İapn½øĞĞ¹ıÂË£©
+     * ç½—åˆ—å‡ºæ‰€æœ‰çš„APNï¼ˆé»˜è®¤çš„æœ‰å¾ˆå¤šAPN,ä½¿ç”¨æ—¶æœ€å¥½æ ¹æ®apnè¿›è¡Œè¿‡æ»¤ï¼‰
      *
      * @param context
      * @return
@@ -806,7 +804,7 @@ public class AppUtils
     }
 
     /**
-     * ÉèÖÃÄ¬ÈÏµÄ½ÓÈëµã
+     * è®¾ç½®é»˜è®¤çš„æ¥å…¥ç‚¹
      *
      * @param context
      * @param id
@@ -823,7 +821,7 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²éÊÇ·ñ´æÔÚSD¿¨
+     * æ£€æŸ¥æ˜¯å¦å­˜åœ¨SDå¡
      *
      * @return
      */
@@ -837,9 +835,9 @@ public class AppUtils
     }
 
     /**
-     * ×ª»»dipÎªpx£¬±£Ö¤³ß´ç´óĞ¡²»±ä¡£ <br>
-     * Resources¶ÔÏóµÄgetDimension()·½·¨ÆäÊµÓëdip2px()·½·¨ÊÇµÈ¼ÛµÄ£¬ ¶¼¿ÉÒÔ°ÑÒ»¸ödip×ª»¯Îªpx¡£<br>
-     * ±ÈÈç£¬<br>
+     * è½¬æ¢dipä¸ºpxï¼Œä¿è¯å°ºå¯¸å¤§å°ä¸å˜ã€‚ <br>
+     * Resourceså¯¹è±¡çš„getDimension()æ–¹æ³•å…¶å®ä¸dip2px()æ–¹æ³•æ˜¯ç­‰ä»·çš„ï¼Œ éƒ½å¯ä»¥æŠŠä¸€ä¸ªdipè½¬åŒ–ä¸ºpxã€‚<br>
+     * æ¯”å¦‚ï¼Œ<br>
      * float dimen =
      * getResources().getDimension(R.dimen.activity_horizontal_margin);<br>
      * System.out.println("getDimension()" + dimen);<br>
@@ -857,7 +855,7 @@ public class AppUtils
     }
 
     /**
-     * ×ª»»pxÎªdip£¬±£Ö¤³ß´ç´óĞ¡²»±ä¡£
+     * è½¬æ¢pxä¸ºdipï¼Œä¿è¯å°ºå¯¸å¤§å°ä¸å˜ã€‚
      *
      * @param context
      * @param px
@@ -869,9 +867,9 @@ public class AppUtils
     }
 
     /**
-     * ½«pxÖµ×ª»»ÎªspÖµ£¬±£Ö¤ÎÄ×Ö´óĞ¡²»±ä
+     * å°†pxå€¼è½¬æ¢ä¸ºspå€¼ï¼Œä¿è¯æ–‡å­—å¤§å°ä¸å˜
      *
-     * @param pxValue £¨DisplayMetricsÀàÖĞÊôĞÔscaledDensity£©
+     * @param pxValue ï¼ˆDisplayMetricsç±»ä¸­å±æ€§scaledDensityï¼‰
      * @return
      */
     public static int px2sp(Context context, float pxValue) {
@@ -880,9 +878,9 @@ public class AppUtils
     }
 
     /**
-     * ½«spÖµ×ª»»ÎªpxÖµ£¬±£Ö¤ÎÄ×Ö´óĞ¡²»±ä
+     * å°†spå€¼è½¬æ¢ä¸ºpxå€¼ï¼Œä¿è¯æ–‡å­—å¤§å°ä¸å˜
      *
-     * @param spValue £¨DisplayMetricsÀàÖĞÊôĞÔscaledDensity£©
+     * @param spValue ï¼ˆDisplayMetricsç±»ä¸­å±æ€§scaledDensityï¼‰
      * @return
      */
     public static int sp2px(Context context, float spValue) {
@@ -891,23 +889,23 @@ public class AppUtils
     }
 
     /**
-     * »ñÈ¡ÆÁÄ»¸ßµÄ·½·¨¡£·µ»ØÖµÎªpx ¡£
+     * è·å–å±å¹•é«˜çš„æ–¹æ³•ã€‚è¿”å›å€¼ä¸ºpx ã€‚
      *
      * @param context
      */
     public static int getScreenHeight(Context context) {
-        // µÚÒ»ÖÖ
+        // ç¬¬ä¸€ç§
         WindowManager manager = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         Display display = manager.getDefaultDisplay();
-        // ÆÁÄ»¿í£¨ÏñËØ£¬Èç£º480px£©
+        // å±å¹•å®½ï¼ˆåƒç´ ï¼Œå¦‚ï¼š480pxï¼‰
         int width = display.getWidth();
-        // ÆÁÄ»¸ß£¨ÏñËØ£¬Èç£º800px£©
+        // å±å¹•é«˜ï¼ˆåƒç´ ï¼Œå¦‚ï¼š800pxï¼‰
         int height = display.getHeight();
         Log.d("width", String.valueOf(width));
         Log.d("height", String.valueOf(height));
 
-        // µÚ¶şÖÖ
+        // ç¬¬äºŒç§
         DisplayMetrics dm = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(dm);
 
@@ -917,23 +915,23 @@ public class AppUtils
     }
 
     /**
-     * »ñÈ¡ÆÁÄ»¿íµÄ·½·¨¡£
+     * è·å–å±å¹•å®½çš„æ–¹æ³•ã€‚
      *
      * @param context
      */
     public static int getScreenWidth(Context context) {
-        // µÚÒ»ÖÖ
+        // ç¬¬ä¸€ç§
         WindowManager manager = (WindowManager) context
                 .getSystemService(Context.WINDOW_SERVICE);
         Display display = manager.getDefaultDisplay();
-        // ÆÁÄ»¿í£¨ÏñËØ£¬Èç£º480px£©
+        // å±å¹•å®½ï¼ˆåƒç´ ï¼Œå¦‚ï¼š480pxï¼‰
         int width = display.getWidth();
-        // ÆÁÄ»¸ß£¨ÏñËØ£¬Èç£º800px£©
+        // å±å¹•é«˜ï¼ˆåƒç´ ï¼Œå¦‚ï¼š800pxï¼‰
         int height = display.getHeight();
         Log.d("width", String.valueOf(width));
         Log.d("height", String.valueOf(height));
 
-        // µÚ¶şÖÖ
+        // ç¬¬äºŒç§
         DisplayMetrics dm = new DisplayMetrics();
         manager.getDefaultDisplay().getMetrics(dm);
         int width2 = dm.widthPixels;
@@ -942,12 +940,12 @@ public class AppUtils
     }
 
     /**
-     * ÕâÖÖ·½·¨²¢²»ÊÇÊÊºÏËùÓĞ³¡¾°¡£<br>
-     * Ïê¼û£ºhttps://zhidao.baidu.com/question/2266663031632027308.html <br>
+     * è¿™ç§æ–¹æ³•å¹¶ä¸æ˜¯é€‚åˆæ‰€æœ‰åœºæ™¯ã€‚<br>
+     * è¯¦è§ï¼šhttps://zhidao.baidu.com/question/2266663031632027308.html <br>
      * <br>
      *
      * @param view
-     * @return »ñÈ¡¿Ø¼ş¿í µ¥Î» px ¡£
+     * @return è·å–æ§ä»¶å®½ å•ä½ px ã€‚
      */
     public static int getWidth(View view) {
         int w = View.MeasureSpec.makeMeasureSpec(0,
@@ -959,12 +957,12 @@ public class AppUtils
     }
 
     /**
-     * ÕâÖÖ·½·¨²¢²»ÊÇÊÊºÏËùÓĞ³¡¾°¡£<br>
-     * Ïê¼û£ºhttps://zhidao.baidu.com/question/2266663031632027308.html <br>
+     * è¿™ç§æ–¹æ³•å¹¶ä¸æ˜¯é€‚åˆæ‰€æœ‰åœºæ™¯ã€‚<br>
+     * è¯¦è§ï¼šhttps://zhidao.baidu.com/question/2266663031632027308.html <br>
      * <br>
      *
      * @param view
-     * @return »ñÈ¡¿Ø¼ş¸ß µ¥Î» px ¡£
+     * @return è·å–æ§ä»¶é«˜ å•ä½ px ã€‚
      */
     public static int getHeight(View view) {
         int w = View.MeasureSpec.makeMeasureSpec(0,
@@ -976,10 +974,10 @@ public class AppUtils
     }
 
     /**
-     * ÕâÖÖ·½·¨ĞĞÊÇĞĞ£¬µ«ÊÇ²»½¨ÒéÊ¹ÓÃ¡£<br>
-     * ÒòÎªÕâ¸ö»Øµ÷·½·¨»áµ÷ÓÃºÜ¶à´Î,²¢ÇÒ»¬¶¯TextViewµÄÊ±ºòÈÔÈ»»áµ÷ÓÃ,ËùÒÔ²»½¨ÒéÊ¹ÓÃ¡£<br>
-     * ¼û http://sunjilife.blog.51cto.com/3430901/1159896 <br>
-     * »ñÈ¡¿Ø¼ş¿í µ¥Î» px ¡£
+     * è¿™ç§æ–¹æ³•è¡Œæ˜¯è¡Œï¼Œä½†æ˜¯ä¸å»ºè®®ä½¿ç”¨ã€‚<br>
+     * å› ä¸ºè¿™ä¸ªå›è°ƒæ–¹æ³•ä¼šè°ƒç”¨å¾ˆå¤šæ¬¡,å¹¶ä¸”æ»‘åŠ¨TextViewçš„æ—¶å€™ä»ç„¶ä¼šè°ƒç”¨,æ‰€ä»¥ä¸å»ºè®®ä½¿ç”¨ã€‚<br>
+     * è§ http://sunjilife.blog.51cto.com/3430901/1159896 <br>
+     * è·å–æ§ä»¶å®½ å•ä½ px ã€‚
      *
      * @param view
      * @return
@@ -1001,10 +999,10 @@ public class AppUtils
     }
 
     /**
-     * ÕâÖÖ·½·¨ĞĞÊÇĞĞ£¬µ«ÊÇ²»½¨ÒéÊ¹ÓÃ¡£<br>
-     * ÒòÎªÕâ¸ö»Øµ÷·½·¨»áµ÷ÓÃºÜ¶à´Î,²¢ÇÒ»¬¶¯TextViewµÄÊ±ºòÈÔÈ»»áµ÷ÓÃ,ËùÒÔ²»½¨ÒéÊ¹ÓÃ¡£<br>
-     * ¼û http://sunjilife.blog.51cto.com/3430901/1159896 <br>
-     * »ñÈ¡¿Ø¼ş¸ß µ¥Î» px ¡£
+     * è¿™ç§æ–¹æ³•è¡Œæ˜¯è¡Œï¼Œä½†æ˜¯ä¸å»ºè®®ä½¿ç”¨ã€‚<br>
+     * å› ä¸ºè¿™ä¸ªå›è°ƒæ–¹æ³•ä¼šè°ƒç”¨å¾ˆå¤šæ¬¡,å¹¶ä¸”æ»‘åŠ¨TextViewçš„æ—¶å€™ä»ç„¶ä¼šè°ƒç”¨,æ‰€ä»¥ä¸å»ºè®®ä½¿ç”¨ã€‚<br>
+     * è§ http://sunjilife.blog.51cto.com/3430901/1159896 <br>
+     * è·å–æ§ä»¶é«˜ å•ä½ px ã€‚
      *
      * @param view
      * @return
@@ -1027,16 +1025,16 @@ public class AppUtils
     }
 
     /**
-     * Ä¿Ç°À´ËµÊÇ×îºÃµÄ »ñÈ¡¿Ø¼ş¿í¸ßµÄ·½·¨ÁË¡£<br>
-     * ¼û http://sunjilife.blog.51cto.com/3430901/1159896 ¡£ <br>
-     * ¾­ÑéÖ¤¿ÉÓÃ£¡<br>
+     * ç›®å‰æ¥è¯´æ˜¯æœ€å¥½çš„ è·å–æ§ä»¶å®½é«˜çš„æ–¹æ³•äº†ã€‚<br>
+     * è§ http://sunjilife.blog.51cto.com/3430901/1159896 ã€‚ <br>
+     * ç»éªŒè¯å¯ç”¨ï¼<br>
      * <br>
      * <br>
      * <br>
-     * ÁíÒ»ÖÖ¿ÉÓÃµÄ»ñÈ¡¿Ø¼ş¿í¸ßµÄ·½·¨¼û
+     * å¦ä¸€ç§å¯ç”¨çš„è·å–æ§ä»¶å®½é«˜çš„æ–¹æ³•è§
      * http://stackoverflow.com/questions/11946424/getmeasuredheight
-     * -and-width-returning-0-after-measure ¡£<br>
-     * Ö»ÊÇÕâ¸ö·½·¨£¨onWindowFocusChanged()£©Ò²»áÖ´ĞĞ²»Ö¹Ò»´Î¡£
+     * -and-width-returning-0-after-measure ã€‚<br>
+     * åªæ˜¯è¿™ä¸ªæ–¹æ³•ï¼ˆonWindowFocusChanged()ï¼‰ä¹Ÿä¼šæ‰§è¡Œä¸æ­¢ä¸€æ¬¡ã€‚
      *
      * @param view
      * @return
@@ -1065,13 +1063,13 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶ÏÄ³¸ö½çÃæ(className)ÊÇ·ñÔÚÇ°Ì¨ÏÔÊ¾¡£<br>
-     * Ê¹ÓÃ´Ë·½·¨£¬±ØĞë¼ÓÉÏÒÔÏÂÈ¨ÏŞ·ñÔò»á±¨´í¡£¡£<br>
+     * åˆ¤æ–­æŸä¸ªç•Œé¢(className)æ˜¯å¦åœ¨å‰å°æ˜¾ç¤ºã€‚<br>
+     * ä½¿ç”¨æ­¤æ–¹æ³•ï¼Œå¿…é¡»åŠ ä¸Šä»¥ä¸‹æƒé™å¦åˆ™ä¼šæŠ¥é”™ã€‚ã€‚<br>
      * uses-permission android:name="android.permission.GET_TASKS"
      *
-     * @param context   ÓÃÓÚ»ñÈ¡ ActivityManager¹ÜÀíÆ÷¡£
-     * @param className Ä³¸ö½çÃæÃû³Æ¡££¨È«Ãû³Æ£¬±ÈÈç com.android.phone.InCallScreen¡££©
-     * @return true ±íÊ¾ ½çÃæ(className)ÔÚÇ°Ì¨ÏÔÊ¾£¬·ñÔòfalse¡£
+     * @param context   ç”¨äºè·å– ActivityManagerç®¡ç†å™¨ã€‚
+     * @param className æŸä¸ªç•Œé¢åç§°ã€‚ï¼ˆå…¨åç§°ï¼Œæ¯”å¦‚ com.android.phone.InCallScreenã€‚ï¼‰
+     * @return true è¡¨ç¤º ç•Œé¢(className)åœ¨å‰å°æ˜¾ç¤ºï¼Œå¦åˆ™falseã€‚
      */
     public static boolean isForeground(Context context, String className) {
         if (context == null || TextUtils.isEmpty(className)) {
@@ -1092,12 +1090,12 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶ÏÄ³¸öService·şÎñÊÇ·ñÕıÔÚÔËĞĞ¡£<br>
-     * ²Î¿¼×Ô £º http://blog.csdn.net/loongggdroid/article/details/18041147
+     * åˆ¤æ–­æŸä¸ªServiceæœåŠ¡æ˜¯å¦æ­£åœ¨è¿è¡Œã€‚<br>
+     * å‚è€ƒè‡ª ï¼š http://blog.csdn.net/loongggdroid/article/details/18041147
      *
-     * @param mContext    ÓÃÓÚ»ñÈ¡ ActivityManager¹ÜÀíÆ÷¡£
-     * @param serviceName ÊÇ°üÃû+·şÎñµÄÈ«ÀàÃû£¨ÀıÈç£ºnet.loonggg.testbackstage.TestService£©¡£
-     * @return true´ú±íÕıÔÚÔËĞĞ£¬false´ú±í·şÎñÃ»ÓĞÕıÔÚÔËĞĞ ¡£
+     * @param mContext    ç”¨äºè·å– ActivityManagerç®¡ç†å™¨ã€‚
+     * @param serviceName æ˜¯åŒ…å+æœåŠ¡çš„å…¨ç±»åï¼ˆä¾‹å¦‚ï¼šnet.loonggg.testbackstage.TestServiceï¼‰ã€‚
+     * @return trueä»£è¡¨æ­£åœ¨è¿è¡Œï¼Œfalseä»£è¡¨æœåŠ¡æ²¡æœ‰æ­£åœ¨è¿è¡Œ ã€‚
      */
     public static boolean isServiceWork(Context mContext, String serviceName) {
         boolean isWork = false;
@@ -1119,18 +1117,18 @@ public class AppUtils
     }
 
     /**
-     * Í¨¹ısuÃüÁî Ö´ĞĞÒ»Ğ©AndroidÏµÍ³¼¶±ğµÄÃüÁî¡£ <br>
-     * Éè±¸±ØĞëÒÑÆÆ½â(»ñµÃROOTÈ¨ÏŞ). £¨Ò²¼´Éè±¸±ØĞëÒÑÊÂÏÈ»ñÈ¡ROOTÈ¨ÏŞ¡££©<br>
+     * é€šè¿‡suå‘½ä»¤ æ‰§è¡Œä¸€äº›Androidç³»ç»Ÿçº§åˆ«çš„å‘½ä»¤ã€‚ <br>
+     * è®¾å¤‡å¿…é¡»å·²ç ´è§£(è·å¾—ROOTæƒé™). ï¼ˆä¹Ÿå³è®¾å¤‡å¿…é¡»å·²äº‹å…ˆè·å–ROOTæƒé™ã€‚ï¼‰<br>
      *
      * @param cmd
-     * @return ÃüÁîÊÇ·ñÖ´ĞĞ³É¹¦¡£
+     * @return å‘½ä»¤æ˜¯å¦æ‰§è¡ŒæˆåŠŸã€‚
      */
     public static boolean execSystemCMD(String cmd) {
         Process process = null;
         DataOutputStream os = null;
         boolean flag = false;
         try {
-            process = Runtime.getRuntime().exec("su"); // ÇĞ»»µ½rootÕÊºÅ
+            process = Runtime.getRuntime().exec("su"); // åˆ‡æ¢åˆ°rootå¸å·
             os = new DataOutputStream(process.getOutputStream());
             os.writeBytes(cmd + "\n");
             os.writeBytes("exit\n");
@@ -1150,7 +1148,7 @@ public class AppUtils
         return flag;
     }
 
-    // LongÊ±¼ä¸ñÊ½»¯
+    // Longæ—¶é—´æ ¼å¼åŒ–
     public static String getYMDHMSFromLong(Long date) {
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         java.util.Date dt = new java.util.Date(date);
@@ -1158,7 +1156,7 @@ public class AppUtils
         return sDateTime;
     }
 
-    // LongÊ±¼ä¸ñÊ½»¯
+    // Longæ—¶é—´æ ¼å¼åŒ–
     public static String getY_SFromLong(Long date) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         java.util.Date dt = new java.util.Date(date);
@@ -1167,9 +1165,9 @@ public class AppUtils
     }
 
     /**
-     * LongÊ±¼ä¸ñÊ½»¯
-     * @param times     Èç£º1527159637000
-     * @param template    Èç£ºyyyy-MM-dd HH:mm:ss
+     * Longæ—¶é—´æ ¼å¼åŒ–
+     * @param times     å¦‚ï¼š1527159637000
+     * @param template    å¦‚ï¼šyyyy-MM-dd HH:mm:ss
      * @return          2018-05-24 19:00:37
      */
     public static String getDateStrFromLong(long times, String template) {
@@ -1183,11 +1181,11 @@ public class AppUtils
 
     /**
      * Gets the state of a volume via its mountpoint.<br>
-     * note:mountPoint¹ÒÔØµã£¨±ÈÈç£¬SD¿¨£©µÄ¹ÒÔØ×´Ì¬¸Ä±äÊ±£¬²»ÄÜÁ¢¿Ì»ñÈ¡µ½mountPoint¹ÒÔØµã£¨±ÈÈç£¬SD¿¨£©µÄ¹ÒÔØ×´Ì¬¡£
+     * note:mountPointæŒ‚è½½ç‚¹ï¼ˆæ¯”å¦‚ï¼ŒSDå¡ï¼‰çš„æŒ‚è½½çŠ¶æ€æ”¹å˜æ—¶ï¼Œä¸èƒ½ç«‹åˆ»è·å–åˆ°mountPointæŒ‚è½½ç‚¹ï¼ˆæ¯”å¦‚ï¼ŒSDå¡ï¼‰çš„æŒ‚è½½çŠ¶æ€ã€‚
      *
      * @param context
-     * @param mountPoint ¹ÒÔØµã¾ø¶ÔÂ·¾¶¡£<br>
-     *                   /storage/sdcard¡¢/storage/extsd µÈ¹ÒÔØµã¡£
+     * @param mountPoint æŒ‚è½½ç‚¹ç»å¯¹è·¯å¾„ã€‚<br>
+     *                   /storage/sdcardã€/storage/extsd ç­‰æŒ‚è½½ç‚¹ã€‚
      */
     public static String getVolumeState(Context context, String mountPoint) {
         String state = Environment.MEDIA_REMOVED;
@@ -1198,7 +1196,7 @@ public class AppUtils
             state = (String) StorageManager.class.getMethod("getVolumeState",
                     String.class).invoke(sm, mountPoint);
 
-            Log.i("MSG", mountPoint + "Ä¿Â¼µÄ×´Ì¬  " + state);
+            Log.i("MSG", mountPoint + "ç›®å½•çš„çŠ¶æ€  " + state);
 
         } catch (Exception e) {
             // never reach.
@@ -1208,10 +1206,10 @@ public class AppUtils
     }
 
     /**
-     * ÓÃÀ´±È½ÏÔËÓªÊ±¼ä
+     * ç”¨æ¥æ¯”è¾ƒè¿è¥æ—¶é—´
      *
-     * @param operaTime Èç¡±06:00-21:00" »òÕß"22:00-06:00" ÕâÖÖ
-     * @return ÔÚÔËÓªÊ±¼äÄÚÔò·µ»Øtrue, ·ñÔò·µ»Øfalse
+     * @param operaTime å¦‚â€06:00-21:00" æˆ–è€…"22:00-06:00" è¿™ç§
+     * @return åœ¨è¿è¥æ—¶é—´å†…åˆ™è¿”å›true, å¦åˆ™è¿”å›false
      */
     public static boolean isOutOfDate(String operaTime) {
         boolean result = false;
@@ -1220,35 +1218,35 @@ public class AppUtils
             opratorTimes = operaTime.split("-");
         }
         if (opratorTimes.length != 2) return false;
-        Calendar date = Calendar.getInstance();//»ñÈ¡µ±Ç°Ê±¼ä
+        Calendar date = Calendar.getInstance();//è·å–å½“å‰æ—¶é—´
         Calendar startTime = (Calendar) date.clone();
         Calendar endTime = (Calendar) date.clone();
 
         String[] startTimes = opratorTimes[0].split(":");
         if (startTimes.length != 2) return false;
-        startTime.set(Calendar.HOUR_OF_DAY, Integer.valueOf(startTimes[0]));//½«Ò»¸öÊ±¼äÉèÎªµ±Ç°8:00
+        startTime.set(Calendar.HOUR_OF_DAY, Integer.valueOf(startTimes[0]));//å°†ä¸€ä¸ªæ—¶é—´è®¾ä¸ºå½“å‰8:00
         startTime.set(Calendar.MINUTE, Integer.valueOf(startTimes[1]));
         startTime.set(Calendar.SECOND, 0);
 
         String[] endTimes = opratorTimes[1].split(":");
         if (endTimes.length != 2) return false;
-        endTime.set(Calendar.HOUR_OF_DAY, Integer.valueOf(endTimes[0]));//½«Ò»¸öÊ±¼äÉèÎªµ±Ç°8:00
+        endTime.set(Calendar.HOUR_OF_DAY, Integer.valueOf(endTimes[0]));//å°†ä¸€ä¸ªæ—¶é—´è®¾ä¸ºå½“å‰8:00
         endTime.set(Calendar.MINUTE, Integer.valueOf(endTimes[1]));
         endTime.set(Calendar.SECOND, 0);
 
-        if (Integer.valueOf(endTimes[0]) < Integer.valueOf(startTimes[0])) {  //ÊÊÓÃÓÚ 22:00-06:00  Ò¹°à³µ
+        if (Integer.valueOf(endTimes[0]) < Integer.valueOf(startTimes[0])) {  //é€‚ç”¨äº 22:00-06:00  å¤œç­è½¦
             System.out.println("endHour < startHour");
             startTime.set(Calendar.DAY_OF_MONTH, date.get(Calendar.DAY_OF_MONTH) - 1);
         }
-        result = (date.after(startTime) && date.before(endTime));//ÀûÓÃbeforeºÍafterÅĞ¶Ï
+        result = (date.after(startTime) && date.before(endTime));//åˆ©ç”¨beforeå’Œafteråˆ¤æ–­
         return result;
     }
 
     /**
-     * ¶ÁÈ¡Í¼Æ¬ÊôĞÔ£ºĞı×ªµÄ½Ç¶È
+     * è¯»å–å›¾ç‰‡å±æ€§ï¼šæ—‹è½¬çš„è§’åº¦
      *
-     * @param path Í¼Æ¬¾ø¶ÔÂ·¾¶
-     * @return degreeĞı×ªµÄ½Ç¶È
+     * @param path å›¾ç‰‡ç»å¯¹è·¯å¾„
+     * @return degreeæ—‹è½¬çš„è§’åº¦
      */
     public static int readPictureDegree(String path) {
         int degree = 0;
@@ -1274,11 +1272,11 @@ public class AppUtils
     }
 
     /**
-     * Ğı×ªÍ¼Æ¬£¬Ê¹Í¼Æ¬±£³ÖÕıÈ·µÄ·½Ïò¡£
+     * æ—‹è½¬å›¾ç‰‡ï¼Œä½¿å›¾ç‰‡ä¿æŒæ­£ç¡®çš„æ–¹å‘ã€‚
      *
-     * @param bitmap  Ô­Ê¼Í¼Æ¬
-     * @param degrees Ô­Ê¼Í¼Æ¬µÄ½Ç¶È
-     * @return Bitmap Ğı×ªºóµÄÍ¼Æ¬
+     * @param bitmap  åŸå§‹å›¾ç‰‡
+     * @param degrees åŸå§‹å›¾ç‰‡çš„è§’åº¦
+     * @return Bitmap æ—‹è½¬åçš„å›¾ç‰‡
      */
     public static Bitmap rotateBitmap(Bitmap bitmap, int degrees) {
         if (degrees == 0 || null == bitmap) {
@@ -1294,28 +1292,28 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²é  str ÊÇ·ñHH:mm¸ñÊ½
+     * æ£€æŸ¥  str æ˜¯å¦HH:mmæ ¼å¼
      *
      * @param str
      * @return
      */
     public static boolean isValidDate(String str) {
         boolean convertSuccess = true;
-        // Ö¸¶¨ÈÕÆÚ¸ñÊ½ÎªËÄÎ»Äê/Á½Î»ÔÂ·İ/Á½Î»ÈÕÆÚ£¬×¢Òâyyyy/MM/ddÇø·Ö´óĞ¡Ğ´£»
+        // æŒ‡å®šæ—¥æœŸæ ¼å¼ä¸ºå››ä½å¹´/ä¸¤ä½æœˆä»½/ä¸¤ä½æ—¥æœŸï¼Œæ³¨æ„yyyy/MM/ddåŒºåˆ†å¤§å°å†™ï¼›
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         try {
-            // ÉèÖÃlenientÎªfalse. ·ñÔòSimpleDateFormat»á±È½Ï¿íËÉµØÑéÖ¤ÈÕÆÚ£¬±ÈÈç2007/02/29»á±»½ÓÊÜ£¬²¢×ª»»³É2007/03/01
+            // è®¾ç½®lenientä¸ºfalse. å¦åˆ™SimpleDateFormatä¼šæ¯”è¾ƒå®½æ¾åœ°éªŒè¯æ—¥æœŸï¼Œæ¯”å¦‚2007/02/29ä¼šè¢«æ¥å—ï¼Œå¹¶è½¬æ¢æˆ2007/03/01
             format.setLenient(false);
             format.parse(str);
         } catch (ParseException e) {
             e.printStackTrace();
-// Èç¹ûthrow java.text.ParseException»òÕßNullPointerException£¬¾ÍËµÃ÷¸ñÊ½²»¶Ô
+// å¦‚æœthrow java.text.ParseExceptionæˆ–è€…NullPointerExceptionï¼Œå°±è¯´æ˜æ ¼å¼ä¸å¯¹
             convertSuccess = false;
         }
         return convertSuccess;
     }
 
-    // ½«×Ö·û´®×ªÎªÕıÕûĞÎ
+    // å°†å­—ç¬¦ä¸²è½¬ä¸ºæ­£æ•´å½¢
     public static int StrToUInteger(String str) {
         int result = 0;
         try {
@@ -1329,7 +1327,7 @@ public class AppUtils
         return result;
     }
 
-    // ½«×Ö·û´®×ªÎªÕıÕûĞÎ
+    // å°†å­—ç¬¦ä¸²è½¬ä¸ºæ­£æ•´å½¢
     public static int StrToUInteger(String str, int def) {
         int result = def;
         try {
@@ -1344,7 +1342,7 @@ public class AppUtils
     }
 
     /**
-     * ½« string ÈÕÆÚ ×ª»¯³É date
+     * å°† string æ—¥æœŸ è½¬åŒ–æˆ date
      *
      * @param str
      * @return
@@ -1353,7 +1351,7 @@ public class AppUtils
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         try {
-            // ÉèÖÃlenientÎªfalse. ·ñÔòSimpleDateFormat»á±È½Ï¿íËÉµØÑéÖ¤ÈÕÆÚ£¬±ÈÈç2007/02/29»á±»½ÓÊÜ£¬²¢×ª»»³É2007/03/01
+            // è®¾ç½®lenientä¸ºfalse. å¦åˆ™SimpleDateFormatä¼šæ¯”è¾ƒå®½æ¾åœ°éªŒè¯æ—¥æœŸï¼Œæ¯”å¦‚2007/02/29ä¼šè¢«æ¥å—ï¼Œå¹¶è½¬æ¢æˆ2007/03/01
             df.setLenient(false);
             date = df.parse(str);
         } catch (ParseException e) {
@@ -1364,7 +1362,7 @@ public class AppUtils
     }
 
     /**
-     * ÉèÖÃÒôÁ¿
+     * è®¾ç½®éŸ³é‡
      *
      * @param context
      * @param intVoice 0-15
@@ -1380,7 +1378,7 @@ public class AppUtils
     }
 
     /**
-     * »ñÈ¡ÒôÁ¿
+     * è·å–éŸ³é‡
      *
      * @param context
      * @return
@@ -1391,7 +1389,7 @@ public class AppUtils
     }
 
     /**
-     * »ñÈ¡µ±Ç°Ê±¼ä¶Î ÒôÁ¿Öµ
+     * è·å–å½“å‰æ—¶é—´æ®µ éŸ³é‡å€¼
      *
      * @param voiceRule "01:00-08:00=2, 08:00-12:00=8, 19:00-20:00=3"
      */
@@ -1423,7 +1421,7 @@ public class AppUtils
      * get file md5
      *
      * @param file
-     * @return ×¢£º·Ö¶à´Î½«Ò»¸öÎÄ¼ş¶ÁÈë£¬¶ÔÓÚ´óĞÍÎÄ¼ş¶øÑÔ£¬±È½ÏÍÆ¼öÕâÖÖ·½Ê½£¬Õ¼ÓÃÄÚ´æ±È½ÏÉÙ
+     * @return æ³¨ï¼šåˆ†å¤šæ¬¡å°†ä¸€ä¸ªæ–‡ä»¶è¯»å…¥ï¼Œå¯¹äºå¤§å‹æ–‡ä»¶è€Œè¨€ï¼Œæ¯”è¾ƒæ¨èè¿™ç§æ–¹å¼ï¼Œå ç”¨å†…å­˜æ¯”è¾ƒå°‘
      */
     public static String getFileMD5(File file) {
         if (!file.isFile()) {
@@ -1464,7 +1462,7 @@ public class AppUtils
     }
 
     /**
-     *  ÓÉÎÄ¼ş»ñÈ¡ÎÄ¼şÀàĞÍ
+     *  ç”±æ–‡ä»¶è·å–æ–‡ä»¶ç±»å‹
      * @param file
      * @return  1= .apk   2 = .png  3 = .jpg 4 = .mp4
      */
@@ -1474,7 +1472,7 @@ public class AppUtils
             String filePath = file.getAbsolutePath();
             int dotIndex = filePath.lastIndexOf(".");
             if(dotIndex<0){
-                fileType = -1; //·ÀÖ¹Ã»ÓĞÀ©Õ¹ÃûµÄÎÄ¼ş
+                fileType = -1; //é˜²æ­¢æ²¡æœ‰æ‰©å±•åçš„æ–‡ä»¶
             }
             String filePathSuffix = filePath.substring(dotIndex);
             switch (filePathSuffix){
@@ -1496,9 +1494,9 @@ public class AppUtils
     }
 
     /**
-     *  ÓÉÎÄ¼şÀàĞÍ »ñÈ¡ºó×º
+     *  ç”±æ–‡ä»¶ç±»å‹ è·å–åç¼€
      * @param fileType
-     * @return  Ê®Áù½øÖÆ 01 = .apk  02 = .png  03 = .jpg 04 = .mp4
+     * @return  åå…­è¿›åˆ¶ 01 = .apk  02 = .png  03 = .jpg 04 = .mp4
      */
     public static String getFileSuffix(String fileType){
         String fileSuffix = "";
@@ -1523,11 +1521,11 @@ public class AppUtils
     }
 
     /**
-     * ·µ»Ø×Ö·û´®ÈÕÆÚ
+     * è¿”å›å­—ç¬¦ä¸²æ—¥æœŸ
      *
-     * @param time    Èç£º System.currentTimeMillis()
-     * @param pattern Èç£º HH:mm
-     * @return ·µ»Ø×Ö·û´®Ê±¼ä  HH:mm
+     * @param time    å¦‚ï¼š System.currentTimeMillis()
+     * @param pattern å¦‚ï¼š HH:mm
+     * @return è¿”å›å­—ç¬¦ä¸²æ—¶é—´  HH:mm
      */
     public static String getStringData(long time, String pattern) {
         SimpleDateFormat df = new SimpleDateFormat(pattern);
@@ -1537,16 +1535,16 @@ public class AppUtils
     }
 
     /**
-     * ½« string ÈÕÆÚ ×ª»¯³É long
+     * å°† string æ—¥æœŸ è½¬åŒ–æˆ long
      *
-     * @param str    Èç"2018-09-04 14:46:44"
-     * @param format Èç "yyyy-MM-dd HH:mm:ss"
+     * @param str    å¦‚"2018-09-04 14:46:44"
+     * @param format å¦‚ "yyyy-MM-dd HH:mm:ss"
      * @return
      */
     public static long getLongDateFormString(String str, String format) {
         try {
             SimpleDateFormat df = new SimpleDateFormat(format);
-            // ÉèÖÃlenientÎªfalse. ·ñÔòSimpleDateFormat»á±È½Ï¿íËÉµØÑéÖ¤ÈÕÆÚ£¬±ÈÈç2007/02/29»á±»½ÓÊÜ£¬²¢×ª»»³É2007/03/01
+            // è®¾ç½®lenientä¸ºfalse. å¦åˆ™SimpleDateFormatä¼šæ¯”è¾ƒå®½æ¾åœ°éªŒè¯æ—¥æœŸï¼Œæ¯”å¦‚2007/02/29ä¼šè¢«æ¥å—ï¼Œå¹¶è½¬æ¢æˆ2007/03/01
             df.setLenient(false);
             Date date = df.parse(str);
             return date.getTime();
@@ -1557,7 +1555,7 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°Ê±¼ä ÊÇ·ñÔÚ startTime Óë endTime Ö®¼ä,  ÔÚ·µ»Øtrue, ·ñÔò·µ»Øfalse
+     * åˆ¤æ–­å½“å‰æ—¶é—´ æ˜¯å¦åœ¨ startTime ä¸ endTime ä¹‹é—´,  åœ¨è¿”å›true, å¦åˆ™è¿”å›false
      *
      * @param startTime 14:46
      * @param endTime   19:46
@@ -1576,7 +1574,7 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°Ê±¼ä ÊÇ·ñ  15:27~15:27 Ö®¼ä,  ÔÚ·µ»Øtrue, ·ñÔò·µ»Øfalse
+     * åˆ¤æ–­å½“å‰æ—¶é—´ æ˜¯å¦  15:27~15:27 ä¹‹é—´,  åœ¨è¿”å›true, å¦åˆ™è¿”å›false
      *
      * @param time 19:46
      * @return boolean
@@ -1606,7 +1604,7 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°Ê±¼ä ÊÇ·ñÔÚ startTime Óë endTime Ö®¼ä,  ÔÚ·µ»Øtrue, ·ñÔò·µ»Øfalse
+     * åˆ¤æ–­å½“å‰æ—¶é—´ æ˜¯å¦åœ¨ startTime ä¸ endTime ä¹‹é—´,  åœ¨è¿”å›true, å¦åˆ™è¿”å›false
      *
      * @param startTime 14:46:30
      * @param endTime   19:46:20
@@ -1625,7 +1623,7 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶Ïµ±Ç°Ê±¼ä ÊÇ·ñÔÚ startTime Óë endTime Ö®¼ä,  ÔÚ·µ»Øtrue, ·ñÔò·µ»Øfalse
+     * åˆ¤æ–­å½“å‰æ—¶é—´ æ˜¯å¦åœ¨ startTime ä¸ endTime ä¹‹é—´,  åœ¨è¿”å›true, å¦åˆ™è¿”å›false
      *
      * @param startTime 2019-06-03
      * @param endTime   2019-06-21
@@ -1648,10 +1646,10 @@ public class AppUtils
     }
 
     /**
-     *   ÅĞ¶Ï time1 ÊÇ·ñĞ¡ÓÚ time2
+     *   åˆ¤æ–­ time1 æ˜¯å¦å°äº time2
      * @param time1  2019-06-03
      * @param time2  2019-06-21
-     * @return    Èç£º2019-06-03 Ğ¡ÓÚ 2019-06-21 ·µ»Ø true
+     * @return    å¦‚ï¼š2019-06-03 å°äº 2019-06-21 è¿”å› true
      */
     public static boolean isLessThanDateYMD(String time1, String time2){
         try {
@@ -1671,9 +1669,9 @@ public class AppUtils
     }
 
     /**
-     *  ÅĞ¶Ï time1 ÊÇ·ñĞ¡ÓÚµ±Ç° Ê±¼ä
+     *  åˆ¤æ–­ time1 æ˜¯å¦å°äºå½“å‰ æ—¶é—´
      * @param time1  2020-07-09
-     * @return  ±ÈÈç µ±Ç°Ê±¼ä 2020-07-09 17:27:00  time1Îª 2020-07-10 »ò 2020-07-09,Ôò·µ»Øtrue
+     * @return  æ¯”å¦‚ å½“å‰æ—¶é—´ 2020-07-09 17:27:00  time1ä¸º 2020-07-10 æˆ– 2020-07-09,åˆ™è¿”å›true
      */
     public static boolean isLessThanCurrentDate(String time1){
         try {
@@ -1693,7 +1691,7 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²é  str ÊÇ·ñHH:mm¸ñÊ½
+     * æ£€æŸ¥  str æ˜¯å¦HH:mmæ ¼å¼
      *
      * @param str
      * @return
@@ -1701,23 +1699,23 @@ public class AppUtils
     public static boolean isValidHHmm(String str) {
         if (TextUtils.isEmpty(str)) return false;
         boolean convertSuccess = true;
-        // Ö¸¶¨ÈÕÆÚ¸ñÊ½ÎªËÄÎ»Äê/Á½Î»ÔÂ·İ/Á½Î»ÈÕÆÚ£¬×¢Òâyyyy/MM/ddÇø·Ö´óĞ¡Ğ´£»
+        // æŒ‡å®šæ—¥æœŸæ ¼å¼ä¸ºå››ä½å¹´/ä¸¤ä½æœˆä»½/ä¸¤ä½æ—¥æœŸï¼Œæ³¨æ„yyyy/MM/ddåŒºåˆ†å¤§å°å†™ï¼›
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         try {
-            // ÉèÖÃlenientÎªfalse. ·ñÔòSimpleDateFormat»á±È½Ï¿íËÉµØÑéÖ¤ÈÕÆÚ£¬±ÈÈç2007/02/29»á±»½ÓÊÜ£¬²¢×ª»»³É2007/03/01
+            // è®¾ç½®lenientä¸ºfalse. å¦åˆ™SimpleDateFormatä¼šæ¯”è¾ƒå®½æ¾åœ°éªŒè¯æ—¥æœŸï¼Œæ¯”å¦‚2007/02/29ä¼šè¢«æ¥å—ï¼Œå¹¶è½¬æ¢æˆ2007/03/01
             format.setLenient(false);
             format.parse(str);
         } catch (Exception e) {
             e.printStackTrace();
-            // Èç¹ûthrow java.text.ParseException»òÕßNullPointerException£¬¾ÍËµÃ÷¸ñÊ½²»¶Ô
+            // å¦‚æœthrow java.text.ParseExceptionæˆ–è€…NullPointerExceptionï¼Œå°±è¯´æ˜æ ¼å¼ä¸å¯¹
             convertSuccess = false;
         }
         return convertSuccess;
     }
 
     /**
-     *   ¸ñÊ½»¯ HH:mm
-     * @param str  Èç  1:2  ·µ»Ø 01:02
+     *   æ ¼å¼åŒ– HH:mm
+     * @param str  å¦‚  1:2  è¿”å› 01:02
      * @return
      */
     public static String formatHHmm(String str){
@@ -1735,52 +1733,52 @@ public class AppUtils
 
     public static boolean isEnglish(String str) {
         if (TextUtils.isEmpty(str)) return false;
-//        //¡¾³ıÓ¢ÎÄºÍÊı×ÖÍâÎŞÆäËû×Ö·û(Ö»ÓĞÓ¢ÎÄÊı×ÖµÄ×Ö·û´®)¡¿·µ»Øtrue ·ñÔòfalse
+//        //ã€é™¤è‹±æ–‡å’Œæ•°å­—å¤–æ— å…¶ä»–å­—ç¬¦(åªæœ‰è‹±æ–‡æ•°å­—çš„å­—ç¬¦ä¸²)ã€‘è¿”å›true å¦åˆ™false
         return str.matches("[a-zA-Z0-9]+");
     }
 
     /**
-     *  ÅĞ¶Ï×Ö·û´®ÊÇ·ñº¬ÓĞ Ó¢ÎÄ×ÖÄ¸»òÊı×Ö
+     *  åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦å«æœ‰ è‹±æ–‡å­—æ¯æˆ–æ•°å­—
      * @param str
      * @return
      */
     public static boolean hasEnglish(String str){
-//        //¡¾º¬ÓĞÓ¢ÎÄ¡¿true
+//        //ã€å«æœ‰è‹±æ–‡ã€‘true
         String regex1 = ".*[a-zA-z].*";
         boolean result3 = str.matches(regex1);
-//        //¡¾º¬ÓĞÊı×Ö¡¿true
+//        //ã€å«æœ‰æ•°å­—ã€‘true
         String regex2 = ".*[0-9].*";
         boolean result4 = str.matches(regex2);
         return result3 || result4;
     }
 
     /**
-     * //ÅĞ¶ÏÊÇ·ñÎª´¿ÖĞÎÄ£¬²»ÊÇ·µ»Øfalse
+     * //åˆ¤æ–­æ˜¯å¦ä¸ºçº¯ä¸­æ–‡ï¼Œä¸æ˜¯è¿”å›false
      *
      * @param str
      * @return
      */
     public static boolean isChinese(String str) {
         if (str==null || str.length() == 0) return false;
-//        //¡¾È«ÎªÓ¢ÎÄ¡¿·µ»Øtrue  ·ñÔòfalse
+//        //ã€å…¨ä¸ºè‹±æ–‡ã€‘è¿”å›true  å¦åˆ™false
 //        boolean result1 = str.matches("[a-zA-Z]+");
-//        //¡¾È«ÎªÊı×Ö¡¿·µ»Øtrue
+//        //ã€å…¨ä¸ºæ•°å­—ã€‘è¿”å›true
 //        Boolean result6 = str.matches("[0-9]+");
-//        //¡¾³ıÓ¢ÎÄºÍÊı×ÖÍâÎŞÆäËû×Ö·û(Ö»ÓĞÓ¢ÎÄÊı×ÖµÄ×Ö·û´®)¡¿·µ»Øtrue ·ñÔòfalse
+//        //ã€é™¤è‹±æ–‡å’Œæ•°å­—å¤–æ— å…¶ä»–å­—ç¬¦(åªæœ‰è‹±æ–‡æ•°å­—çš„å­—ç¬¦ä¸²)ã€‘è¿”å›true å¦åˆ™false
 //        boolean result2 = str.matches("[a-zA-Z0-9]+");
-//        //¡¾º¬ÓĞÓ¢ÎÄ¡¿true
+//        //ã€å«æœ‰è‹±æ–‡ã€‘true
         String regex1 = ".*[a-zA-z].*";
 //        boolean result3 = str.matches(regex1);
-//        //¡¾º¬ÓĞÊı×Ö¡¿true
+//        //ã€å«æœ‰æ•°å­—ã€‘true
 //        String regex2 = ".*[0-9].*";
 //        boolean result4 = str.matches(regex2);
-        //ÅĞ¶ÏÊÇ·ñÎª´¿ÖĞÎÄ£¬²»ÊÇ·µ»Øfalse
+        //åˆ¤æ–­æ˜¯å¦ä¸ºçº¯ä¸­æ–‡ï¼Œä¸æ˜¯è¿”å›false
         String regex3 = "[\\u4e00-\\u9fa5]+";
         return str.matches(regex3);
     }
 
     /**
-     * ÅĞ¶Ï×Ö·û´®ÊÇº¬ÓĞÖĞÎÄ£¬²»ÊÇ·µ»Øfalse
+     * åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å«æœ‰ä¸­æ–‡ï¼Œä¸æ˜¯è¿”å›false
      *
      * @param str
      * @return
@@ -1791,7 +1789,7 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²â value ÊÇ·ñ boolean Öµ£¬
+     * æ£€æµ‹ value æ˜¯å¦ boolean å€¼ï¼Œ
      *
      * @param value
      * @return
@@ -1806,7 +1804,7 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²â value ÊÇ·ñÎª intĞÍÊı¾İ
+     * æ£€æµ‹ value æ˜¯å¦ä¸º intå‹æ•°æ®
      *
      * @param value
      * @return
@@ -1825,7 +1823,7 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²éIP:Port ÊÇ·ñºÏ·¨ Èç£º 192.168.1.2:8080
+     * æ£€æŸ¥IP:Port æ˜¯å¦åˆæ³• å¦‚ï¼š 192.168.1.2:8080
      *
      * @param value
      * @return
@@ -1847,9 +1845,9 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²âÊÇ·ñÎªºÏ·¨µÄÊ±¼ä¶Î
+     * æ£€æµ‹æ˜¯å¦ä¸ºåˆæ³•çš„æ—¶é—´æ®µ
      *
-     * @param value Èç£º"14:27~15:27"
+     * @param value å¦‚ï¼š"14:27~15:27"
      * @return
      */
     public static boolean isValidTimes(String value) {
@@ -1894,19 +1892,19 @@ public class AppUtils
     }
 
     /**
-     * ¼ì²éÊÇ·ñÎªºÏ·¨µÄip Èç 192.168.1.1
+     * æ£€æŸ¥æ˜¯å¦ä¸ºåˆæ³•çš„ip å¦‚ 192.168.1.1
      *
      * @param text
      * @return
      */
     public static boolean ipCheck(String text) {
         if (!TextUtils.isEmpty(text)) {
-            // ¶¨ÒåÕıÔò±í´ïÊ½
+            // å®šä¹‰æ­£åˆ™è¡¨è¾¾å¼
             String regex = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\."
                     + "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\."
                     + "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\."
                     + "(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)$";
-            // ÅĞ¶ÏipµØÖ·ÊÇ·ñÓëÕıÔò±í´ïÊ½Æ¥Åä
+            // åˆ¤æ–­ipåœ°å€æ˜¯å¦ä¸æ­£åˆ™è¡¨è¾¾å¼åŒ¹é…
             if (text.matches(regex)) {
                 return true;
             } else {
@@ -1930,12 +1928,12 @@ public class AppUtils
     }
 
     /**
-     * ÅĞ¶ÏÄ³Ò»Ê±¼äÊÇ·ñÔÚÒ»¸öÇø¼äÄÚ
+     * åˆ¤æ–­æŸä¸€æ—¶é—´æ˜¯å¦åœ¨ä¸€ä¸ªåŒºé—´å†…
      *
-     * @param sourceTime Ê±¼äÇø¼ä,°ë±ÕºÏ,Èç[10:00-20:00)
-     * @param curTime    ĞèÒªÅĞ¶ÏµÄÊ±¼ä Èç10:00
-     * @return true ÔÚ£»  false ²»ÔÚ
-     * @throws // isInTime("16:49-16:43","16:50") ·µ»Øtrue
+     * @param sourceTime æ—¶é—´åŒºé—´,åŠé—­åˆ,å¦‚[10:00-20:00)
+     * @param curTime    éœ€è¦åˆ¤æ–­çš„æ—¶é—´ å¦‚10:00
+     * @return true åœ¨ï¼›  false ä¸åœ¨
+     * @throws // isInTime("16:49-16:43","16:50") è¿”å›true
      */
     public static boolean isInTime(String sourceTime, String curTime) {
         if (sourceTime == null || !sourceTime.contains("-") || !sourceTime.contains(":")) {
@@ -1973,11 +1971,11 @@ public class AppUtils
     }
 
     /**
-     *  ¼ì²âÊÇÓòÃû»¹ÊÇip
-     *  ÈçisDomainOrIp("192.168.3.3:80")  isDomainOrIp("192.168.3.3")        ·µ»Øfalse
-     *  isDomainOrIp("www.baidu.com:80")  isDomainOrIp("www.baidu.com")   ·µ»Øtrue
+     *  æ£€æµ‹æ˜¯åŸŸåè¿˜æ˜¯ip
+     *  å¦‚isDomainOrIp("192.168.3.3:80")  isDomainOrIp("192.168.3.3")        è¿”å›false
+     *  isDomainOrIp("www.baidu.com:80")  isDomainOrIp("www.baidu.com")   è¿”å›true
      * @param ipPort
-     * @return  ÓòÃû ·µ»Øtrue,  ip·µ»Øfalse
+     * @return  åŸŸå è¿”å›true,  ipè¿”å›false
      */
     public static boolean isDomainOrIp(String ipPort) {
         try {
@@ -1996,7 +1994,7 @@ public class AppUtils
         } catch (MalformedURLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } catch (UnknownHostException e) {  //ÎŞÍøÂç»ò½âÎö²»³öÀ´Ê±
+        } catch (UnknownHostException e) {  //æ— ç½‘ç»œæˆ–è§£æä¸å‡ºæ¥æ—¶
             e.printStackTrace();
         }
         return false;
@@ -2005,7 +2003,7 @@ public class AppUtils
     /**
      *
      * @param ip
-     * @return   192.168.001.001  ·µ»Ø 192.168.1.1
+     * @return   192.168.001.001  è¿”å› 192.168.1.1
      */
     public static String reverseReplenishIP(String ip){
         String []ips = ip.split("\\.");
@@ -2023,9 +2021,9 @@ public class AppUtils
     }
 
     /**
-     *   ²¹³äip
+     *   è¡¥å……ip
      * @param ip
-     * @return    192.168.1.1 ·µ»Ø192.168.001.001  ÓÃÓÚÓë¼¯ÖĞ¿ØÖÆÆ÷Í¨Ñ¶ÓÃ
+     * @return    192.168.1.1 è¿”å›192.168.001.001  ç”¨äºä¸é›†ä¸­æ§åˆ¶å™¨é€šè®¯ç”¨
      */
     public static String replenishIP(String ip){
         String []ips = ip.split("\\.");
@@ -2044,16 +2042,16 @@ public class AppUtils
     }
 
     /**
-     * Ìá¹©¾«È·µÄĞ¡ÊıÎ»ËÄÉáÎåÈë´¦Àí¡£
+     * æä¾›ç²¾ç¡®çš„å°æ•°ä½å››èˆäº”å…¥å¤„ç†ã€‚
      *
      * @param v
-     *            ĞèÒªËÄÉáÎåÈëµÄÊı×Ö
+     *            éœ€è¦å››èˆäº”å…¥çš„æ•°å­—
      * @param scale
-     *            Ğ¡Êıµãºó±£Áô¼¸Î»
-     * @return ËÄÉáÎåÈëºóµÄ½á¹û
+     *            å°æ•°ç‚¹åä¿ç•™å‡ ä½
+     * @return å››èˆäº”å…¥åçš„ç»“æœ
      *
-     *      *     Èç v=1.269  scale=2  ·µ»Ø 1.27
-     *      *        v=1      scale=2  ·µ»Ø 1.0
+     *      *     å¦‚ v=1.269  scale=2  è¿”å› 1.27
+     *      *        v=1      scale=2  è¿”å› 1.0
      */
     public static double round(double v, int scale) {
         if (scale < 0) {
@@ -2065,15 +2063,15 @@ public class AppUtils
     }
 
     /**
-     * Ìá¹©¾«È·µÄĞ¡ÊıÎ»ËÄÉáÎåÈë´¦Àí¡£
+     * æä¾›ç²¾ç¡®çš„å°æ•°ä½å››èˆäº”å…¥å¤„ç†ã€‚
      *
      * @param v
-     *            ĞèÒªËÄÉáÎåÈëµÄÊı×Ö
+     *            éœ€è¦å››èˆäº”å…¥çš„æ•°å­—
      * @param scale
-     *            Ğ¡Êıµãºó±£Áô¼¸Î»
-     * @return ·µ»ØString, Õë¶Ôscale ==0 Ê±£¬·µ»ØÕûÊı
-     *         double d = 1.22, scale =0 , Ôò·µ»Ø 1
-     *         double dd = 1.2, scale =2 , Ôò·µ»Ø1.20
+     *            å°æ•°ç‚¹åä¿ç•™å‡ ä½
+     * @return è¿”å›String, é’ˆå¯¹scale ==0 æ—¶ï¼Œè¿”å›æ•´æ•°
+     *         double d = 1.22, scale =0 , åˆ™è¿”å› 1
+     *         double dd = 1.2, scale =2 , åˆ™è¿”å›1.20
      */
     public static String round2(double v, int scale) {
         if (scale < 0) {
@@ -2096,14 +2094,14 @@ public class AppUtils
     public static void main(String[] args) {
 
         StringBuffer sb = new StringBuffer();
-        sb.append("91");    //Éè±¸ÀàĞÍ      BCD
-        sb.append("47");    //³§ÉÌ±êÊ¶      BCD
-        sb.append("01");    //Ó²¼ş°æ±¾ºÅ     BCD
-        sb.append("0132");  //Èí¼ş°æ±¾ºÅ
-        sb.append(AscIITools.longToHexString(64098674,8));      //¹Ì¼ş´úÂëµÄ×Ü³¤¶È  UINT32  ÎÄ¼şµÄ´óĞ¡Ê®Áù½øÖÆ
-        sb.append("00000000");      //Õû¸öÎÄ¼şµÄÀÛ¼ÓºÍn  4×Ö½Ú
+        sb.append("91");    //è®¾å¤‡ç±»å‹      BCD
+        sb.append("47");    //å‚å•†æ ‡è¯†      BCD
+        sb.append("01");    //ç¡¬ä»¶ç‰ˆæœ¬å·     BCD
+        sb.append("0132");  //è½¯ä»¶ç‰ˆæœ¬å·
+        sb.append(AscIITools.longToHexString(64098674,8));      //å›ºä»¶ä»£ç çš„æ€»é•¿åº¦  UINT32  æ–‡ä»¶çš„å¤§å°åå…­è¿›åˆ¶
+        sb.append("00000000");      //æ•´ä¸ªæ–‡ä»¶çš„ç´¯åŠ å’Œn  4å­—èŠ‚
         String apkName = "TM9021-huanwei-0132.apk";
-        sb.append(AscIITools.ByteArrToHex(apkName.getBytes()));              //³ÌĞòÎÄ¼şµÄÃû³Æ
+        sb.append(AscIITools.ByteArrToHex(apkName.getBytes()));              //ç¨‹åºæ–‡ä»¶çš„åç§°
         sb.append("0000");
         System.out.println("--update.crl=="+sb.toString());
         byte bb[] = AscIITools.HexToByteArr(sb.toString());
@@ -2152,7 +2150,7 @@ public class AppUtils
 
 //        String str1 = "X101";
 //        System.out.println("--main1--"+isEnglish(str1));
-//        String str = "¶¨E9";
+//        String str = "å®šE9";
 //        System.out.println("--main--"+isChinese(str)+"--"+hasChinese(str));
 
 //        String plan = "06:31:42~10:31:42#10:40:50~10:31:42#10:59:30~15:31:42";
@@ -2178,7 +2176,7 @@ public class AppUtils
 
 
 //        30 30 4b 30 30 30 30 30 38 39 38 39 30 31 30 30 31 36 37 38 39
-//        Ë¾»ú¿¨ºÅ£º89890   ³µºÅ£º16789  ¹²¼Æ£º21¸ö×Ö½Ú
+//        å¸æœºå¡å·ï¼š89890   è½¦å·ï¼š16789  å…±è®¡ï¼š21ä¸ªå­—èŠ‚
 //        order=F==24263030323230304630303138313035313030313133343030CCA9BBAABEC6B5EA23BBF0B3B5D5BE463042360D
 //        2426 30303232 3030 46 30303138 313035313030 313133343030 CCA9BBAABEC6B5EA23BBF0B3B5D5BE 46304236 0D
         String hex = "24263030323230304630303138313035313030313133343030CCA9BBAABEC6B5EA23BBF0B3B5D5BE463042360D";
@@ -2233,19 +2231,19 @@ public class AppUtils
             String viStr = (new String(vi,"GBK"));
 //            System.out.println("vi=="+viStr+"--"+delPrefix(viStr));
 
-            String driverInfo = hyHex.substring(9*2,19*2); //Ë¾»úĞÅÏ¢
-            String vehice = hyHex.substring(19*2,27*2); //ÆäËûĞÅÏ¢
-            String realVehice = hyHex.substring(20*2,27*2); //ÆäËûĞÅÏ¢
+            String driverInfo = hyHex.substring(9*2,19*2); //å¸æœºä¿¡æ¯
+            String vehice = hyHex.substring(19*2,27*2); //å…¶ä»–ä¿¡æ¯
+            String realVehice = hyHex.substring(20*2,27*2); //å…¶ä»–ä¿¡æ¯
 //        System.out.println("driverInfo="+driverInfo+"--vehice="+vehice);
 //        System.out.println("driverInfo="+AscIITools.AsciiStrToHex(driverInfo)+"--vehice="+AscIITools.AsciiStrToHex(realVehice));
 //            System.out.println("delPrefix="+delPrefix("010001"));
 
-//            System.out.println("--hasEnglish--"+hasEnglish("2Â·¿ÍÔËÄÏÕ¾"));
-//            System.out.println("--hasEnglish--"+hasEnglish("YÂ·¿ÍÔËÄÏÕ¾"));
-//            System.out.println("--hasEnglish--"+hasEnglish("Y1Â·¿ÍÔËÄÏÕ¾"));
+//            System.out.println("--hasEnglish--"+hasEnglish("2è·¯å®¢è¿å—ç«™"));
+//            System.out.println("--hasEnglish--"+hasEnglish("Yè·¯å®¢è¿å—ç«™"));
+//            System.out.println("--hasEnglish--"+hasEnglish("Y1è·¯å®¢è¿å—ç«™"));
 //            System.out.println("--hasEnglish--"+hasEnglish("Y1123"));
-//            System.out.println("--hasEnglish--"+hasEnglish("Â·¿ÍÔËÄÏÕ¾"));
-//            System.out.println("--hasEnglish--"+isChinese("Â·¿ÍÔËÄÏÕ¾"));
+//            System.out.println("--hasEnglish--"+hasEnglish("è·¯å®¢è¿å—ç«™"));
+//            System.out.println("--hasEnglish--"+isChinese("è·¯å®¢è¿å—ç«™"));
 
 //            System.out.println("--isLessThanDateYMD--"+isLessThanDateYMD("2020-07-01","2020-07-09"));
             System.out.println("--isLessThanCurrentDate--"+isLessThanCurrentDate("2020-07-09"));
@@ -2284,7 +2282,7 @@ public class AppUtils
     }
 
     /**
-     * ×Ö·û´®×ª»»ÎªAscii
+     * å­—ç¬¦ä¸²è½¬æ¢ä¸ºAscii
      * @param value
      * @return
      */
@@ -2302,7 +2300,7 @@ public class AppUtils
     }
 
     /**
-     * Ascii×ª»»Îª×Ö·û´®
+     * Asciiè½¬æ¢ä¸ºå­—ç¬¦ä¸²
      * @param value
      * @return
      */
@@ -2315,14 +2313,4 @@ public class AppUtils
         return sbu.toString();
     }
 
-    public static void setPowerOnOff(Context context, String powerOffTime, String powerOnTime){
-        //ÉèÖÃ¶¨Ê±¿ª¹Ø»ú
-        SmdtManager mSMDT = SmdtManager.create(context);
-        if (AppUtils.isValidHHmm(powerOffTime)
-                && AppUtils.isValidHHmm(powerOnTime)
-                && DateUtils.getTwoHour(powerOffTime, powerOnTime)) {
-            ZLog.iii("--smdtSetTimingSwitchMachine--offTime="+powerOffTime+"--onTime="+powerOnTime);
-            mSMDT.smdtSetTimingSwitchMachine(powerOffTime, powerOnTime, "1");
-        }
-    }
 }

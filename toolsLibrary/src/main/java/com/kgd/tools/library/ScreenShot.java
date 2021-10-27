@@ -76,32 +76,6 @@ public class ScreenShot {
 		ScreenShot.savePic(ScreenShot.takeScreenShot(a), filePath);
 	}
 
-	public static void shoot(Activity a) {
-		try {
-			String path = AppUtils.getImgName();
-			File imgFile = new File(path);
-//			ZLog.iii("--ScreenShot--shoot--imgFile--"
-//					+ imgFile.getAbsolutePath());
-			shoot(a, imgFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-//			ZLog.iii("--ScreenShot--shoot--" + e.getMessage());
-		}
-
-	}
-
-	public static void takeScreenShot() {
-		String mSavedPath = AppUtils.getImgName();
-		File imgFile = new File("/mnt/sdcard/EBSB_SDCardLog/screenshot");
-		if (!imgFile.exists()) {
-			imgFile.mkdirs();
-		}
-//		ZLog.iii("--takeScreenShot--screencap--" + mSavedPath);
-		ShellUtils.CommandResult result = ShellUtils.execCommand("screencap -p "
-				+ mSavedPath, true);
-//		ZLog.iii("--takeScreenShot--screencap==" + result.toString());
-	}
-
 	/**
 	 * * 截屏方法 Android4.0 -- Android4.2 android.view.Surface.screenshot()
 	 * 隐藏方法，需要通过反射调用 Android4.3 之后 screenshot

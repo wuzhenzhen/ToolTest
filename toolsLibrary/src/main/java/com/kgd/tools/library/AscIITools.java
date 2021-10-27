@@ -7,26 +7,26 @@ import java.io.ByteArrayOutputStream;
 /**
  * Created by wzz on 2017/03/01.
  * wzz
- * ´®¿ÚÏà¹Ø¹¤¾ßÀà
+ * ä¸²å£ç›¸å…³å·¥å…·ç±»
  *
- *  String intToHexString(int algorism)  Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®
- *  String encode(String str)  ½«×Ö·û´®±àÂë³É16½øÖÆÊı×Ö,ÊÊÓÃÓÚËùÓĞ×Ö·û£¨°üÀ¨ÖĞÎÄ£©
- *  String decode(String bytes) ½«16½øÖÆÊı×Ö½âÂë³É×Ö·û´®,ÊÊÓÃÓÚËùÓĞ×Ö·û£¨°üÀ¨ÖĞÎÄ£©
- *  intToHexString(int algorism, int length)    Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®(²»×ãlength,Ç°Ãæ²¹0)
+ *  String intToHexString(int algorism)  åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²
+ *  String encode(String str)  å°†å­—ç¬¦ä¸²ç¼–ç æˆ16è¿›åˆ¶æ•°å­—,é€‚ç”¨äºæ‰€æœ‰å­—ç¬¦ï¼ˆåŒ…æ‹¬ä¸­æ–‡ï¼‰
+ *  String decode(String bytes) å°†16è¿›åˆ¶æ•°å­—è§£ç æˆå­—ç¬¦ä¸²,é€‚ç”¨äºæ‰€æœ‰å­—ç¬¦ï¼ˆåŒ…æ‹¬ä¸­æ–‡ï¼‰
+ *  intToHexString(int algorism, int length)    åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²(ä¸è¶³length,å‰é¢è¡¥0)
  *
  *
- *  getEscape(String content)       ·¢ËÍÊı¾İ×ªÒå£º ·¢ËÍÊ±½«7D¡¢7E×ªÒå
- *  getUnEscape(String content)     ½ÓÊÕÊı¾İ ×ªÒå 7D02->7E,   7D01->7D
+ *  getEscape(String content)       å‘é€æ•°æ®è½¬ä¹‰ï¼š å‘é€æ—¶å°†7Dã€7Eè½¬ä¹‰
+ *  getUnEscape(String content)     æ¥æ”¶æ•°æ® è½¬ä¹‰ 7D02->7E,   7D01->7D
  */
 
 public class AscIITools {
 
     /**
-     * Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®
+     * åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²
      *
      * @param algorism
-     *            int Ê®½øÖÆµÄÊı×Ö
-     * @return String ¶ÔÓ¦µÄÊ®Áù½øÖÆ×Ö·û´®
+     *            int åè¿›åˆ¶çš„æ•°å­—
+     * @return String å¯¹åº”çš„åå…­è¿›åˆ¶å­—ç¬¦ä¸²
      */
     public static String intToHexString(int algorism) {
         String result = "";
@@ -39,7 +39,7 @@ public class AscIITools {
     }
 
     /**
-     *  long ×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®
+     *  long è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²
      * @param lng
      * @return
      */
@@ -54,7 +54,7 @@ public class AscIITools {
     }
 
     /**
-     *  long ×ª»»ÎªÖ¸¶¨³¤¶ÈÊ®Áù½øÖÆ×Ö·û´®£¬²»×ãÇ°Ãæ²¹0
+     *  long è½¬æ¢ä¸ºæŒ‡å®šé•¿åº¦åå…­è¿›åˆ¶å­—ç¬¦ä¸²ï¼Œä¸è¶³å‰é¢è¡¥0
      * @param lng
      * @param length
      * @return
@@ -74,10 +74,10 @@ public class AscIITools {
         return result.toUpperCase();
     }
     /**
-     * Ê®½øÖÆ×ª»»ÎªÊ®Áù½øÖÆ×Ö·û´®(²»×ãlength,Ç°Ãæ²¹0)
-     * Èç AscIITools.intToHexString(1,4)  = 0001
+     * åè¿›åˆ¶è½¬æ¢ä¸ºåå…­è¿›åˆ¶å­—ç¬¦ä¸²(ä¸è¶³length,å‰é¢è¡¥0)
+     * å¦‚ AscIITools.intToHexString(1,4)  = 0001
      * @param algorism
-     * @param length    ×ª»»ÎªÊ®Áù½øÖÆµÄ³¤¶È
+     * @param length    è½¬æ¢ä¸ºåå…­è¿›åˆ¶çš„é•¿åº¦
      * @return
      */
     public static String intToHexString(int algorism, int length){
@@ -96,18 +96,18 @@ public class AscIITools {
     }
 
     /*
-     * 16½øÖÆÊı×Ö×Ö·û¼¯
+     * 16è¿›åˆ¶æ•°å­—å­—ç¬¦é›†
      */
     private static String hexString = "0123456789ABCDEF";
 
     /*
-     * ½«×Ö·û´®±àÂë³É16½øÖÆÊı×Ö,ÊÊÓÃÓÚËùÓĞ×Ö·û£¨°üÀ¨ÖĞÎÄ£©
+     * å°†å­—ç¬¦ä¸²ç¼–ç æˆ16è¿›åˆ¶æ•°å­—,é€‚ç”¨äºæ‰€æœ‰å­—ç¬¦ï¼ˆåŒ…æ‹¬ä¸­æ–‡ï¼‰
      */
     public static String encode(String str) {
-        // ¸ù¾İÄ¬ÈÏ±àÂë»ñÈ¡×Ö½ÚÊı×é
+        // æ ¹æ®é»˜è®¤ç¼–ç è·å–å­—èŠ‚æ•°ç»„
         byte[] bytes = str.getBytes();
         StringBuilder sb = new StringBuilder(bytes.length * 2);
-        // ½«×Ö½ÚÊı×éÖĞÃ¿¸ö×Ö½Ú²ğ½â³É2Î»16½øÖÆÕûÊı
+        // å°†å­—èŠ‚æ•°ç»„ä¸­æ¯ä¸ªå­—èŠ‚æ‹†è§£æˆ2ä½16è¿›åˆ¶æ•´æ•°
         for (int i = 0; i < bytes.length; i++) {
             sb.append(hexString.charAt((bytes[i] & 0xf0) >> 4));
             sb.append(hexString.charAt((bytes[i] & 0x0f) >> 0));
@@ -116,44 +116,44 @@ public class AscIITools {
     }
 
     /*
-     * ½«16½øÖÆÊı×Ö½âÂë³É×Ö·û´®,ÊÊÓÃÓÚËùÓĞ×Ö·û£¨°üÀ¨ÖĞÎÄ£©
+     * å°†16è¿›åˆ¶æ•°å­—è§£ç æˆå­—ç¬¦ä¸²,é€‚ç”¨äºæ‰€æœ‰å­—ç¬¦ï¼ˆåŒ…æ‹¬ä¸­æ–‡ï¼‰
      */
     public static String decode(String bytes) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream(bytes.length() / 2);
-        // ½«Ã¿2Î»16½øÖÆÕûÊı×é×°³ÉÒ»¸ö×Ö½Ú
+        // å°†æ¯2ä½16è¿›åˆ¶æ•´æ•°ç»„è£…æˆä¸€ä¸ªå­—èŠ‚
         for (int i = 0; i < bytes.length(); i += 2)
             baos.write((hexString.indexOf(bytes.charAt(i)) << 4 | hexString.indexOf(bytes.charAt(i + 1))));
         return new String(baos.toByteArray());
     }
 
-    // ÅĞ¶ÏÆæÊı»òÅ¼Êı£¬Î»ÔËËã£¬×îºóÒ»Î»ÊÇ1ÔòÎªÆæÊı£¬Îª0ÊÇÅ¼Êı
+    // åˆ¤æ–­å¥‡æ•°æˆ–å¶æ•°ï¼Œä½è¿ç®—ï¼Œæœ€åä¸€ä½æ˜¯1åˆ™ä¸ºå¥‡æ•°ï¼Œä¸º0æ˜¯å¶æ•°
     static public int isOdd(int num)
     {
         return num & 0x1;
     }
 
-    //----------Hex×Ö·û´®×ªint------------------
+    //----------Hexå­—ç¬¦ä¸²è½¬int------------------
     static public int HexToInt(String inHex)
     {
         return Integer.parseInt(inHex, 16);
     }
 
-    //----------Hex×Ö·û´®×ªlong-----------------
+    //----------Hexå­—ç¬¦ä¸²è½¬long-----------------
     static public long HexToLong(String hexStr){
         return Long.parseLong(hexStr, 16);
     }
 
-    //----------Hex×Ö·û´®×ªbyte-----------------
+    //----------Hexå­—ç¬¦ä¸²è½¬byte-----------------
     static public byte HexToByte(String inHex)
     {
         return (byte)Integer.parseInt(inHex,16);
     }
 
-    //----------1×Ö½Ú×ª2¸öHex×Ö·û----------------
+    //----------1å­—èŠ‚è½¬2ä¸ªHexå­—ç¬¦----------------
     static public String Byte2Hex(Byte inByte){
         return String.format("%02x", inByte).toUpperCase();
     }
-    //----------×Ö½ÚÊı×é×ª×ªhex×Ö·û´®--------------------
+    //----------å­—èŠ‚æ•°ç»„è½¬è½¬hexå­—ç¬¦ä¸²--------------------
     static public String ByteArrToHex(byte[] inBytArr){
         StringBuilder strBuilder=new StringBuilder();
         int j=inBytArr.length;
@@ -164,7 +164,7 @@ public class AscIITools {
         }
         return strBuilder.toString();
     }
-    //-------------×Ö½ÚÊı×é×ª×ªhex×Ö·û´®£¬¿ÉÑ¡³¤¶È----------------------
+    //-------------å­—èŠ‚æ•°ç»„è½¬è½¬hexå­—ç¬¦ä¸²ï¼Œå¯é€‰é•¿åº¦----------------------
     static public String ByteArrToHex(byte[] inBytArr,int offset,int byteCount){
         StringBuilder strBuilder=new StringBuilder();
         int j=byteCount;
@@ -174,16 +174,16 @@ public class AscIITools {
         }
         return strBuilder.toString();
     }
-    //--------------hex×Ö·û´®×ª×Ö½ÚÊı×é------------------------------
+    //--------------hexå­—ç¬¦ä¸²è½¬å­—èŠ‚æ•°ç»„------------------------------
     static public byte[] HexToByteArr(String inHex){
         int hexlen = inHex.length();
         byte[] result;
         if (isOdd(hexlen)==1)
-        {//ÆæÊı
+        {//å¥‡æ•°
             hexlen++;
             result = new byte[(hexlen/2)];
             inHex="0"+inHex;
-        }else {//Å¼Êı
+        }else {//å¶æ•°
             result = new byte[(hexlen/2)];
         }
         int j=0;
@@ -194,7 +194,7 @@ public class AscIITools {
         }
         return result;
     }
-    //-------------×Ö½ÚÊı×é×ªhex×Ö·û´®£¬ ²»×ãlength ³¤¶È£¬Ç°Ãæ²¹0
+    //-------------å­—èŠ‚æ•°ç»„è½¬hexå­—ç¬¦ä¸²ï¼Œ ä¸è¶³length é•¿åº¦ï¼Œå‰é¢è¡¥0
     public static String ByteArrToHex(byte[] inBytArr, int length){
         String result = "";
         result = ByteArrToHex(inBytArr);
@@ -211,7 +211,7 @@ public class AscIITools {
     }
 
     /**
-     * ¶ş½øÖÆ×Ö·û´®×ªÊ®Áù½øÖÆ×Ö·û´®  Èç"00000011"->"03"
+     * äºŒè¿›åˆ¶å­—ç¬¦ä¸²è½¬åå…­è¿›åˆ¶å­—ç¬¦ä¸²  å¦‚"00000011"->"03"
      * @param bString
      * @return
      */
@@ -233,7 +233,7 @@ public class AscIITools {
     }
 
     /**
-     *  Ê®Áù½øÖÆ×Ö·û´®×ª¶ş½øÖÆ×Ö·û´®  Èç03--¡·00000011
+     *  åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬äºŒè¿›åˆ¶å­—ç¬¦ä¸²  å¦‚03--ã€‹00000011
      * @param hexString
      * @return
      */
@@ -252,7 +252,7 @@ public class AscIITools {
     }
 
     /**
-     * bytes×ª»»³ÉÊ®Áù½øÖÆ×ÖÊı×é
+     * bytesè½¬æ¢æˆåå…­è¿›åˆ¶å­—æ•°ç»„
      *
      * @param src
      * @return
@@ -277,7 +277,7 @@ public class AscIITools {
 
 
     /**
-     * ½«byteÊı×é×ª»»³É16½øÖÆ×Ö·û´®
+     * å°†byteæ•°ç»„è½¬æ¢æˆ16è¿›åˆ¶å­—ç¬¦ä¸²
      * @param buf
      * @return
      * */
@@ -293,7 +293,7 @@ public class AscIITools {
         return sb.toString();
     }
 
-    /**½«16½øÖÆ×Ö·û´®×ª»»ÎªbyteÊı×é          Í¬HexToByteArr
+    /**å°†16è¿›åˆ¶å­—ç¬¦ä¸²è½¬æ¢ä¸ºbyteæ•°ç»„          åŒHexToByteArr
      * @param hexStr
      * @return
      * */
@@ -310,9 +310,9 @@ public class AscIITools {
     }
 
     /**
-     * @¹¦ÄÜ: BCDÂë×ªÎª10½øÖÆ´®(°¢À­²®Êı¾İ)
-     * @²ÎÊı: BCDÂë
-     * @½á¹û: 10½øÖÆ´®
+     * @åŠŸèƒ½: BCDç è½¬ä¸º10è¿›åˆ¶ä¸²(é˜¿æ‹‰ä¼¯æ•°æ®)
+     * @å‚æ•°: BCDç 
+     * @ç»“æœ: 10è¿›åˆ¶ä¸²
      */
     public static String bcd2Str(byte[] bytes) {
         StringBuffer temp = new StringBuffer(bytes.length * 2);
@@ -325,9 +325,9 @@ public class AscIITools {
     }
 
     /**
-     * @¹¦ÄÜ: 10½øÖÆ´®×ªÎªBCDÂë
-     * @²ÎÊı: 10½øÖÆ´®
-     * @½á¹û: BCDÂë
+     * @åŠŸèƒ½: 10è¿›åˆ¶ä¸²è½¬ä¸ºBCDç 
+     * @å‚æ•°: 10è¿›åˆ¶ä¸²
+     * @ç»“æœ: BCDç 
      */
     public static byte[] str2Bcd(String asc) {
         int len = asc.length();
@@ -366,12 +366,12 @@ public class AscIITools {
     }
 
     /**
-     * @¹¦ÄÜ: ¼ì²é16½øÖÆ´®ÊÇ·ñºÏ·¨
-     * @²ÎÊı: 16½øÖÆ´®
-     * @½á¹û: true/false
+     * @åŠŸèƒ½: æ£€æŸ¥16è¿›åˆ¶ä¸²æ˜¯å¦åˆæ³•
+     * @å‚æ•°: 16è¿›åˆ¶ä¸²
+     * @ç»“æœ: true/false
      */
     public static boolean isHex(String hexStr){
-        for(int i = 0; i < hexStr.length(); i++) {// ÅĞ¶ÏÊÇ·ñÂú×ã16½øÖÆÊı
+        for(int i = 0; i < hexStr.length(); i++) {// åˆ¤æ–­æ˜¯å¦æ»¡è¶³16è¿›åˆ¶æ•°
             if (!((hexStr.charAt(i) <= '9' && hexStr.charAt(i) >= '0')
                     ||(hexStr.charAt(i) <= 'F' && hexStr.charAt(i) >= 'A')
                     || (hexStr.charAt(i) <= 'f' && hexStr.charAt(i) >= 'a'))) {
@@ -383,10 +383,10 @@ public class AscIITools {
     }
 
     /**
-     * @¹¦ÄÜ: format longitude and latitude
-     * 	½«39936472/116267048 ×ª»»ÎªdoubleÀàĞÍ39.936472/116.267048
-     * @²ÎÊı: int
-     * @½á¹û:
+     * @åŠŸèƒ½: format longitude and latitude
+     * 	å°†39936472/116267048 è½¬æ¢ä¸ºdoubleç±»å‹39.936472/116.267048
+     * @å‚æ•°: int
+     * @ç»“æœ:
      */
     public static double formatLAL(int lal){
         int remainder = lal%1000000;
@@ -399,10 +399,10 @@ public class AscIITools {
     }
 
     /**
-     * @¹¦ÄÜ: 16½øÖÆ×Ö·û´®¾­Î³¶È×ªdouble ÀàĞÍ
-     * 	½«39936472/116267048 ×ª»»ÎªdoubleÀàĞÍ39.936472/116.267048
-     * @²ÎÊı: String
-     * @½á¹û:
+     * @åŠŸèƒ½: 16è¿›åˆ¶å­—ç¬¦ä¸²ç»çº¬åº¦è½¬double ç±»å‹
+     * 	å°†39936472/116267048 è½¬æ¢ä¸ºdoubleç±»å‹39.936472/116.267048
+     * @å‚æ•°: String
+     * @ç»“æœ:
      * LAL = Latitude and Longtitude
      */
     public static double HexToLAL(String hexStr){
@@ -410,13 +410,13 @@ public class AscIITools {
     }
 
 
-    //------------byteÊı×é---Òì»òºÍĞ£Ñé---Òì»òºÍ¼ìÑé---------------------------
+    //------------byteæ•°ç»„---å¼‚æˆ–å’Œæ ¡éªŒ---å¼‚æˆ–å’Œæ£€éªŒ---------------------------
     /**
-     * @¹¦ÄÜ: byteÊı×é---Òì»òºÍĞ£Ñé
-     * 	 Èç£ºbyte datas[] = {0x00,0x01,0x11,0x00}; byte checkCode = 0x10;
+     * @åŠŸèƒ½: byteæ•°ç»„---å¼‚æˆ–å’Œæ ¡éªŒ
+     * 	 å¦‚ï¼šbyte datas[] = {0x00,0x01,0x11,0x00}; byte checkCode = 0x10;
      *   0x00^0x01^0x11^0x00 = 0x10
-     * @²ÎÊı: byte Êı×é£¬ byte¼ìÑéÂë
-     * @½á¹û:
+     * @å‚æ•°: byte æ•°ç»„ï¼Œ byteæ£€éªŒç 
+     * @ç»“æœ:
      */
     public static boolean xorVerify(byte datas[], byte checkCode){
         byte result = datas[0];
@@ -428,13 +428,13 @@ public class AscIITools {
         return false;
     }
 
-    //------------Ê®Áù½øÖÆ×Ö·û´®---Òì»òºÍ¼ìÑé---------------------------
+    //------------åå…­è¿›åˆ¶å­—ç¬¦ä¸²---å¼‚æˆ–å’Œæ£€éªŒ---------------------------
     /**
-     * @category  Ê®Áù½øÖÆ×Ö·û´®---Òì»òºÍ¼ìÑé
-     *  Èç£ºString str = "0001100102010110A3B8A3B8A1FAB8DFC1D6BED3D7A1C7F8"; byte checkCode = 0x0D;
-     * @param str  Ê®Áù½øÖÆ×Ö·û´®
-     * @param checkCode  Ğ£ÑéÂë
-     * @return Ğ£Ñé½á¹û
+     * @category  åå…­è¿›åˆ¶å­—ç¬¦ä¸²---å¼‚æˆ–å’Œæ£€éªŒ
+     *  å¦‚ï¼šString str = "0001100102010110A3B8A3B8A1FAB8DFC1D6BED3D7A1C7F8"; byte checkCode = 0x0D;
+     * @param str  åå…­è¿›åˆ¶å­—ç¬¦ä¸²
+     * @param checkCode  æ ¡éªŒç 
+     * @return æ ¡éªŒç»“æœ
      */
     public static boolean xorVerify(String str, byte checkCode){
         byte result = HexToByte(str.substring(0,2));
@@ -448,7 +448,7 @@ public class AscIITools {
     }
 
     /**
-     *  Òì»ò¼ìÑéÂë
+     *  å¼‚æˆ–æ£€éªŒç 
      * @param str
      * @return
      */
@@ -463,7 +463,7 @@ public class AscIITools {
     }
 
     /**
-     * Òì»ò¼ìÑéÂë
+     * å¼‚æˆ–æ£€éªŒç 
      * @param b
      * @return
      */
@@ -476,9 +476,9 @@ public class AscIITools {
     }
 
     /**
-     *  µÃµ½ºÍĞ£ÑéÂë
-     * @param hexString     Ê®Áù½øÖÆ×Ö·û´®
-     * @param length    Ğ£ÑéÂë³¤¶È  length ×Ö½Ú
+     *  å¾—åˆ°å’Œæ ¡éªŒç 
+     * @param hexString     åå…­è¿›åˆ¶å­—ç¬¦ä¸²
+     * @param length    æ ¡éªŒç é•¿åº¦  length å­—èŠ‚
      * @return
      */
     public static String getSumCheck(String hexString, int length){
@@ -501,9 +501,9 @@ public class AscIITools {
     }
 
     /**
-     *  ºÍĞ£Ñé
-     * @param hexString Ê®Áù½øÖÆ×Ö·û´®
-     * @param checkCode Ê®Áù½øÖÆĞ£ÑéÂë
+     *  å’Œæ ¡éªŒ
+     * @param hexString åå…­è¿›åˆ¶å­—ç¬¦ä¸²
+     * @param checkCode åå…­è¿›åˆ¶æ ¡éªŒç 
      * @return
      */
     public static boolean SumCheck(String hexString, String checkCode){
@@ -515,23 +515,23 @@ public class AscIITools {
     }
 
     /**
-     * Ğ£ÑéºÍ
+     * æ ¡éªŒå’Œ
      *
-     * @param msg ĞèÒª¼ÆËãĞ£ÑéºÍµÄbyteÊı×é
-     * @param length Ğ£ÑéºÍÎ»Êı
-     * @return ¼ÆËã³öµÄĞ£ÑéºÍÊı×é
+     * @param msg éœ€è¦è®¡ç®—æ ¡éªŒå’Œçš„byteæ•°ç»„
+     * @param length æ ¡éªŒå’Œä½æ•°
+     * @return è®¡ç®—å‡ºçš„æ ¡éªŒå’Œæ•°ç»„
      */
     public static byte[] SumCheck(byte[] msg, int length) {
         long mSum = 0;
         byte[] mByte = new byte[length];
 
-        /** ÖğByteÌí¼ÓÎ»ÊıºÍ */
+        /** é€Byteæ·»åŠ ä½æ•°å’Œ */
         for (byte byteMsg : msg) {
             long mNum = ((long)byteMsg >= 0) ? (long)byteMsg : ((long)byteMsg + 256);
             mSum += mNum;
         } /** end of for (byte byteMsg : msg) */
 
-        /** Î»ÊıºÍ×ª»¯ÎªByteÊı×é */
+        /** ä½æ•°å’Œè½¬åŒ–ä¸ºByteæ•°ç»„ */
         for (int liv_Count = 0; liv_Count < length; liv_Count++) {
             mByte[length - liv_Count - 1] = (byte)(mSum >> (liv_Count * 8) & 0xff);
         } /** end of for (int liv_Count = 0; liv_Count < length; liv_Count++) */
@@ -542,9 +542,9 @@ public class AscIITools {
 
 
     /**
-     *  ·¢ËÍÊı¾İ×ªÒå£º ·¢ËÍÊ±½«7D¡¢7E×ªÒå
-     *  0x7e <¡ª¡ª¡ª¡ª> 0x7d ºó½ô¸úÒ»¸ö 0x02£»
-     *  0x7d <¡ª¡ª¡ª¡ª> 0x7d ºó½ô¸úÒ»¸ö 0x01¡£
+     *  å‘é€æ•°æ®è½¬ä¹‰ï¼š å‘é€æ—¶å°†7Dã€7Eè½¬ä¹‰
+     *  0x7e <â€”â€”â€”â€”> 0x7d åç´§è·Ÿä¸€ä¸ª 0x02ï¼›
+     *  0x7d <â€”â€”â€”â€”> 0x7d åç´§è·Ÿä¸€ä¸ª 0x01ã€‚
      * @param content
      * @return
      */
@@ -570,7 +570,7 @@ public class AscIITools {
     }
 
     /**
-     *  ½ÓÊÕÊı¾İ ×ªÒå
+     *  æ¥æ”¶æ•°æ® è½¬ä¹‰
      * @param content
      * @return
      */
@@ -592,9 +592,9 @@ public class AscIITools {
                 sb.append(content.substring(i,i+2));
                 i+=2;
             }
-            //´¦ÀíÎ²
+            //å¤„ç†å°¾
             if(i==content.length()-2){
-                    sb.append(content.substring(i,i+2));//Ìí¼ÓÎ²
+                    sb.append(content.substring(i,i+2));//æ·»åŠ å°¾
             }
         }
 //        System.out.println(content+"\n"+sb.toString());
@@ -602,13 +602,13 @@ public class AscIITools {
     }
 
     /**
-     *  µÃµ½Ö¸¶¨³¤¶ÈµÄbyte Êı×é£¨ÓÃÓÚºó²¹0£©
-     *  Àı£ºÈç¹ûlength=10 ,"TM-01".getBytes()=bytes= [84,77,45,48,49] Ôò½á¹ûÎª[84,77,45,48,49,0,0,0,0,0]
-     *  Ê®Áù½øÖÆÎª£º54 4D 2D 30 31 00 00 00 00 00
-     *  µÈÓÚÊÇÔÚbytes ºó¼Ólength-bytes.length ¸ö0
+     *  å¾—åˆ°æŒ‡å®šé•¿åº¦çš„byte æ•°ç»„ï¼ˆç”¨äºåè¡¥0ï¼‰
+     *  ä¾‹ï¼šå¦‚æœlength=10 ,"TM-01".getBytes()=bytes= [84,77,45,48,49] åˆ™ç»“æœä¸º[84,77,45,48,49,0,0,0,0,0]
+     *  åå…­è¿›åˆ¶ä¸ºï¼š54 4D 2D 30 31 00 00 00 00 00
+     *  ç­‰äºæ˜¯åœ¨bytes ååŠ length-bytes.length ä¸ª0
      * @param bytes
      * @param length
-     * @return   ·µ»ØÖ¸¶¨µÄbytes Êı¾İ³¤¶È
+     * @return   è¿”å›æŒ‡å®šçš„bytes æ•°æ®é•¿åº¦
      */
     public static byte[] getLengthBytes(byte [] bytes, int length){
         if(bytes.length>length){
@@ -626,10 +626,10 @@ public class AscIITools {
     }
 
     /**
-     *  µÃµ½Ö¸¶¨³¤¶ÈµÄBCD, ²»×ãÊ±Ç°²¹0
-     * @param bcd   Ô­Ê¼bcd
-     * @param length  ³¤¶È
-     * @return   Èç bcd= "123456", length = 10  Ôòresult = "0000123456"
+     *  å¾—åˆ°æŒ‡å®šé•¿åº¦çš„BCD, ä¸è¶³æ—¶å‰è¡¥0
+     * @param bcd   åŸå§‹bcd
+     * @param length  é•¿åº¦
+     * @return   å¦‚ bcd= "123456", length = 10  åˆ™result = "0000123456"
      */
     public static String getLengthBCD(String bcd, int length){
         if(bcd.length()>length){
@@ -643,8 +643,8 @@ public class AscIITools {
     }
 
     /**
-     *  Ê®Áù½øÖÆ×Ö·û´®×ª AsciiÂë
-     * @param hexStr  Èç F0B6 = 46304236
+     *  åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬ Asciiç 
+     * @param hexStr  å¦‚ F0B6 = 46304236
      * @return
      */
     public static String HexStrToAscii(String hexStr){
@@ -652,8 +652,8 @@ public class AscIITools {
     }
 
     /**
-     *  ascii Âë ×ªÊ®Áù½øÖÆ
-     * @param ascii Èç 46304236 == F0B6
+     *  ascii ç  è½¬åå…­è¿›åˆ¶
+     * @param ascii å¦‚ 46304236 == F0B6
      * @return
      */
     public static String AsciiStrToHex(String ascii){

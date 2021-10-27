@@ -300,7 +300,7 @@ public class FileUtil {
 				input.close();
 
 				Message msg = handler.obtainMessage();
-				msg.what = COPY_FILE;
+//				msg.what = COPY_FILE;
 				Bundle bun = new Bundle();
 				bun.putString("oldPath", oldPath);
 				bun.putString("newPath", newPath);
