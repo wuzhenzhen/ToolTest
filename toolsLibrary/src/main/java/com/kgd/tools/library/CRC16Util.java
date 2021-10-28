@@ -138,15 +138,20 @@ public class CRC16Util {
     }
 
     /**
-     * CRC-16
-     * CRC16_IBM：多项式x16+x15+x2+1（0x8005），初始值0x0000，低位在前，高位在后，结果与0x0000异或
-     * 0xA001是0x8005按位颠倒后的结果
+     *  CRC算法名称：CRC-16/IBM   ---已验证可用
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：8005
+     *  初始值：0000
+     *  结果异或值：0000
+     *  输入反转：true
+     *  输出反转：true
      * @param buffer
-     * @return   低位在后，高位在前
+     * @return  低位在右，高位在左(低位在前，高位在后)
      */
     public static int CRC16_IBM(byte[] buffer) {
         int wCRCin = 0x0000;
-        int wCPoly = 0xa001;
+        int wCPoly = 0xa001;    //0xA001是0x8005按位颠倒后的结果
         for (byte b : buffer) {
             wCRCin ^= ((int) b & 0x00ff);
             for (int j = 0; j < 8; j++) {
@@ -160,6 +165,122 @@ public class CRC16Util {
         }
         return wCRCin ^= 0x0000;
     }
+
+    /**
+     *  CRC算法名称：CRC-16/MAXIM   ---已验证可用
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：8005
+     *  初始值：0000
+     *  结果异或值：FFFF
+     *  输入反转：true
+     *  输出反转：true
+     * @param buffer
+     * @return  低位在右，高位在左(低位在前，高位在后)
+     */
+    public static int CRC16_MAXIM(byte[] buffer) {
+        int wCRCin = 0x0000;
+        int wCPoly = 0xa001;
+        for (byte b : buffer) {
+            wCRCin ^= ((int) b & 0x00ff);
+            for (int j = 0; j < 8; j++) {
+                if ((wCRCin & 0x0001) != 0) {
+                    wCRCin >>= 1;
+                    wCRCin ^= wCPoly;
+                } else {
+                    wCRCin >>= 1;
+                }
+            }
+        }
+        return wCRCin ^= 0xffff;
+    }
+
+    /**
+     *  CRC算法名称：CRC-16/USB   ---已验证可用
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：8005
+     *  初始值：FFFF
+     *  结果异或值：FFFF
+     *  输入反转：true
+     *  输出反转：true
+     * @param buffer
+     * @return  低位在右，高位在左(低位在前，高位在后)
+     */
+    public static int CRC16_USB(byte[] buffer) {
+        int wCRCin = 0xFFFF;
+        int wCPoly = 0xa001;
+        for (byte b : buffer) {
+            wCRCin ^= ((int) b & 0x00ff);
+            for (int j = 0; j < 8; j++) {
+                if ((wCRCin & 0x0001) != 0) {
+                    wCRCin >>= 1;
+                    wCRCin ^= wCPoly;
+                } else {
+                    wCRCin >>= 1;
+                }
+            }
+        }
+        return wCRCin ^= 0xffff;
+    }
+
+    /**
+     *  CRC算法名称：CRC-16/MODBUS   ---已验证可用
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：8005
+     *  初始值：FFFF
+     *  结果异或值：0000
+     *  输入反转：true
+     *  输出反转：true
+     * @param buffer
+     * @return  低位在右，高位在左(低位在前，高位在后)
+     */
+    public static int CRC16_MODBUS(byte[] buffer) {
+        int wCRCin = 0xffff;
+        int POLYNOMIAL = 0xa001;
+        for (byte b : buffer) {
+            wCRCin ^= ((int) b & 0x00ff);
+            for (int j = 0; j < 8; j++) {
+                if ((wCRCin & 0x0001) != 0) {
+                    wCRCin >>= 1;
+                    wCRCin ^= POLYNOMIAL;
+                } else {
+                    wCRCin >>= 1;
+                }
+            }
+        }
+        return wCRCin ^= 0x0000;
+    }
+
+    /**
+     *  CRC算法名称：CRC-16/XMODEM   ---已验证可用
+     *  多项式公式：X^16 + X^15 + X^2 + 1
+     *  宽度： 16
+     *  多项式：1021
+     *  初始值：0000
+     *  结果异或值：0000
+     *  输入反转：false
+     *  输出反转：false
+     * @param buffer
+     * @return  低位在右，高位在左(低位在前，高位在后)
+     */
+    public static int CRC16_XMODEM(byte[] buffer) {
+        int wCRCin = 0x0000; // initial value 65535
+        int wCPoly = 0x1021; // 0001 0000 0010 0001 (0, 5, 12)
+        for (byte b : buffer) {
+            for (int i = 0; i < 8; i++) {
+                boolean bit = ((b >> (7 - i) & 1) == 1);
+                boolean c15 = ((wCRCin >> 15 & 1) == 1);
+                wCRCin <<= 1;
+                if (c15 ^ bit)
+                    wCRCin ^= wCPoly;
+            }
+        }
+        wCRCin &= 0xffff;
+        return wCRCin ^= 0x0000;
+    }
+
 
     /**
      *  CRC算法名称：CRC-16/MAXIM
@@ -192,22 +313,6 @@ public class CRC16Util {
      * @param buffer
      * @return
      */
-    public static int CRC16_MAXIM(byte[] buffer) {
-        int wCRCin = 0x0000;
-        int wCPoly = 0xa001;
-        for (byte b : buffer) {
-            wCRCin ^= ((int) b & 0x00ff);
-            for (int j = 0; j < 8; j++) {
-                if ((wCRCin & 0x0001) != 0) {
-                    wCRCin >>= 1;
-                    wCRCin ^= wCPoly;
-                } else {
-                    wCRCin >>= 1;
-                }
-            }
-        }
-        return wCRCin ^= 0xffff;
-    }
     /**
      *  CRC算法名称：CRC-16/MODBUS
      *  多项式公式：X^16 + X^15 + X^2 + 1
@@ -278,9 +383,11 @@ public class CRC16Util {
         System.out.println("==calcCrc16LHModbus2="+calcCrc16HLModbus(AscIITools.HexToByteArr("8204160000")));
         String str = "B66B00210000000000000000000000000032303231373236FE00320001009F0000"; // CRC-16/IBM==0000， CRC-16/MAXIM==FFFF
         String crcResult = CRC16Util.calcCrc16LH(AscIITools.HexToByteArr(str.substring(0,str.length()-4)));
-        String crcResult2 = CRC16Util.calcCrc16LH_MAXIM(AscIITools.HexToByteArr(str.substring(0,str.length()-4)));
-        String crcResult3 = AscIITools.intToHexString(CRC16Util.CRC16_IBM(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
-        String crcResult4 = AscIITools.intToHexString(CRC16Util.CRC16_MAXIM(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
-        System.out.println("--crcResult--"+crcResult+"--"+crcResult2+"--"+crcResult3+"--"+crcResult3);
+        String ibm = AscIITools.intToHexString(CRC16Util.CRC16_IBM(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
+        String maxim = AscIITools.intToHexString(CRC16Util.CRC16_MAXIM(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
+        String modbus = AscIITools.intToHexString(CRC16Util.CRC16_MODBUS(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
+        String xmodem = AscIITools.intToHexString(CRC16Util.CRC16_XMODEM(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
+        String usb = AscIITools.intToHexString(CRC16Util.CRC16_USB(AscIITools.HexToByteArr(str.substring(0,str.length()-4))),4);
+        System.out.println("--crcResult--"+crcResult+"--IBM="+ibm+"--MAXIM="+maxim+"--MODBUS="+modbus+"--XMODEM="+xmodem+"--usb="+usb);
     }
 }

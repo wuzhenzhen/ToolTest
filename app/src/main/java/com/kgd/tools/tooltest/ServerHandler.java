@@ -1,5 +1,6 @@
 package com.kgd.tools.tooltest;
 
+import com.kgd.tools.library.AppUtils;
 import com.kgd.tools.library.AscIITools;
 
 import io.netty.buffer.ByteBuf;
@@ -43,8 +44,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<byte[]> {
         byte[] tempDatas = new byte[readBuffer.readableBytes()];
         //读取到对应的数据 可以直接读取，这个不需要考虑复位的问题，
         readBuffer.readBytes(tempDatas);
+        System.out.println("--channelRead0--"+ AppUtils.getDateStrFromLong(System.currentTimeMillis(),"yyyy-MM-dd HH:mm:ss")
+                +" " + AscIITools.ByteArrToHex(tempDatas));
+        System.out.println("--"+ctx.channel().remoteAddress().toString()+","+ctx.channel().localAddress().toString());
         String message = new String(tempDatas,"UTF-8");
-        System.out.println("from client :"+message);
+//        System.out.println("from client :"+message);
         if ("exit".equals(message)){
             //如果客户端断开连接，则关闭上下文
             ctx.close();
