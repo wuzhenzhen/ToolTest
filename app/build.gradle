@@ -27,6 +27,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('src\\main\\jniLibs\\commons-net-3.6.jar')
     implementation files('src\\main\\jniLibs\\netty-all-4.1.69.Final-20210909.130254-1.jar')
+    implementation files('src\\main\\jniLibs\\bcprov-ext-jdk15on-170.jar')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
